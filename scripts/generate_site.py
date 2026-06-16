@@ -75,11 +75,11 @@ def render(title, desc, content, canonical, schema="", depth=0, nav_active=""):
 
 
 def card_html(r, depth=0):
-    """PasGo-style card."""
+    """PasGo-style card — vendor name as title, dish as badge."""
     sp = "../" * depth if depth > 0 else ""
     dish = safe_str(r.get("dish_name", ""))
     vname = safe_str(r.get("vendor_name", ""))
-    display = dish if dish else vname if vname else f"Quán #{int(r['id'])}"
+    display = vname if vname else dish if dish else f"Quán #{int(r['id'])}"
     province = safe_str(r.get("province", ""))
     price = safe_str(r.get("price_range", ""), "Liên hệ")
     rating = r.get("rating", 0) or 0
@@ -99,31 +99,41 @@ def card_html(r, depth=0):
         if nums:
             try:
                 max_p = max(int(n) for n in nums if n.isdigit())
-                if max_p < 50000: price_level = "0"     # budget
-                elif max_p < 150000: price_level = "1"   # mid
-                else: price_level = "2"                   # premium
+                if max_p < 50000: price_level = "0"
+                elif max_p < 150000: price_level = "1"
+                else: price_level = "2"
             except:
                 pass
 
     badge = '<span class="card-badge original">⭐ Quán gốc</span>' if is_orig else ""
     cat_icon = CAT_ICONS.get(cat, "🍽️")
     img_url = safe_str(r.get("image_urls", ""))
-    
+
+    # Image or placeholder
     img_html = ""
     if img_url and img_url.startswith("http"):
         img_html = f'<img src="{img_url}" alt="{display}" loading="lazy">'
     else:
-        img_html = cat_icon
+        img_html = f'<div class="card-placeholder">{cat_icon}</div>'
+
+    # Dish name badge (if different from vendor name)
+    dish_badge = ""
+    if dish and dish != vname:
+        dish_badge = f'<span class="card-dish-tag">{dish}</span>'
+
+    # Reviews display
+    reviews_str = f"{reviews:,} đánh giá" if reviews > 0 else ""
 
     return f"""<div class="card" data-category="{cat}" data-rating="{rating:.0f}" data-reviews="{reviews}" data-price="{price_level}" data-original="{'true' if is_orig else 'false'}">
   <a href="{sp}mon/{slug}-{rid}/">
-    <div class="card-img">{badge}{img_html}</div>
+    <div class="card-img">{badge}{dish_badge}{img_html}</div>
     <div class="card-body">
       <h3>{display}</h3>
       <div class="card-meta">
-        <span class="card-location">{addr[:40]}</span>
-        <span class="card-rating">{rating:.1f}</span>
+        <span class="card-rating">⭐ {rating:.1f}</span>
+        <span class="card-reviews">{reviews_str}</span>
       </div>
+      <div class="card-location-row">📍 {addr[:35]}</div>
       <div class="card-price">{price}</div>
     </div>
   </a>
@@ -191,6 +201,29 @@ def gen_provinces(df):
         cnt = len(grp)
         cards = "".join(card_html(r, depth=1) for _, r in grp.iterrows())
 
+        # Province stats
+        avg_rating = grp["rating"].mean()
+        cat_count = grp["dish_category"].nunique()
+        orig_count = len(grp[grp["is_original"].isin([True, "True", "true", "1"])])
+        total_reviews = int(grp["reviews_count"].fillna(0).sum())
+        
+        stats_html = f"""<div class="hero-stats">
+  <div class="stat-pill">🍜 {cnt} quán</div>
+  <div class="stat-pill">📂 {cat_count} danh mục</div>
+  <div class="stat-pill">⭐ {avg_rating:.1f} TB</div>
+  <div class="stat-pill">💬 {total_reviews:,} reviews</div>
+</div>"""
+
+        # Dish chips for this province
+        cat_dist = grp["dish_category"].value_counts()
+        dish_chips = '<div class="dish-chips">\n'
+        dish_chips += '<span class="dish-chip active" onclick="filterCatProv(\'all\')\">🍽️ Tất cả</span>\n'
+        for cat_name, cat_cnt in cat_dist.items():
+            if cat_name and cat_name != "Khác":
+                icon = CAT_ICONS.get(cat_name, "🍽️")
+                dish_chips += f'<span class="dish-chip" onclick="filterCatProv(\'{cat_name}\')">{icon} {cat_name} ({cat_cnt})</span>\n'
+        dish_chips += '</div>'
+
         nearby = '<section class="section"><div class="section-header"><h2>Tỉnh Lân Cận</h2></div><div class="city-grid">'
         for ps in df["province_slug"].unique()[:6]:
             if ps != slug:
@@ -200,6 +233,8 @@ def gen_provinces(df):
         content = load_tpl("province_content.html")
         content = content.replace("{{PROVINCE}}", str(prov))
         content = content.replace("{{COUNT}}", str(cnt))
+        content = content.replace("{{PROVINCE_STATS}}", stats_html)
+        content = content.replace("{{DISH_CHIPS}}", dish_chips)
         content = content.replace("{{VENDOR_CARDS}}", cards)
         content = content.replace("{{NEARBY}}", nearby)
 

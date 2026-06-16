@@ -21,15 +21,34 @@
   </div>
 </header>
 
-<!-- PROVINCE PAGE — PasGo Style -->
+<!-- PROVINCE PAGE -->
 <div class="container"><nav class="breadcrumb"><a href="/">Trang chủ</a> › Cần Thơ</nav></div>
 
-<section class="hero" style="padding:28px 0;">
+<section class="hero province-hero">
   <div class="container">
-    <h1>Món Ăn Đường Phố Cần Thơ</h1>
-    <p>20 quán ăn — đặc sản địa phương chính gốc tại Cần Thơ</p>
+    <h1>🍜 Món Ăn Đường Phố Cần Thơ</h1>
+    <p>Đặc sản địa phương chính gốc tại Cần Thơ</p>
+    <div class="hero-stats">
+  <div class="stat-pill">🍜 20 quán</div>
+  <div class="stat-pill">📂 5 danh mục</div>
+  <div class="stat-pill">⭐ 4.0 TB</div>
+  <div class="stat-pill">💬 15,320 reviews</div>
+</div>
   </div>
 </section>
+
+<!-- Dish Category Chips for this province -->
+<div class="dish-chips-section">
+  <div class="container">
+    <div class="dish-chips">
+<span class="dish-chip active" onclick="filterCatProv('all')">🍽️ Tất cả</span>
+<span class="dish-chip" onclick="filterCatProv('Cơm')">🍚 Cơm (4)</span>
+<span class="dish-chip" onclick="filterCatProv('Đặc sản')">🏆 Đặc sản (3)</span>
+<span class="dish-chip" onclick="filterCatProv('Lẩu')">🍲 Lẩu (2)</span>
+<span class="dish-chip" onclick="filterCatProv('Bánh')">🥖 Bánh (1)</span>
+</div>
+  </div>
+</div>
 
 <div class="container">
   <!-- Filter Bar -->
@@ -73,241 +92,261 @@
   <section class="section">
     <div class="card-grid"><div class="card" data-category="Đặc sản" data-rating="5" data-reviews="305" data-price="0" data-original="false">
   <a href="../mon/unknown-307/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAEEFmaF-qyH6kEGOa9XAu3niVhNy0BUAPr5HH36aHXIeSVZ5wFmwDFo9sTBJ4dqj3ZQm-X1GClXHmVazD4xMrXhKyw8bLgCjkd2opVm5Y2dSGUpbfbqV01MG4FTMerzjgFg61U=w408-h544-k-no" alt="Vịt" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Vịt</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAEEFmaF-qyH6kEGOa9XAu3niVhNy0BUAPr5HH36aHXIeSVZ5wFmwDFo9sTBJ4dqj3ZQm-X1GClXHmVazD4xMrXhKyw8bLgCjkd2opVm5Y2dSGUpbfbqV01MG4FTMerzjgFg61U=w408-h544-k-no" alt="Vịt nấu chao Út Cưng-Cần Thơ" loading="lazy"></div>
     <div class="card-body">
-      <h3>Vịt</h3>
+      <h3>Vịt nấu chao Út Cưng-Cần Thơ</h3>
       <div class="card-meta">
-        <span class="card-location">96a Đ. Trần Khánh Dư, Ninh Kiều, 96a Đ. </span>
-        <span class="card-rating">4.7</span>
+        <span class="card-rating">⭐ 4.7</span>
+        <span class="card-reviews">305 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 96a Đ. Trần Khánh Dư, Ninh Kiều, 96</div>
       <div class="card-price">100-200</div>
     </div>
   </a>
 </div><div class="card" data-category="Bánh" data-rating="4" data-reviews="4362" data-price="1" data-original="true">
   <a href="../mon/unknown-308/">
-    <div class="card-img"><span class="card-badge original">⭐ Quán gốc</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHxXd-5RRLlhUgsRqIbUfbZIoyo9HIBFO5gyx4fvaIGPX0cbm3e3K-wadeu6zXlc528oYeUbFtFw_aRDiqoUND7weMZe6Gow7ujbbgi8ioS-gsxUP4GiiDHK6scHf-g6ngruHpV=w408-h306-k-no" alt="Bánh xèo" loading="lazy"></div>
+    <div class="card-img"><span class="card-badge original">⭐ Quán gốc</span><span class="card-dish-tag">Bánh xèo</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHxXd-5RRLlhUgsRqIbUfbZIoyo9HIBFO5gyx4fvaIGPX0cbm3e3K-wadeu6zXlc528oYeUbFtFw_aRDiqoUND7weMZe6Gow7ujbbgi8ioS-gsxUP4GiiDHK6scHf-g6ngruHpV=w408-h306-k-no" alt="Quán Bánh xèo 7 Tới" loading="lazy"></div>
     <div class="card-body">
-      <h3>Bánh xèo</h3>
+      <h3>Quán Bánh xèo 7 Tới</h3>
       <div class="card-meta">
-        <span class="card-location">45 Đ. Hoàng Quốc Việt, An Bình, 45 Đ. Ho</span>
-        <span class="card-rating">4.2</span>
+        <span class="card-rating">⭐ 4.2</span>
+        <span class="card-reviews">4,362 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 45 Đ. Hoàng Quốc Việt, An Bình, 45 </div>
       <div class="card-price">1-100.000</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="4" data-reviews="180" data-price="0" data-original="false">
   <a href="../mon/unknown-309/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFY58hQXjJw4Dzm4zn1vEPXh-Wib0mx9oLhYRhwPVFY6pmXuxqKEXk85TVdmo5BTq-bb0-JplgdyGuJHYHaUWcmGpN9Jx0IgJvE-pz-1RANBCNbD8h69--U6dGGfVW7K9dx2lGEPjGRTFkl=w408-h306-k-no" alt="Ẩm thực" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ẩm thực</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFY58hQXjJw4Dzm4zn1vEPXh-Wib0mx9oLhYRhwPVFY6pmXuxqKEXk85TVdmo5BTq-bb0-JplgdyGuJHYHaUWcmGpN9Jx0IgJvE-pz-1RANBCNbD8h69--U6dGGfVW7K9dx2lGEPjGRTFkl=w408-h306-k-no" alt="LA CÀ (quán ăn gia đình)" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ẩm thực</h3>
+      <h3>LA CÀ (quán ăn gia đình)</h3>
       <div class="card-meta">
-        <span class="card-location">121 Trần Văn Khéo, Cái Khế, 121 Trần Văn</span>
-        <span class="card-rating">3.6</span>
+        <span class="card-rating">⭐ 3.6</span>
+        <span class="card-reviews">180 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 121 Trần Văn Khéo, Cái Khế, 121 Trầ</div>
       <div class="card-price">100-600</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="4" data-reviews="516" data-price="0" data-original="false">
   <a href="../mon/unknown-310/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAG0NzI1oAgZEAcimi6ydo03PdqGOEHBw_HzO14q2PRtKei3i0mEwhooh-BSb5x000AGyDIKXfcE0uD0p-PyzLG1vttw8DeL5otFlhqWPvVWMtIwgmRnAqzR-FZYchd-9Oluhqv88rvzycVi=w408-h544-k-no" alt="Ẩm thực" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ẩm thực</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAG0NzI1oAgZEAcimi6ydo03PdqGOEHBw_HzO14q2PRtKei3i0mEwhooh-BSb5x000AGyDIKXfcE0uD0p-PyzLG1vttw8DeL5otFlhqWPvVWMtIwgmRnAqzR-FZYchd-9Oluhqv88rvzycVi=w408-h544-k-no" alt="Quán ăn Gia Đình Đẹp Đời" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ẩm thực</h3>
+      <h3>Quán ăn Gia Đình Đẹp Đời</h3>
       <div class="card-meta">
-        <span class="card-location">2 Đ. 30 Tháng 4, Ninh Kiều, 2 Đ. 30 Thán</span>
-        <span class="card-rating">3.8</span>
+        <span class="card-rating">⭐ 3.8</span>
+        <span class="card-reviews">516 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 2 Đ. 30 Tháng 4, Ninh Kiều, 2 Đ. 30</div>
       <div class="card-price">100-200</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="4" data-reviews="770" data-price="0" data-original="false">
   <a href="../mon/unknown-311/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGbeVz4b20KfIE7JWaGh62kbKeSEKPoUto0GRPUu__sz-YQgrNd2beFYwKEQiB5SeKvUm4qhT_jwK66F8Mj9rtJh6Mlehsqy-u3Qd9NxmrDbQkan-OMZvJvHR0tcKi8scqqefjM=w426-h240-k-no" alt="Ẩm thực" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ẩm thực</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGbeVz4b20KfIE7JWaGh62kbKeSEKPoUto0GRPUu__sz-YQgrNd2beFYwKEQiB5SeKvUm4qhT_jwK66F8Mj9rtJh6Mlehsqy-u3Qd9NxmrDbQkan-OMZvJvHR0tcKi8scqqefjM=w426-h240-k-no" alt="Nhà Hàng Alô Dzô 100" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ẩm thực</h3>
+      <h3>Nhà Hàng Alô Dzô 100</h3>
       <div class="card-meta">
-        <span class="card-location">55B1B, Đ. Hồ Bún Xáng, Tân An, 55B1B, Đ.</span>
-        <span class="card-rating">4.4</span>
+        <span class="card-rating">⭐ 4.4</span>
+        <span class="card-reviews">770 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 55B1B, Đ. Hồ Bún Xáng, Tân An, 55B1</div>
       <div class="card-price">100-500</div>
     </div>
   </a>
 </div><div class="card" data-category="Cơm" data-rating="4" data-reviews="53" data-price="1" data-original="false">
   <a href="../mon/unknown-312/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAE4RGCvpdYGqINlme1frpfQOr4p8HemDTWn1dksUl0SUVWQldTLKz6t0oVbGhyfrshPFPkVY9V3XQZRhUY-yUDm583I9UvK9LDStR5v0UzgpV9r-G8n7IGE87fr7VY9xtNNnQIh=w408-h306-k-no" alt="Cơm" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Cơm</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAE4RGCvpdYGqINlme1frpfQOr4p8HemDTWn1dksUl0SUVWQldTLKz6t0oVbGhyfrshPFPkVY9V3XQZRhUY-yUDm583I9UvK9LDStR5v0UzgpV9r-G8n7IGE87fr7VY9xtNNnQIh=w408-h306-k-no" alt="Cơm Thanh - Cần Thơ" loading="lazy"></div>
     <div class="card-body">
-      <h3>Cơm</h3>
+      <h3>Cơm Thanh - Cần Thơ</h3>
       <div class="card-meta">
-        <span class="card-location">1A Đ. Nguyễn Hiền, Khu dân cư 91B, Tân A</span>
-        <span class="card-rating">4.3</span>
+        <span class="card-rating">⭐ 4.3</span>
+        <span class="card-reviews">53 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 1A Đ. Nguyễn Hiền, Khu dân cư 91B, </div>
       <div class="card-price">1-100.000</div>
     </div>
   </a>
 </div><div class="card" data-category="Lẩu" data-rating="4" data-reviews="2763" data-price="0" data-original="false">
   <a href="../mon/unknown-313/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHR75ZCHJUdrlabj7FmPb0Ah3tsD3oiIvnZl2rrm1VKxUg1PDaeN3C4lfyrAQMJ7_Rr89h8r5Xwa4bZW5b2H5NG31FKILI5VtsxqugvI6D6RKan-ZbOpbmC36FFxOh7A54Eybjg=w408-h306-k-no" alt="Lẩu" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Lẩu</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHR75ZCHJUdrlabj7FmPb0Ah3tsD3oiIvnZl2rrm1VKxUg1PDaeN3C4lfyrAQMJ7_Rr89h8r5Xwa4bZW5b2H5NG31FKILI5VtsxqugvI6D6RKan-ZbOpbmC36FFxOh7A54Eybjg=w408-h306-k-no" alt="Quán Lẩu Vịt Nấu Chao Thành Giao" loading="lazy"></div>
     <div class="card-body">
-      <h3>Lẩu</h3>
+      <h3>Quán Lẩu Vịt Nấu Chao Thành Giao</h3>
       <div class="card-meta">
-        <span class="card-location">Hẻm 1/8 Đ. Lý Tự Trọng, Phường, Ninh Kiề</span>
-        <span class="card-rating">4.1</span>
+        <span class="card-rating">⭐ 4.1</span>
+        <span class="card-reviews">2,763 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 Hẻm 1/8 Đ. Lý Tự Trọng, Phường, Nin</div>
       <div class="card-price">100-200</div>
     </div>
   </a>
 </div><div class="card" data-category="Đặc sản" data-rating="4" data-reviews="343" data-price="0" data-original="false">
   <a href="../mon/unknown-314/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAERFURJ5CeZmd1E6Awlfvh7oTGKBVMcFaH3UyUQrgbZxUmEtp3PPpFNggT79EARwD5-tOlnG3R1OnCSmXFwKk38LaP-GdOCiwnC9KND2r-eevKWLS5O8_p2cGbaikAbBijELVF7=w408-h306-k-no" alt="Ẩm thực đồng quê" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ẩm thực đồng quê</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAERFURJ5CeZmd1E6Awlfvh7oTGKBVMcFaH3UyUQrgbZxUmEtp3PPpFNggT79EARwD5-tOlnG3R1OnCSmXFwKk38LaP-GdOCiwnC9KND2r-eevKWLS5O8_p2cGbaikAbBijELVF7=w408-h306-k-no" alt="Quán ăn Gia Đình Đồng Quê" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ẩm thực đồng quê</h3>
+      <h3>Quán ăn Gia Đình Đồng Quê</h3>
       <div class="card-meta">
-        <span class="card-location">82 Nguyễn Văn Cừ Nối Dài, An Bình, 82 Ng</span>
-        <span class="card-rating">4.0</span>
+        <span class="card-rating">⭐ 4.0</span>
+        <span class="card-reviews">343 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 82 Nguyễn Văn Cừ Nối Dài, An Bình, </div>
       <div class="card-price">100-500</div>
     </div>
   </a>
 </div><div class="card" data-category="Cơm" data-rating="5" data-reviews="477" data-price="1" data-original="false">
   <a href="../mon/unknown-315/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHtFsbXBePyaxa_ygOAUy4JQfxj5nAgFXTPm7SWiNppjVak1k47U55o_IK8LtpHiUKNswEURgHNlAMr1HW3a_Z_-y68ZoT7DLFi_nGxRukNye75aU94L2eA2TTGz-JQVEsJ2WWX=w408-h306-k-no" alt="Cơm" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Cơm</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHtFsbXBePyaxa_ygOAUy4JQfxj5nAgFXTPm7SWiNppjVak1k47U55o_IK8LtpHiUKNswEURgHNlAMr1HW3a_Z_-y68ZoT7DLFi_nGxRukNye75aU94L2eA2TTGz-JQVEsJ2WWX=w408-h306-k-no" alt="Cơm Ơ 68 Cần Thơ" loading="lazy"></div>
     <div class="card-body">
-      <h3>Cơm</h3>
+      <h3>Cơm Ơ 68 Cần Thơ</h3>
       <div class="card-meta">
-        <span class="card-location">9/9, Khu Dân Cư Số 9, Ninh Kiều, 9/9, Kh</span>
-        <span class="card-rating">4.7</span>
+        <span class="card-rating">⭐ 4.7</span>
+        <span class="card-reviews">477 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 9/9, Khu Dân Cư Số 9, Ninh Kiều, 9/</div>
       <div class="card-price">1-100.000</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="4" data-reviews="211" data-price="0" data-original="false">
   <a href="../mon/unknown-316/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFLoYGIT-nJ8estTeX12_ijxzk3b8AY20YrZT3EZwVZrpvOkm1023dGZ_AEDdrDl4F8YIQuvLMG5VjxsQvem-JuUQZ7Ab0V_0rQW2CUlNllg-q0eIaMiEZHg3oBOvjDpo-kfpRAlnDms1ny=w458-h240-k-no" alt="Quán ăn" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Quán ăn</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFLoYGIT-nJ8estTeX12_ijxzk3b8AY20YrZT3EZwVZrpvOkm1023dGZ_AEDdrDl4F8YIQuvLMG5VjxsQvem-JuUQZ7Ab0V_0rQW2CUlNllg-q0eIaMiEZHg3oBOvjDpo-kfpRAlnDms1ny=w458-h240-k-no" alt="Quán 51 Cần Thơ" loading="lazy"></div>
     <div class="card-body">
-      <h3>Quán ăn</h3>
+      <h3>Quán 51 Cần Thơ</h3>
       <div class="card-meta">
-        <span class="card-location">Đ. Hồ Bún Xáng, Ninh Kiều, Đ. Hồ Bún Xán</span>
-        <span class="card-rating">4.5</span>
+        <span class="card-rating">⭐ 4.5</span>
+        <span class="card-reviews">211 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 Đ. Hồ Bún Xáng, Ninh Kiều, Đ. Hồ Bú</div>
       <div class="card-price">100-400</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="4" data-reviews="623" data-price="1" data-original="false">
   <a href="../mon/unknown-317/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFeS4X7nzd6GjmM8-jA0s0lzj6xeCQzuA4Mr9kbqYQiuT6ikZ3wkAevmWsz97Fme_pmHB7pFxy5auxB0fGVZp2p_rMXfc_gQ1V6K2XuwSMlBVJsEHY2dnml5hnDCi4d-0p-Kzlf=w455-h240-k-no" alt="Ẩm thực" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ẩm thực</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFeS4X7nzd6GjmM8-jA0s0lzj6xeCQzuA4Mr9kbqYQiuT6ikZ3wkAevmWsz97Fme_pmHB7pFxy5auxB0fGVZp2p_rMXfc_gQ1V6K2XuwSMlBVJsEHY2dnml5hnDCi4d-0p-Kzlf=w455-h240-k-no" alt="Quán Ăn Cẩm Ký" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ẩm thực</h3>
+      <h3>Quán Ăn Cẩm Ký</h3>
       <div class="card-meta">
-        <span class="card-location">37 Đ. Đề Thám, Ninh Kiều, 37 Đ. Đề Thám,</span>
-        <span class="card-rating">4.0</span>
+        <span class="card-rating">⭐ 4.0</span>
+        <span class="card-reviews">623 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 37 Đ. Đề Thám, Ninh Kiều, 37 Đ. Đề </div>
       <div class="card-price">1-100.000</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="5" data-reviews="20" data-price="0" data-original="false">
   <a href="../mon/unknown-318/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFb765ljk1mgotaRnMJ4-en8sy7SQ26imCjia13f6Ql5zBh7hF367Afxt1D9pIPymdrMh3MzzIxq42NiAMJyiNabX81KjhQnTH4e-n9lee7qJs5sg5rwwv7CW36y1ZxuXvEx2zH=w408-h408-k-no" alt="Ẩm thực" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ẩm thực</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFb765ljk1mgotaRnMJ4-en8sy7SQ26imCjia13f6Ql5zBh7hF367Afxt1D9pIPymdrMh3MzzIxq42NiAMJyiNabX81KjhQnTH4e-n9lee7qJs5sg5rwwv7CW36y1ZxuXvEx2zH=w408-h408-k-no" alt="Quán ăn gia đình 41 Cần Thơ" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ẩm thực</h3>
+      <h3>Quán ăn gia đình 41 Cần Thơ</h3>
       <div class="card-meta">
-        <span class="card-location">144 Đ. Tú Xương, kdc hồng phát, An Bình,</span>
-        <span class="card-rating">4.8</span>
+        <span class="card-rating">⭐ 4.8</span>
+        <span class="card-reviews">20 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 144 Đ. Tú Xương, kdc hồng phát, An </div>
       <div class="card-price">100-200</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="4" data-reviews="1659" data-price="0" data-original="false">
   <a href="../mon/unknown-319/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAELpCJjR6kkcYfasAgpO9l5iK1dqyrEhSSEOMb-myuTIKLJKfLcmREC2B3YRs2jVPb5ngAsawU3QBkinCN4rHQ9zR0u7Rv4N1W4k5AUrUhkrBEvn_qGpevd0IGIHKm1Ynk9OSiI=w426-h240-k-no" alt="Ẩm thực" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ẩm thực</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAELpCJjR6kkcYfasAgpO9l5iK1dqyrEhSSEOMb-myuTIKLJKfLcmREC2B3YRs2jVPb5ngAsawU3QBkinCN4rHQ9zR0u7Rv4N1W4k5AUrUhkrBEvn_qGpevd0IGIHKm1Ynk9OSiI=w426-h240-k-no" alt="Nhà hàng Hoa Sứ" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ẩm thực</h3>
+      <h3>Nhà hàng Hoa Sứ</h3>
       <div class="card-meta">
-        <span class="card-location">KDL Cồn, Cái Khế, KDL Cồn, Cái Khế, Cần </span>
-        <span class="card-rating">3.9</span>
+        <span class="card-rating">⭐ 3.9</span>
+        <span class="card-reviews">1,659 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 KDL Cồn, Cái Khế, KDL Cồn, Cái Khế,</div>
       <div class="card-price">100-500</div>
     </div>
   </a>
 </div><div class="card" data-category="Cơm" data-rating="5" data-reviews="247" data-price="1" data-original="false">
   <a href="../mon/unknown-320/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFeVhhyYoMFnZYHXowCe5aSvBV6kz_ZHpoiH8jWvMWgltH3CGoP2tRd-vET6yJUh6zdmnL1LOu4h6MaX1awyBOHs1RbQzYPoRifvUavjADdC_DhfmNEkWUbCtzBXxgwUNtkJlB6hw=w408-h306-k-no" alt="Cơm tấm" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Cơm tấm</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFeVhhyYoMFnZYHXowCe5aSvBV6kz_ZHpoiH8jWvMWgltH3CGoP2tRd-vET6yJUh6zdmnL1LOu4h6MaX1awyBOHs1RbQzYPoRifvUavjADdC_DhfmNEkWUbCtzBXxgwUNtkJlB6hw=w408-h306-k-no" alt="Cơm Tấm Dì Út - Quán cơm tấm ngon tại Cần Thơ" loading="lazy"></div>
     <div class="card-body">
-      <h3>Cơm tấm</h3>
+      <h3>Cơm Tấm Dì Út - Quán cơm tấm ngon tại Cần Thơ</h3>
       <div class="card-meta">
-        <span class="card-location">118/22E, Đ. Trần Hoàng Na, Tân An, 118/2</span>
-        <span class="card-rating">4.8</span>
+        <span class="card-rating">⭐ 4.8</span>
+        <span class="card-reviews">247 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 118/22E, Đ. Trần Hoàng Na, Tân An, </div>
       <div class="card-price">1-100.000</div>
     </div>
   </a>
 </div><div class="card" data-category="Cơm" data-rating="4" data-reviews="256" data-price="0" data-original="false">
   <a href="../mon/unknown-321/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-VZBLtdor84gvtPSt6Gwnru0GD2Z6st7YdiwPlJvG5Gl9ln3gYroCG_xIlVzhgnSKzy6ZmddQvBujTRjNNYsrFizf7RO_qGuVTtuI1b-yaS0_wkd1Ep5eInWJZg5T4rdoQEYJqA=w408-h306-k-no" alt="Cơm niêu" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Cơm niêu</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-VZBLtdor84gvtPSt6Gwnru0GD2Z6st7YdiwPlJvG5Gl9ln3gYroCG_xIlVzhgnSKzy6ZmddQvBujTRjNNYsrFizf7RO_qGuVTtuI1b-yaS0_wkd1Ep5eInWJZg5T4rdoQEYJqA=w408-h306-k-no" alt="Cơm Niêu Quê Ngoại Cần Thơ" loading="lazy"></div>
     <div class="card-body">
-      <h3>Cơm niêu</h3>
+      <h3>Cơm Niêu Quê Ngoại Cần Thơ</h3>
       <div class="card-meta">
-        <span class="card-location">62, Lê Lợi, Cái Khế, Cái Khế, 62, Lê Lợi</span>
-        <span class="card-rating">4.2</span>
+        <span class="card-rating">⭐ 4.2</span>
+        <span class="card-reviews">256 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 62, Lê Lợi, Cái Khế, Cái Khế, 62, L</div>
       <div class="card-price">100-200</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="4" data-reviews="547" data-price="0" data-original="false">
   <a href="../mon/unknown-322/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGtBXMcYDKP-oVEmQBspz8hBWfKvZYp_7bhtH9qmYjiTEXL053HGSzK6wKDLMVmbW-pccuT3WOANI5SL-sLXuf_RQOAF_6PRBsQvhSFpw-x5heFxErW_iBcLEGKiqvsuORlY0iZ=w408-h544-k-no" alt="Ẩm thực" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ẩm thực</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGtBXMcYDKP-oVEmQBspz8hBWfKvZYp_7bhtH9qmYjiTEXL053HGSzK6wKDLMVmbW-pccuT3WOANI5SL-sLXuf_RQOAF_6PRBsQvhSFpw-x5heFxErW_iBcLEGKiqvsuORlY0iZ=w408-h544-k-no" alt="QUÁN NGON CẦN THƠ HÒA TUỘC" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ẩm thực</h3>
+      <h3>QUÁN NGON CẦN THƠ HÒA TUỘC</h3>
       <div class="card-meta">
-        <span class="card-location">333 Đ. Nguyễn Văn Linh, Tân An, 333 Đ. N</span>
-        <span class="card-rating">4.5</span>
+        <span class="card-rating">⭐ 4.5</span>
+        <span class="card-reviews">547 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 333 Đ. Nguyễn Văn Linh, Tân An, 333</div>
       <div class="card-price">100-600</div>
     </div>
   </a>
 </div><div class="card" data-category="Lẩu" data-rating="4" data-reviews="1175" data-price="0" data-original="false">
   <a href="../mon/unknown-323/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAH1K7H7J8Av4zjlaRD2BPyJ25pgWCATRQN3ORdsjKGD1zyGaChM2-l-iiQf38rI8nkHH4HR6tj4SWdPR8eWoeb_QgqsJc7bpWUUfDub4sWr6CO83OXTC5HmkFBZaffAxDVB1G3j=w408-h306-k-no" alt="Lẩu" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Lẩu</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAH1K7H7J8Av4zjlaRD2BPyJ25pgWCATRQN3ORdsjKGD1zyGaChM2-l-iiQf38rI8nkHH4HR6tj4SWdPR8eWoeb_QgqsJc7bpWUUfDub4sWr6CO83OXTC5HmkFBZaffAxDVB1G3j=w408-h306-k-no" alt="Lẩu mắm Cần Thơ" loading="lazy"></div>
     <div class="card-body">
-      <h3>Lẩu</h3>
+      <h3>Lẩu mắm Cần Thơ</h3>
       <div class="card-meta">
-        <span class="card-location">162/18 Đ. Trần Ngọc Quế, Ninh Kiều, 162/</span>
-        <span class="card-rating">4.0</span>
+        <span class="card-rating">⭐ 4.0</span>
+        <span class="card-reviews">1,175 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 162/18 Đ. Trần Ngọc Quế, Ninh Kiều,</div>
       <div class="card-price">100-300</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="4" data-reviews="591" data-price="0" data-original="false">
   <a href="../mon/unknown-324/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAH9pzxzvLBi9yK1xTNsUf7IwXHNio9rMQ-1fPcceMgyX3MyirIZI1iksG9r98QjwWu2812UqA2-WyI4ITW4798ty1lAu4kAbp1ErOUrTvuh-hCW1aNVxL0yZorlL3mZw7m_uH3MimI9ap5Z=w426-h240-k-no" alt="Ẩm thực" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ẩm thực</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAH9pzxzvLBi9yK1xTNsUf7IwXHNio9rMQ-1fPcceMgyX3MyirIZI1iksG9r98QjwWu2812UqA2-WyI4ITW4798ty1lAu4kAbp1ErOUrTvuh-hCW1aNVxL0yZorlL3mZw7m_uH3MimI9ap5Z=w426-h240-k-no" alt="Quán Ăn Gia Đình LỮ GIA" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ẩm thực</h3>
+      <h3>Quán Ăn Gia Đình LỮ GIA</h3>
       <div class="card-meta">
-        <span class="card-location">2QVP+2GP, Bờ kè Lý Hồng Thanh, Cái Khế, </span>
-        <span class="card-rating">4.0</span>
+        <span class="card-rating">⭐ 4.0</span>
+        <span class="card-reviews">591 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 2QVP+2GP, Bờ kè Lý Hồng Thanh, Cái </div>
       <div class="card-price">100-300</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="4" data-reviews="222" data-price="1" data-original="false">
   <a href="../mon/unknown-325/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFMlgJjB8kaBLulWTyFzmxjXB-oBrZ_2a6UWZQP5mnMJR29mBcfzq1kBL5arTUQPZSj9zDIUM3eeqDsL-Ua9VmxxTexzS4VPPkRcr6h9xqBdzLrYMBZDP3cIjsdmpkS55qSizNKrA=w408-h306-k-no" alt="Quán ăn" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Quán ăn</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFMlgJjB8kaBLulWTyFzmxjXB-oBrZ_2a6UWZQP5mnMJR29mBcfzq1kBL5arTUQPZSj9zDIUM3eeqDsL-Ua9VmxxTexzS4VPPkRcr6h9xqBdzLrYMBZDP3cIjsdmpkS55qSizNKrA=w408-h306-k-no" alt="Viễn Lạc Quán" loading="lazy"></div>
     <div class="card-body">
-      <h3>Quán ăn</h3>
+      <h3>Viễn Lạc Quán</h3>
       <div class="card-meta">
-        <span class="card-location">209 Phan Đình Phùng, Ninh Kiều, 209 Phan</span>
-        <span class="card-rating">4.0</span>
+        <span class="card-rating">⭐ 4.0</span>
+        <span class="card-reviews">222 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 209 Phan Đình Phùng, Ninh Kiều, 209</div>
       <div class="card-price">1-100.000</div>
     </div>
   </a>
 </div><div class="card" data-category="Đặc sản" data-rating="0" data-reviews="0" data-price="-1" data-original="false">
   <a href="../mon/unknown-326/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHdI5vEPFyDTEt0XCEkZ3uOEyZ2hUGs3s-TLTMMIDQKDg1AgE8F31_t9XujMKCKPYbvyfDEjYmYOnzHaydle67907221K2Fab5IChyQXSR3572KHEEnwEOlawi6Ls4w5V1gVAK3VfH-kkya=w408-h305-k-no" alt="Đặc sản" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Đặc sản</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHdI5vEPFyDTEt0XCEkZ3uOEyZ2hUGs3s-TLTMMIDQKDg1AgE8F31_t9XujMKCKPYbvyfDEjYmYOnzHaydle67907221K2Fab5IChyQXSR3572KHEEnwEOlawi6Ls4w5V1gVAK3VfH-kkya=w408-h305-k-no" alt="TÀU HŨ TƯƠI QUÊ NHÀ- ĐẶC SẢN CẦN THƠ" loading="lazy"></div>
     <div class="card-body">
-      <h3>Đặc sản</h3>
+      <h3>TÀU HŨ TƯƠI QUÊ NHÀ- ĐẶC SẢN CẦN THƠ</h3>
       <div class="card-meta">
-        <span class="card-location">58 Võ Văn Kiệt, KV7, Bình Thủy, 58 Võ Vă</span>
-        <span class="card-rating">0.0</span>
+        <span class="card-rating">⭐ 0.0</span>
+        <span class="card-reviews"></span>
       </div>
+      <div class="card-location-row">📍 58 Võ Văn Kiệt, KV7, Bình Thủy, 58 </div>
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
@@ -321,15 +360,23 @@
 
 <script>
 (function() {
-  // Store original card order
   const grid = document.querySelector('.card-grid');
   const cards = Array.from(grid.querySelectorAll('.card'));
   let originalOrder = cards.map((c, i) => ({el: c, idx: i}));
+  let activeCat = 'all';
 
   function getRating(el) { return parseFloat(el.dataset.rating) || 0; }
   function getReviews(el) { return parseInt(el.dataset.reviews) || 0; }
   function getPrice(el) { return parseInt(el.dataset.price); }
   function isOriginal(el) { return el.dataset.original === 'true'; }
+
+  window.filterCatProv = function(cat) {
+    activeCat = cat;
+    // Update chip styles
+    document.querySelectorAll('.dish-chip').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    applyFilters();
+  };
 
   window.applyFilters = function() {
     const priceVal = document.getElementById('filterPrice').value;
@@ -338,10 +385,12 @@
     const origOnly = document.getElementById('toggleOriginal').classList.contains('active-filter');
 
     let visible = cards.filter(c => {
+      // Category filter (from dish chips)
+      if (activeCat !== 'all' && c.dataset.category !== activeCat) return false;
       // Price filter
       if (priceVal !== 'all') {
         const cp = getPrice(c);
-        if (cp === -1) return true; // unknown prices pass through
+        if (cp === -1) return true;
         if (cp !== parseInt(priceVal)) return false;
       }
       // Rating filter
@@ -357,7 +406,6 @@
     else if (sortVal === 'price-asc') visible.sort((a,b) => (getPrice(a)===-1?999:(getPrice(a))) - (getPrice(b)===-1?999:(getPrice(b))));
     else if (sortVal === 'price-desc') visible.sort((a,b) => (getPrice(b)===-1?-1:(getPrice(b))) - (getPrice(a)===-1?-1:(getPrice(a))));
     else {
-      // Default: restore original order
       visible.sort((a,b) => {
         const oa = originalOrder.find(o => o.el === a);
         const ob = originalOrder.find(o => o.el === b);
@@ -365,11 +413,8 @@
       });
     }
 
-    // Re-render
     grid.innerHTML = '';
     visible.forEach(c => grid.appendChild(c));
-
-    // Update count
     document.getElementById('resultCount').textContent = visible.length + ' quán';
   };
 
@@ -379,7 +424,6 @@
     applyFilters();
   };
 
-  // Init: ensure original order is stored before any DOM manipulation
   document.addEventListener('DOMContentLoaded', function() {
     originalOrder = Array.from(document.querySelectorAll('.card-grid .card')).map((c,i) => ({el: c, idx: i}));
   });

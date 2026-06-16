@@ -1,12 +1,20 @@
-<!-- PROVINCE PAGE — PasGo Style -->
+<!-- PROVINCE PAGE -->
 <div class="container"><nav class="breadcrumb"><a href="/">Trang chủ</a> › {{PROVINCE}}</nav></div>
 
-<section class="hero" style="padding:28px 0;">
+<section class="hero province-hero">
   <div class="container">
-    <h1>Món Ăn Đường Phố {{PROVINCE}}</h1>
-    <p>{{COUNT}} quán ăn — đặc sản địa phương chính gốc tại {{PROVINCE}}</p>
+    <h1>🍜 Món Ăn Đường Phố {{PROVINCE}}</h1>
+    <p>Đặc sản địa phương chính gốc tại {{PROVINCE}}</p>
+    {{PROVINCE_STATS}}
   </div>
 </section>
+
+<!-- Dish Category Chips for this province -->
+<div class="dish-chips-section">
+  <div class="container">
+    {{DISH_CHIPS}}
+  </div>
+</div>
 
 <div class="container">
   <!-- Filter Bar -->
@@ -58,15 +66,23 @@
 
 <script>
 (function() {
-  // Store original card order
   const grid = document.querySelector('.card-grid');
   const cards = Array.from(grid.querySelectorAll('.card'));
   let originalOrder = cards.map((c, i) => ({el: c, idx: i}));
+  let activeCat = 'all';
 
   function getRating(el) { return parseFloat(el.dataset.rating) || 0; }
   function getReviews(el) { return parseInt(el.dataset.reviews) || 0; }
   function getPrice(el) { return parseInt(el.dataset.price); }
   function isOriginal(el) { return el.dataset.original === 'true'; }
+
+  window.filterCatProv = function(cat) {
+    activeCat = cat;
+    // Update chip styles
+    document.querySelectorAll('.dish-chip').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    applyFilters();
+  };
 
   window.applyFilters = function() {
     const priceVal = document.getElementById('filterPrice').value;
@@ -75,10 +91,12 @@
     const origOnly = document.getElementById('toggleOriginal').classList.contains('active-filter');
 
     let visible = cards.filter(c => {
+      // Category filter (from dish chips)
+      if (activeCat !== 'all' && c.dataset.category !== activeCat) return false;
       // Price filter
       if (priceVal !== 'all') {
         const cp = getPrice(c);
-        if (cp === -1) return true; // unknown prices pass through
+        if (cp === -1) return true;
         if (cp !== parseInt(priceVal)) return false;
       }
       // Rating filter
@@ -94,7 +112,6 @@
     else if (sortVal === 'price-asc') visible.sort((a,b) => (getPrice(a)===-1?999:(getPrice(a))) - (getPrice(b)===-1?999:(getPrice(b))));
     else if (sortVal === 'price-desc') visible.sort((a,b) => (getPrice(b)===-1?-1:(getPrice(b))) - (getPrice(a)===-1?-1:(getPrice(a))));
     else {
-      // Default: restore original order
       visible.sort((a,b) => {
         const oa = originalOrder.find(o => o.el === a);
         const ob = originalOrder.find(o => o.el === b);
@@ -102,11 +119,8 @@
       });
     }
 
-    // Re-render
     grid.innerHTML = '';
     visible.forEach(c => grid.appendChild(c));
-
-    // Update count
     document.getElementById('resultCount').textContent = visible.length + ' quán';
   };
 
@@ -116,7 +130,6 @@
     applyFilters();
   };
 
-  // Init: ensure original order is stored before any DOM manipulation
   document.addEventListener('DOMContentLoaded', function() {
     originalOrder = Array.from(document.querySelectorAll('.card-grid .card')).map((c,i) => ({el: c, idx: i}));
   });

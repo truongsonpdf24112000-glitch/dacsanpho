@@ -21,15 +21,35 @@
   </div>
 </header>
 
-<!-- PROVINCE PAGE — PasGo Style -->
+<!-- PROVINCE PAGE -->
 <div class="container"><nav class="breadcrumb"><a href="/">Trang chủ</a> › Quảng Nam</nav></div>
 
-<section class="hero" style="padding:28px 0;">
+<section class="hero province-hero">
   <div class="container">
-    <h1>Món Ăn Đường Phố Quảng Nam</h1>
-    <p>17 quán ăn — đặc sản địa phương chính gốc tại Quảng Nam</p>
+    <h1>🍜 Món Ăn Đường Phố Quảng Nam</h1>
+    <p>Đặc sản địa phương chính gốc tại Quảng Nam</p>
+    <div class="hero-stats">
+  <div class="stat-pill">🍜 17 quán</div>
+  <div class="stat-pill">📂 6 danh mục</div>
+  <div class="stat-pill">⭐ 4.2 TB</div>
+  <div class="stat-pill">💬 7,483 reviews</div>
+</div>
   </div>
 </section>
+
+<!-- Dish Category Chips for this province -->
+<div class="dish-chips-section">
+  <div class="container">
+    <div class="dish-chips">
+<span class="dish-chip active" onclick="filterCatProv('all')">🍽️ Tất cả</span>
+<span class="dish-chip" onclick="filterCatProv('Phở/Bún/Miến')">🍜 Phở/Bún/Miến (4)</span>
+<span class="dish-chip" onclick="filterCatProv('Đồ uống')">🥤 Đồ uống (3)</span>
+<span class="dish-chip" onclick="filterCatProv('Đặc sản')">🏆 Đặc sản (3)</span>
+<span class="dish-chip" onclick="filterCatProv('Ăn vặt')">🍿 Ăn vặt (1)</span>
+<span class="dish-chip" onclick="filterCatProv('Cơm')">🍚 Cơm (1)</span>
+</div>
+  </div>
+</div>
 
 <div class="container">
   <!-- Filter Bar -->
@@ -73,13 +93,14 @@
   <section class="section">
     <div class="card-grid"><div class="card" data-category="Phở/Bún/Miến" data-rating="5" data-reviews="616" data-price="0" data-original="false">
   <a href="../mon/unknown-146/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAG7DKRl5QOMW5Ha98Xrkp6-eTDjOneH7dyY6E5-DiMoV98VVfqWgzpRjmwjm7pvVyLFowsJtcMFP9Yg53iQqg708KwVTDKyY-XQX85-5rgDHmTV0Uwyt-5lBiys7Q00B_Fp1RUG=w408-h306-k-no" alt="Phở" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Phở</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAG7DKRl5QOMW5Ha98Xrkp6-eTDjOneH7dyY6E5-DiMoV98VVfqWgzpRjmwjm7pvVyLFowsJtcMFP9Yg53iQqg708KwVTDKyY-XQX85-5rgDHmTV0Uwyt-5lBiys7Q00B_Fp1RUG=w408-h306-k-no" alt="Pho One Vietnamese Restaurant" loading="lazy"></div>
     <div class="card-body">
-      <h3>Phở</h3>
+      <h3>Pho One Vietnamese Restaurant</h3>
       <div class="card-meta">
-        <span class="card-location">181 US-1, Menlo Park Terrace, 181 US-1, </span>
-        <span class="card-rating">4.6</span>
+        <span class="card-rating">⭐ 4.6</span>
+        <span class="card-reviews">616 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 181 US-1, Menlo Park Terrace, 181 U</div>
       <div class="card-price">20-30</div>
     </div>
   </a>
@@ -89,105 +110,114 @@
     <div class="card-body">
       <h3>Thai Son Vietnamese Restaurant</h3>
       <div class="card-meta">
-        <span class="card-location">5201 NJ-38, 5201 NJ-38, Pennsauken, NJ 0</span>
-        <span class="card-rating">4.4</span>
+        <span class="card-rating">⭐ 4.4</span>
+        <span class="card-reviews">772 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 5201 NJ-38, 5201 NJ-38, Pennsauken,</div>
       <div class="card-price">10-20</div>
     </div>
   </a>
 </div><div class="card" data-category="Ăn vặt" data-rating="0" data-reviews="0" data-price="-1" data-original="false">
   <a href="../mon/unknown-148/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAExsrYp5NkeWqHjhgi_O7whMXS0ro4nYJfupp4vASyEea8rkIEg-3UeWnipwtQmbZDqRyuZ1vudg-4USpmMwgtbabzu2YCi31RgzXywBvLTCHVB4CPFVnPQNrfZxouUW1Qy8hrNp1C5AXQg=w533-h240-k-no" alt="Ăn vặt" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ăn vặt</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAExsrYp5NkeWqHjhgi_O7whMXS0ro4nYJfupp4vASyEea8rkIEg-3UeWnipwtQmbZDqRyuZ1vudg-4USpmMwgtbabzu2YCi31RgzXywBvLTCHVB4CPFVnPQNrfZxouUW1Qy8hrNp1C5AXQg=w533-h240-k-no" alt="Mỳ cay ăn vặt" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ăn vặt</h3>
+      <h3>Mỳ cay ăn vặt</h3>
       <div class="card-meta">
-        <span class="card-location">V93F+Q2P, Duy Nghĩa, V93F+Q2P, Duy Nghĩa</span>
-        <span class="card-rating">0.0</span>
+        <span class="card-rating">⭐ 0.0</span>
+        <span class="card-reviews"></span>
       </div>
+      <div class="card-location-row">📍 V93F+Q2P, Duy Nghĩa, V93F+Q2P, Duy </div>
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
 </div><div class="card" data-category="Cơm" data-rating="4" data-reviews="646" data-price="1" data-original="false">
   <a href="../mon/unknown-149/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAF3YB3oDgsjWoNRLpybZhWkDcIqLPEFKvIeRyvQu2kTFmlqAJApbXTOoGPG7XCFK1yx9ZqoXO5B0n1hZ1f0VcAeecHhU7cUVsONhS9KOSGwdL6GAXiKHbkCktucEr1gtVLPvdk9Xw=w408-h544-k-no" alt="Cơm gà" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Cơm gà</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAF3YB3oDgsjWoNRLpybZhWkDcIqLPEFKvIeRyvQu2kTFmlqAJApbXTOoGPG7XCFK1yx9ZqoXO5B0n1hZ1f0VcAeecHhU7cUVsONhS9KOSGwdL6GAXiKHbkCktucEr1gtVLPvdk9Xw=w408-h544-k-no" alt="Quán Cơm Gà Tam Duyên - cơm gà ngon uy tín chất lượng tại Tam Kỳ" loading="lazy"></div>
     <div class="card-body">
-      <h3>Cơm gà</h3>
+      <h3>Quán Cơm Gà Tam Duyên - cơm gà ngon uy tín chất lượng tại Tam Kỳ</h3>
       <div class="card-meta">
-        <span class="card-location">576 Phan Châu Trinh, Hương Trà, 576 Phan</span>
-        <span class="card-rating">4.0</span>
+        <span class="card-rating">⭐ 4.0</span>
+        <span class="card-reviews">646 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 576 Phan Châu Trinh, Hương Trà, 576</div>
       <div class="card-price">1-100.000</div>
     </div>
   </a>
 </div><div class="card" data-category="Phở/Bún/Miến" data-rating="5" data-reviews="23" data-price="-1" data-original="false">
   <a href="../mon/unknown-150/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHFlA5hcx--KPY0n30q2Aw_5kt_s0C1ycoyd8eFK2Oy-PAeoYum1kBeEGnqC0PRPpYAgS869KYdLclUJ4X5hqHb_NAZyLxFOYSK4dubS6E-bKEkhRHvbDZP504cHrUBdlVp4AbnKxo1yMcT=w533-h240-k-no" alt="Bún bò" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Bún bò</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHFlA5hcx--KPY0n30q2Aw_5kt_s0C1ycoyd8eFK2Oy-PAeoYum1kBeEGnqC0PRPpYAgS869KYdLclUJ4X5hqHb_NAZyLxFOYSK4dubS6E-bKEkhRHvbDZP504cHrUBdlVp4AbnKxo1yMcT=w533-h240-k-no" alt="Quán cơm bún bò , giò "ba Thành"24/24 gọi trước15p" loading="lazy"></div>
     <div class="card-body">
-      <h3>Bún bò</h3>
+      <h3>Quán cơm bún bò , giò "ba Thành"24/24 gọi trước15p</h3>
       <div class="card-meta">
-        <span class="card-location">Ba Vì, Ba Vì, Quảng Ngãi, Việt Nam</span>
-        <span class="card-rating">5.0</span>
+        <span class="card-rating">⭐ 5.0</span>
+        <span class="card-reviews">23 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 Ba Vì, Ba Vì, Quảng Ngãi, Việt Nam</div>
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="4" data-reviews="155" data-price="0" data-original="false">
   <a href="../mon/unknown-151/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHIAQUp-gQvreYCpHuwKPtoPsqf9VHYwjtdLPQz75jyY2_SMlvvtarZraZM0dClT0ZmoFwgQYmzcdifgBgkB7OEUYUWlxDGLO7a_k__P7y197QakEzSKa71gsIclh7q1Xojpz-p3Q=w426-h240-k-no" alt="Ẩm thực" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ẩm thực</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHIAQUp-gQvreYCpHuwKPtoPsqf9VHYwjtdLPQz75jyY2_SMlvvtarZraZM0dClT0ZmoFwgQYmzcdifgBgkB7OEUYUWlxDGLO7a_k__P7y197QakEzSKa71gsIclh7q1Xojpz-p3Q=w426-h240-k-no" alt="Nhà Hàng Tây Nam - Mạo Khê" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ẩm thực</h3>
+      <h3>Nhà Hàng Tây Nam - Mạo Khê</h3>
       <div class="card-meta">
-        <span class="card-location">Khu đô thị mới Tân Việt Bắc, Mạo Khê, Kh</span>
-        <span class="card-rating">4.0</span>
+        <span class="card-rating">⭐ 4.0</span>
+        <span class="card-reviews">155 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 Khu đô thị mới Tân Việt Bắc, Mạo Kh</div>
       <div class="card-price">300-400</div>
     </div>
   </a>
 </div><div class="card" data-category="Đồ uống" data-rating="5" data-reviews="121" data-price="0" data-original="false">
   <a href="../mon/unknown-152/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAF0rpLM1U6os6bF2a6PWzm3Nu_fX_lW-UUaC0o3ISpYlU5h5jvA0xf27d0V7HTDFAHz6k_xPJJJUIJT-cmFNZD42xzXk3kWCvtCnvTgzhSf287RxpNZI9gF_ByMBT2qOSGjztBl=w426-h240-k-no" alt="Cà phê" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Cà phê</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAF0rpLM1U6os6bF2a6PWzm3Nu_fX_lW-UUaC0o3ISpYlU5h5jvA0xf27d0V7HTDFAHz6k_xPJJJUIJT-cmFNZD42xzXk3kWCvtCnvTgzhSf287RxpNZI9gF_ByMBT2qOSGjztBl=w426-h240-k-no" alt="Nhà Hàng - Cafe An Nhiên ( An Nhien Restaurant & Coffee)" loading="lazy"></div>
     <div class="card-body">
-      <h3>Cà phê</h3>
+      <h3>Nhà Hàng - Cafe An Nhiên ( An Nhien Restaurant & Coffee)</h3>
       <div class="card-meta">
-        <span class="card-location">Thạnh mỹ 3, Thạnh Mỹ, Thạnh mỹ 3, Thạnh </span>
-        <span class="card-rating">4.9</span>
+        <span class="card-rating">⭐ 4.9</span>
+        <span class="card-reviews">121 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 Thạnh mỹ 3, Thạnh Mỹ, Thạnh mỹ 3, T</div>
       <div class="card-price">100-200</div>
     </div>
   </a>
 </div><div class="card" data-category="Đặc sản" data-rating="4" data-reviews="2099" data-price="0" data-original="false">
   <a href="../mon/unknown-153/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGwueDLedHzX6Gf-h2Dts3l8frRG8MsY9jlqm8vEuEi7DMRHKOq39mIcDRxC1TiLNU2B5lCHDCM7-wpelfHf_FLVTNZ-yXcFA1rVroVVRebS5A8Nv99_s9Qdqk0dF2o_k8TT-c=w408-h306-k-no" alt="Thịt bê" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Thịt bê</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGwueDLedHzX6Gf-h2Dts3l8frRG8MsY9jlqm8vEuEi7DMRHKOq39mIcDRxC1TiLNU2B5lCHDCM7-wpelfHf_FLVTNZ-yXcFA1rVroVVRebS5A8Nv99_s9Qdqk0dF2o_k8TT-c=w408-h306-k-no" alt="Bê Thui Cầu Mống Mười" loading="lazy"></div>
     <div class="card-body">
-      <h3>Thịt bê</h3>
+      <h3>Bê Thui Cầu Mống Mười</h3>
       <div class="card-meta">
-        <span class="card-location">Điện Bàn, Điện Bàn, Đà Nẵng, Việt Nam</span>
-        <span class="card-rating">4.3</span>
+        <span class="card-rating">⭐ 4.3</span>
+        <span class="card-reviews">2,099 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 Điện Bàn, Điện Bàn, Đà Nẵng, Việt N</div>
       <div class="card-price">100-200</div>
     </div>
   </a>
 </div><div class="card" data-category="Đồ uống" data-rating="5" data-reviews="56" data-price="0" data-original="false">
   <a href="../mon/unknown-154/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGASMkzcBOIaaj26WNyorcWlh5IN5wHvvMCMN0eqJIrAYqfGXfyEeBKRbm5pzlx0XpUJE9L8BK9dJy_gJRKoLXcmUNP5v1_Ph8gKqWZfP8bCHhNVvAXJ-2ZD8hQ6bXQ0NlBkJk=w426-h240-k-no" alt="Cà phê" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Cà phê</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGASMkzcBOIaaj26WNyorcWlh5IN5wHvvMCMN0eqJIrAYqfGXfyEeBKRbm5pzlx0XpUJE9L8BK9dJy_gJRKoLXcmUNP5v1_Ph8gKqWZfP8bCHhNVvAXJ-2ZD8hQ6bXQ0NlBkJk=w426-h240-k-no" alt="Cafe Hải Vân" loading="lazy"></div>
     <div class="card-body">
-      <h3>Cà phê</h3>
+      <h3>Cafe Hải Vân</h3>
       <div class="card-meta">
-        <span class="card-location">320 Oregon Ave, South Philadelphia East,</span>
-        <span class="card-rating">4.6</span>
+        <span class="card-rating">⭐ 4.6</span>
+        <span class="card-reviews">56 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 320 Oregon Ave, South Philadelphia </div>
       <div class="card-price">10-20</div>
     </div>
   </a>
 </div><div class="card" data-category="Khác" data-rating="4" data-reviews="228" data-price="1" data-original="false">
   <a href="../mon/unknown-155/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGLnol6tIvr55z7k6_j-ikaTdMGdkgx-lTS7n0RIP6S02VZBMptTPPVWm181pDZiVoTabkcy9pVM3uYZmJ0Rrs0a_IK9t8sw4d7uYJS1A9sxOztWMGRXY7DAhksf07drBr0Atsy=w408-h272-k-no" alt="Ẩm thực" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Ẩm thực</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGLnol6tIvr55z7k6_j-ikaTdMGdkgx-lTS7n0RIP6S02VZBMptTPPVWm181pDZiVoTabkcy9pVM3uYZmJ0Rrs0a_IK9t8sw4d7uYJS1A9sxOztWMGRXY7DAhksf07drBr0Atsy=w408-h272-k-no" alt="MỘC QUÁN - ĂN NGON TAM KỲ -180 LÝ THƯỜNG KIỆT" loading="lazy"></div>
     <div class="card-body">
-      <h3>Ẩm thực</h3>
+      <h3>MỘC QUÁN - ĂN NGON TAM KỲ -180 LÝ THƯỜNG KIỆT</h3>
       <div class="card-meta">
-        <span class="card-location">180 Lý Thường Kiệt, Tam Kỳ, 180 Lý Thườn</span>
-        <span class="card-rating">3.9</span>
+        <span class="card-rating">⭐ 3.9</span>
+        <span class="card-reviews">228 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 180 Lý Thường Kiệt, Tam Kỳ, 180 Lý </div>
       <div class="card-price">1-100.000</div>
     </div>
   </a>
@@ -197,21 +227,23 @@
     <div class="card-body">
       <h3>Kitchen Cô Út</h3>
       <div class="card-meta">
-        <span class="card-location">85 Chrystie St, Manhattan, 85 Chrystie S</span>
-        <span class="card-rating">4.3</span>
+        <span class="card-rating">⭐ 4.3</span>
+        <span class="card-reviews">419 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 85 Chrystie St, Manhattan, 85 Chrys</div>
       <div class="card-price">10-20</div>
     </div>
   </a>
 </div><div class="card" data-category="Đồ uống" data-rating="5" data-reviews="578" data-price="0" data-original="false">
   <a href="../mon/unknown-157/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHS7L2ZeR-HUtkVd1Exo-uWLBkxcq4i6f_6d8g0kJfGLe9oFmHmtQtm3QGGnkruVLQ37jRgmwc9bYWmiOk_nHQklrfExWhT8AI-UoZyAMyrRh-Ucnh-mhsHby3gVjmRbeKlNt658rh8WyBQ=w408-h544-k-no" alt="Cà phê" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Cà phê</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHS7L2ZeR-HUtkVd1Exo-uWLBkxcq4i6f_6d8g0kJfGLe9oFmHmtQtm3QGGnkruVLQ37jRgmwc9bYWmiOk_nHQklrfExWhT8AI-UoZyAMyrRh-Ucnh-mhsHby3gVjmRbeKlNt658rh8WyBQ=w408-h544-k-no" alt="Café Nhan" loading="lazy"></div>
     <div class="card-body">
-      <h3>Cà phê</h3>
+      <h3>Café Nhan</h3>
       <div class="card-meta">
-        <span class="card-location">1606 W Passyunk Ave, South Philadelphia,</span>
-        <span class="card-rating">4.7</span>
+        <span class="card-rating">⭐ 4.7</span>
+        <span class="card-reviews">578 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 1606 W Passyunk Ave, South Philadel</div>
       <div class="card-price">20-30</div>
     </div>
   </a>
@@ -221,57 +253,62 @@
     <div class="card-body">
       <h3>Nha Trang One</h3>
       <div class="card-meta">
-        <span class="card-location">87 Baxter St, Manhattan, 87 Baxter St, N</span>
-        <span class="card-rating">4.4</span>
+        <span class="card-rating">⭐ 4.4</span>
+        <span class="card-reviews">1,624 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 87 Baxter St, Manhattan, 87 Baxter </div>
       <div class="card-price">10-20</div>
     </div>
   </a>
 </div><div class="card" data-category="Phở/Bún/Miến" data-rating="4" data-reviews="13" data-price="1" data-original="false">
   <a href="../mon/unknown-159/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHwGgp16maBcrR3Y4nVEVHC3kwSFZxnOXsxm2T3Sl4YaWMvMweERQRw7am2zLvtMsdbQHGSv8uDHowdM4NQuh6Mx-fAUvUx0KrT_2Pq6LmjruvX5-lMrC2_z1d7o46J1pyFlozFy4TByko=w408-h306-k-no" alt="Mỳ Việt" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Mỳ Việt</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHwGgp16maBcrR3Y4nVEVHC3kwSFZxnOXsxm2T3Sl4YaWMvMweERQRw7am2zLvtMsdbQHGSv8uDHowdM4NQuh6Mx-fAUvUx0KrT_2Pq6LmjruvX5-lMrC2_z1d7o46J1pyFlozFy4TByko=w408-h306-k-no" alt="Việt Mỳ Quảng Nam" loading="lazy"></div>
     <div class="card-body">
-      <h3>Mỳ Việt</h3>
+      <h3>Việt Mỳ Quảng Nam</h3>
       <div class="card-meta">
-        <span class="card-location">13 Trần Nhân Tông, Đồng Hới, 13 Trần Nhâ</span>
-        <span class="card-rating">4.5</span>
+        <span class="card-rating">⭐ 4.5</span>
+        <span class="card-reviews">13 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 13 Trần Nhân Tông, Đồng Hới, 13 Trầ</div>
       <div class="card-price">1-100.000</div>
     </div>
   </a>
 </div><div class="card" data-category="Đặc sản" data-rating="5" data-reviews="3" data-price="-1" data-original="false">
   <a href="../mon/unknown-160/">
-    <div class="card-img"><img src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=ynp6hJpYUXXyeuo2Fa0pSQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=46.52253&pitch=0&thumbfov=100" alt="Đặc sản" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Đặc sản</span><img src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=ynp6hJpYUXXyeuo2Fa0pSQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=46.52253&pitch=0&thumbfov=100" alt="Đặc Sản Quãng Ngãi" loading="lazy"></div>
     <div class="card-body">
-      <h3>Đặc sản</h3>
+      <h3>Đặc Sản Quãng Ngãi</h3>
       <div class="card-meta">
-        <span class="card-location">6 Tiên Sơn 7, Hòa Cường, 6 Tiên Sơn 7, H</span>
-        <span class="card-rating">4.7</span>
+        <span class="card-rating">⭐ 4.7</span>
+        <span class="card-reviews">3 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 6 Tiên Sơn 7, Hòa Cường, 6 Tiên Sơn</div>
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
 </div><div class="card" data-category="Phở/Bún/Miến" data-rating="5" data-reviews="1" data-price="-1" data-original="false">
   <a href="../mon/unknown-161/">
-    <div class="card-img">🍜</div>
+    <div class="card-img"><span class="card-dish-tag">Mì Quảng</span><div class="card-placeholder">🍜</div></div>
     <div class="card-body">
-      <h3>Mì Quảng</h3>
+      <h3>Quán Đặc Sản Quảng Nam - Mì Quảng Thường Xuân</h3>
       <div class="card-meta">
-        <span class="card-location">51 Trần Quý Cáp, Bàn Thạch, 51 Trần Quý </span>
-        <span class="card-rating">5.0</span>
+        <span class="card-rating">⭐ 5.0</span>
+        <span class="card-reviews">1 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 51 Trần Quý Cáp, Bàn Thạch, 51 Trần</div>
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
 </div><div class="card" data-category="Đặc sản" data-rating="4" data-reviews="129" data-price="1" data-original="false">
   <a href="../mon/unknown-162/">
-    <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHT2dbsgmrY4AFBRbmOo43fe2olbaXvzEE4vNuJNbmPC6zJk8jp3X-AjawZezbCB27_OZiJ3BR-FpvtdQv0A3auGmyY18g_K_aiYjUR3HSVtf7DyCZ8oFvygTx_z7QVmFJStCzE=w426-h240-k-no" alt="Đặc sản" loading="lazy"></div>
+    <div class="card-img"><span class="card-dish-tag">Đặc sản</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHT2dbsgmrY4AFBRbmOo43fe2olbaXvzEE4vNuJNbmPC6zJk8jp3X-AjawZezbCB27_OZiJ3BR-FpvtdQv0A3auGmyY18g_K_aiYjUR3HSVtf7DyCZ8oFvygTx_z7QVmFJStCzE=w426-h240-k-no" alt="Đặc Sản Xứ Quảng" loading="lazy"></div>
     <div class="card-body">
-      <h3>Đặc sản</h3>
+      <h3>Đặc Sản Xứ Quảng</h3>
       <div class="card-meta">
-        <span class="card-location">103 Nguyễn Trường Tộ, Thuận Hóa, 103 Ngu</span>
-        <span class="card-rating">4.2</span>
+        <span class="card-rating">⭐ 4.2</span>
+        <span class="card-reviews">129 đánh giá</span>
       </div>
+      <div class="card-location-row">📍 103 Nguyễn Trường Tộ, Thuận Hóa, 10</div>
       <div class="card-price">1-100.000</div>
     </div>
   </a>
@@ -285,15 +322,23 @@
 
 <script>
 (function() {
-  // Store original card order
   const grid = document.querySelector('.card-grid');
   const cards = Array.from(grid.querySelectorAll('.card'));
   let originalOrder = cards.map((c, i) => ({el: c, idx: i}));
+  let activeCat = 'all';
 
   function getRating(el) { return parseFloat(el.dataset.rating) || 0; }
   function getReviews(el) { return parseInt(el.dataset.reviews) || 0; }
   function getPrice(el) { return parseInt(el.dataset.price); }
   function isOriginal(el) { return el.dataset.original === 'true'; }
+
+  window.filterCatProv = function(cat) {
+    activeCat = cat;
+    // Update chip styles
+    document.querySelectorAll('.dish-chip').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    applyFilters();
+  };
 
   window.applyFilters = function() {
     const priceVal = document.getElementById('filterPrice').value;
@@ -302,10 +347,12 @@
     const origOnly = document.getElementById('toggleOriginal').classList.contains('active-filter');
 
     let visible = cards.filter(c => {
+      // Category filter (from dish chips)
+      if (activeCat !== 'all' && c.dataset.category !== activeCat) return false;
       // Price filter
       if (priceVal !== 'all') {
         const cp = getPrice(c);
-        if (cp === -1) return true; // unknown prices pass through
+        if (cp === -1) return true;
         if (cp !== parseInt(priceVal)) return false;
       }
       // Rating filter
@@ -321,7 +368,6 @@
     else if (sortVal === 'price-asc') visible.sort((a,b) => (getPrice(a)===-1?999:(getPrice(a))) - (getPrice(b)===-1?999:(getPrice(b))));
     else if (sortVal === 'price-desc') visible.sort((a,b) => (getPrice(b)===-1?-1:(getPrice(b))) - (getPrice(a)===-1?-1:(getPrice(a))));
     else {
-      // Default: restore original order
       visible.sort((a,b) => {
         const oa = originalOrder.find(o => o.el === a);
         const ob = originalOrder.find(o => o.el === b);
@@ -329,11 +375,8 @@
       });
     }
 
-    // Re-render
     grid.innerHTML = '';
     visible.forEach(c => grid.appendChild(c));
-
-    // Update count
     document.getElementById('resultCount').textContent = visible.length + ' quán';
   };
 
@@ -343,7 +386,6 @@
     applyFilters();
   };
 
-  // Init: ensure original order is stored before any DOM manipulation
   document.addEventListener('DOMContentLoaded', function() {
     originalOrder = Array.from(document.querySelectorAll('.card-grid .card')).map((c,i) => ({el: c, idx: i}));
   });
