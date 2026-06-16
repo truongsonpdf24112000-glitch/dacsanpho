@@ -32,13 +32,46 @@
 </section>
 
 <div class="container">
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <div class="filter-group">
+      <label>💰 Giá</label>
+      <select id="filterPrice" onchange="applyFilters()">
+        <option value="all">Tất cả giá</option>
+        <option value="0">Dưới 50k</option>
+        <option value="1">50k - 150k</option>
+        <option value="2">Trên 150k</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>⭐ Rating</label>
+      <select id="filterRating" onchange="applyFilters()">
+        <option value="all">Tất cả</option>
+        <option value="4.5">4.5+</option>
+        <option value="4">4.0+</option>
+        <option value="3">3.0+</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>📊 Sắp xếp</label>
+      <select id="filterSort" onchange="applyFilters()">
+        <option value="default">Mặc định</option>
+        <option value="rating-desc">Rating cao nhất</option>
+        <option value="reviews-desc">Nhiều review nhất</option>
+        <option value="price-asc">Giá thấp → cao</option>
+        <option value="price-desc">Giá cao → thấp</option>
+      </select>
+    </div>
+    <button class="filter-chip" id="toggleOriginal" onclick="toggleOriginal()">
+      ⭐ Quán gốc
+    </button>
+    <span class="filter-result" id="resultCount">28 quán</span>
+  </div>
+
   <div class="ad">Quảng cáo</div>
 
   <section class="section">
-    <div class="section-header">
-      <h2>Tất Cả Quán Tại Ninh Thuận</h2>
-    </div>
-    <div class="card-grid"><div class="card" data-category="Ốc/Hải sản">
+    <div class="card-grid"><div class="card" data-category="Ốc/Hải sản" data-rating="4" data-reviews="1" data-price="-1" data-original="false">
   <a href="../mon/unknown-216/">
     <div class="card-img"><img src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=fUs9jm4Hgs2TTYAGuLJvwQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=229.49844&pitch=0&thumbfov=100" alt="Cua" loading="lazy"></div>
     <div class="card-body">
@@ -50,7 +83,7 @@
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
-</div><div class="card" data-category="Lẩu">
+</div><div class="card" data-category="Lẩu" data-rating="5" data-reviews="261" data-price="0" data-original="false">
   <a href="../mon/unknown-217/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAEMTK9oHBRZbK3dw44MPU4SLQvwEQ2hfSeDlnnIBw3iffRkFs7MNvg4VmXcLj7TnVsen9NO2HZKXEj8RTDji4-cV7Ir0ZeSUU-DLDF6jvy_202FTNbwGqKAweL4EmcHJWw5NSY=w408-h262-k-no" alt="Lẩu" loading="lazy"></div>
     <div class="card-body">
@@ -62,7 +95,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Ăn vặt">
+</div><div class="card" data-category="Ăn vặt" data-rating="5" data-reviews="1" data-price="-1" data-original="false">
   <a href="../mon/unknown-218/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHbzCTXFTC9BGFhcH1cLuwAm9GxfSYuwau987kcxSAgMDN-JYYP0C-Aq_gBJLZwMjjtxP7R5uDapa3DTU7hCD_SWLU_uXggp4cnL5PUyEsL3b44MJ34MwotAePGCNo-At7p2YY=w408-h544-k-no" alt="Ăn vặt" loading="lazy"></div>
     <div class="card-body">
@@ -74,7 +107,7 @@
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
-</div><div class="card" data-category="Cơm">
+</div><div class="card" data-category="Cơm" data-rating="5" data-reviews="126" data-price="1" data-original="false">
   <a href="../mon/unknown-219/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFI-y1Tz5bzDC7AXWvwf5MnmQmwHF2s8wDe1yLq9ofzV8R8LRU5twGdlU0dh5vbwvlveoUmCy5CvdInrp9bowVzLeD6XAexfwFmLHWTZBtR2ywHa64nCl2sDE-VNMk8t5yEm0Z8_g=w408-h306-k-no" alt="Cơm gà" loading="lazy"></div>
     <div class="card-body">
@@ -86,7 +119,7 @@
       <div class="card-price">1-100.000</div>
     </div>
   </a>
-</div><div class="card" data-category="Bánh">
+</div><div class="card" data-category="Bánh" data-rating="4" data-reviews="50" data-price="1" data-original="false">
   <a href="../mon/unknown-220/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAG0iUbWqs0sb0nwjSTcSnhlyflHyR41VrlDko_4JlSbNkePJMBdiSi1vVTC0Wh7HhLWQPEpFH7zFmfyDv5D7KIRjj3NK8giYOLWPVSL7_jSMEw3blAiCk2vRFpz6yuDlkadpRr85hnzoSMW=w408-h544-k-no" alt="Bánh" loading="lazy"></div>
     <div class="card-body">
@@ -98,7 +131,7 @@
       <div class="card-price">1-100.000</div>
     </div>
   </a>
-</div><div class="card" data-category="Ăn vặt">
+</div><div class="card" data-category="Ăn vặt" data-rating="0" data-reviews="0" data-price="-1" data-original="false">
   <a href="../mon/unknown-221/">
     <div class="card-img"><img src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=n-7XFZmjPKvsISUDw6D3zw&cb_client=search.gws-prod.gps&w=408&h=240&yaw=6.3412404&pitch=0&thumbfov=100" alt="Ăn vặt" loading="lazy"></div>
     <div class="card-body">
@@ -110,7 +143,7 @@
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
-</div><div class="card" data-category="Ăn vặt">
+</div><div class="card" data-category="Ăn vặt" data-rating="3" data-reviews="5" data-price="-1" data-original="false">
   <a href="../mon/unknown-222/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAG9aBiWghHxhxq-yHqKoe4LQYuLRb5i37opIoKT92j3fRzl1DyVhbUaqR7c0j2yCzrFMUc6B4Dm1AMsw1PsK_Wfc8BPLY4s5-Tb_y2Uv8Qp04jtXxgHC3BIvT8U-nFVhTEkFN4=w408-h306-k-no" alt="Ăn vặt" loading="lazy"></div>
     <div class="card-body">
@@ -122,7 +155,7 @@
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
-</div><div class="card" data-category="Ăn vặt">
+</div><div class="card" data-category="Ăn vặt" data-rating="5" data-reviews="3" data-price="-1" data-original="false">
   <a href="../mon/unknown-223/">
     <div class="card-img"><img src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Mn1PnxprgPcj_QPouoJG5Q&cb_client=search.gws-prod.gps&w=408&h=240&yaw=239.89217&pitch=0&thumbfov=100" alt="Ăn vặt" loading="lazy"></div>
     <div class="card-body">
@@ -134,7 +167,7 @@
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
-</div><div class="card" data-category="Đặc sản">
+</div><div class="card" data-category="Đặc sản" data-rating="5" data-reviews="63" data-price="0" data-original="false">
   <a href="../mon/unknown-224/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAEXP2zAjEEJRWkX1AMeMAJ9L6if2IylTHr5wfAjP0cyu2B9iGnj1MD8zxRFNska9RlsaQRflm5sWIGPzmpUUHLiaf0r5Vx8b_2I02s-wgkBRkoNs__NBGaY6iLqv-EoO1Q5wOOVjHKM_lpc=w408-h453-k-no" alt="Thịt dê" loading="lazy"></div>
     <div class="card-body">
@@ -146,7 +179,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Bánh">
+</div><div class="card" data-category="Bánh" data-rating="4" data-reviews="93" data-price="-1" data-original="false">
   <a href="../mon/unknown-225/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHuDa4IrLcz8HqaHcCCRZ9DlDCaNsy6q2b24ReMzBH8lAu2L8SaD5dHNGhWz4bVh850QeU4W1zZWiec49JN1kx0moRhwxXT5O9BVEvEE6dWwFRJ9EMRJKzS0-vRUHb6zhLZUUXM2w=w408-h306-k-no" alt="Bánh tráng" loading="lazy"></div>
     <div class="card-body">
@@ -158,7 +191,7 @@
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
-</div><div class="card" data-category="Đặc sản">
+</div><div class="card" data-category="Đặc sản" data-rating="4" data-reviews="303" data-price="0" data-original="false">
   <a href="../mon/unknown-226/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHTx23DKkv8G9vDzsRW_1uJblhVjOg8w3_xd3vf4fwvPw-ShjEg2Oy821VzfxeYEJhSTtX5KJAonC83iXPTUXoFdJPlbsbnKK52Ez79EutcIjomNl2WfgUuKom2iTAXUGweDiow3w=w408-h306-k-no" alt="Đặc sản" loading="lazy"></div>
     <div class="card-body">
@@ -170,7 +203,7 @@
       <div class="card-price">100-600</div>
     </div>
   </a>
-</div><div class="card" data-category="Ăn vặt">
+</div><div class="card" data-category="Ăn vặt" data-rating="5" data-reviews="15" data-price="-1" data-original="false">
   <a href="../mon/unknown-227/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHQTHYvFTpJd9WvtJeDuX1BbCW7tnCZMOyUXfKU0zhjpSO8Z6lhDpzSRPUB_8XNIZJmbIRXI-rcuhKmpvVTMw0uLJken-98Hgmop7N5qIC75eAQi5aLqVj28wxyJuPT_p-aBvEG=w408-h306-k-no" alt="Ăn vặt" loading="lazy"></div>
     <div class="card-body">
@@ -182,7 +215,7 @@
       <div class="card-price">Liên hệ</div>
     </div>
   </a>
-</div><div class="card" data-category="Cơm">
+</div><div class="card" data-category="Cơm" data-rating="4" data-reviews="139" data-price="1" data-original="true">
   <a href="../mon/unknown-228/">
     <div class="card-img"><span class="card-badge original">⭐ Quán gốc</span><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGJh2iPcE7BSrJdCQKd180XyubK0wyoCplKTWi84_3kcjt5__At2OulviXYon0iBTwPpuKwNmtJvu1xGDPtFfU_q03-l0fx4jmcnDxwVpsmcNPXaHLfDTwnEhJuhDfB_64St88=w426-h240-k-no" alt="Cơm gà" loading="lazy"></div>
     <div class="card-body">
@@ -194,7 +227,7 @@
       <div class="card-price">1-100.000</div>
     </div>
   </a>
-</div><div class="card" data-category="Cơm">
+</div><div class="card" data-category="Cơm" data-rating="4" data-reviews="191" data-price="0" data-original="false">
   <a href="../mon/unknown-229/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGBEAc1o2d-eMqF2ixwYftmD3nm5L1T4gKT_32iLVC7SknUuz1mP0Fn6x9dHGpLhQ7lYKtKjLzb2Yxz1rVZGldOWyZlnH95llWhmEHPfhZtDjAr6KCyK_PFQn3HFxksyQb-Ml2b=w408-h306-k-no" alt="Cơm niêu" loading="lazy"></div>
     <div class="card-body">
@@ -206,7 +239,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Cơm">
+</div><div class="card" data-category="Cơm" data-rating="5" data-reviews="222" data-price="1" data-original="false">
   <a href="../mon/unknown-230/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAEB5lG6UJeTy81vlTRwEwHmEAW-7nqhDooY6kMzqTlLfYyrWZGc4F74PBX_ozClPh_CBu8_4Zn8sWTgCxdkVWXIIfsl25escGfmwzRDthkak3fazUyE9QpTLctqBT8vzmEekEghewgyYeS6=w408-h306-k-no" alt="Cơm" loading="lazy"></div>
     <div class="card-body">
@@ -218,7 +251,7 @@
       <div class="card-price">1-100.000</div>
     </div>
   </a>
-</div><div class="card" data-category="Ốc/Hải sản">
+</div><div class="card" data-category="Ốc/Hải sản" data-rating="5" data-reviews="597" data-price="0" data-original="false">
   <a href="../mon/unknown-231/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAEhZp2epPj2a_h34pwqAgSaiImoIDtP8Zq012L-VGc9SsAQsjVAfxBt-qpDG79jLA1ZEuifmj8nhPY4RDwVnxFls0n-o_L3hqGV5JjGPqjhNoeTcv_BaeU_Grulbhwd9fibf-9G=w408-h306-k-no" alt="Tôm" loading="lazy"></div>
     <div class="card-body">
@@ -230,7 +263,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Khác">
+</div><div class="card" data-category="Khác" data-rating="4" data-reviews="2512" data-price="0" data-original="false">
   <a href="../mon/unknown-232/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHVJHW4tR3iSJpWxqdeXIZ1GyYIFyTg8hy9mDz-3mqUnyHh9zBQML6uW1o49ZWikMfzzU2GibYvRBjZbgCqcPkLBQZy6PlTvvq-kPMazRxgN6uugu6hc2aZ8MA4guHTjKwNyD4=w426-h240-k-no" alt="Ẩm thực" loading="lazy"></div>
     <div class="card-body">
@@ -242,7 +275,7 @@
       <div class="card-price">100-600</div>
     </div>
   </a>
-</div><div class="card" data-category="Đồ nướng">
+</div><div class="card" data-category="Đồ nướng" data-rating="4" data-reviews="589" data-price="0" data-original="false">
   <a href="../mon/unknown-233/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAF2QvUFHRFo1O5fUdn473657utTL0xvst5yN59jA5nRweHuZ7Mi3JZPKeFHNpOoC2z9uCe6U8LyfaoJch57BR1IFyLZCzmnecAAGXCP4-aQw7C5V_zBl9nlbPqbJFhiqlZpuW2S=w426-h240-k-no" alt="Đồ nướng" loading="lazy"></div>
     <div class="card-body">
@@ -254,7 +287,7 @@
       <div class="card-price">200-300</div>
     </div>
   </a>
-</div><div class="card" data-category="Cơm">
+</div><div class="card" data-category="Cơm" data-rating="5" data-reviews="50" data-price="0" data-original="false">
   <a href="../mon/unknown-234/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHk8FKTa9UhDzyNsPOVsCNGNLZdzBcqFjAd-t_wuw0zhyLU0EkVReCgR55lckxX0mx_LsmpNCky5bgOnWsvIwBWoaYyhp10WmdI2xUb19H8j8RozNRr3JtxVOSoLnydAch-QccQ_rnwRmU=w408-h306-k-no" alt="Cơm niêu" loading="lazy"></div>
     <div class="card-body">
@@ -266,7 +299,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Đặc sản">
+</div><div class="card" data-category="Đặc sản" data-rating="4" data-reviews="112" data-price="0" data-original="false">
   <a href="../mon/unknown-235/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHxtkJjIV5FctxlxSZsagUognoiinZMS1v-BIaVo1lmYR_vEPU7L_95b-divAWLM1B6kPe7kg0CPN8bVypL0YtgvfwP368HaqIrhnLUwGQxM6T5JKP-LeWRjUKOno4qTCDelB8=w408-h306-k-no" alt="Đặc sản" loading="lazy"></div>
     <div class="card-body">
@@ -278,7 +311,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Khác">
+</div><div class="card" data-category="Khác" data-rating="4" data-reviews="946" data-price="0" data-original="false">
   <a href="../mon/unknown-236/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGRcLxK4_llykgW3tUEvmTMxmQwrXMmZNMVWgIoo6Wc1jlq33eQRLpJiE_zAuae9RECLEqvdfXG3oZxNqwQiBx3kGawnCsgRpfzz4opyYR4iQQPbHM-yLDtFje607-lulghtbFO_w=w408-h544-k-no" alt="Ẩm thực" loading="lazy"></div>
     <div class="card-body">
@@ -290,7 +323,7 @@
       <div class="card-price">100-500</div>
     </div>
   </a>
-</div><div class="card" data-category="Cơm">
+</div><div class="card" data-category="Cơm" data-rating="5" data-reviews="624" data-price="0" data-original="false">
   <a href="../mon/unknown-237/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFS01ZMXrP9zErEMqyQWz45X9H5p5pHf-0HZWxTw3t5IpuG9FhD3-zQMgY7sEx2ZlQ0iZzQI8AufbS5-9Lo9J59Z04H07HIgLGEnmQoNmyubc4cq3oG_e1gpoaOchEDQSr3XcU0RSOMtLoN=w408-h306-k-no" alt="Cơm" loading="lazy"></div>
     <div class="card-body">
@@ -302,7 +335,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Cơm">
+</div><div class="card" data-category="Cơm" data-rating="4" data-reviews="508" data-price="0" data-original="false">
   <a href="../mon/unknown-238/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAEy3qedkOZTNjaFJ2PMrWUTcRggs3CzpfxGRAtxybzvafvvzveg9EI6IEXJND8HNRlFw4tPOB5P0OJoGkDtAKHCGJkboKGaGk6HYn8M7VAAiGaBSPdfWakUREyYeH1_3-Jhr5N0=w408-h272-k-no" alt="Cơm niêu" loading="lazy"></div>
     <div class="card-body">
@@ -314,7 +347,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Khác">
+</div><div class="card" data-category="Khác" data-rating="5" data-reviews="24" data-price="0" data-original="false">
   <a href="../mon/unknown-239/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFBwE38YEs2Yw3awkfvrlgqh0nM_HuOdxxaiktY9EQhPOoOkG1MGEofUfVH-QD-jBGeJUkorUYJzbCyQDFmgwEhPYWZOZIWZM2KLw8QL1FgtfzQVAX6RnlApCR6wgmLwxf_M8ZYQlNLjlAq=w426-h240-k-no" alt="Quán ăn" loading="lazy"></div>
     <div class="card-body">
@@ -326,7 +359,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Khác">
+</div><div class="card" data-category="Khác" data-rating="5" data-reviews="49" data-price="0" data-original="false">
   <a href="../mon/unknown-240/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHH_WrK6-t6Blm8XFQZkUFFgkwNzI66329dlBXP2pniaZCvoCQnTDGInu2zv7o0G_UCPdO1QVdFbYCDyJzlg9HyndqdxhXUXtWJue7f3Xn4Sw_3BwkF4Th7eh73wwlyit0sFL4=w408-h266-k-no" alt="NINH CHỮ SEA" loading="lazy"></div>
     <div class="card-body">
@@ -338,7 +371,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Khác">
+</div><div class="card" data-category="Khác" data-rating="4" data-reviews="305" data-price="0" data-original="false">
   <a href="../mon/unknown-241/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAG3qcErpjM_18NL5MZEH2QavsF3sOe880RBIbX_Tj5hzsyJ9flrtZ-m9JS1Ss3vul7TuTJ4dXnA7KV7tITBIgbzTmBO8A1uzQQBvg-0L-ZfPpPEOlK97lvUgO8sWa8UMyGuHCg=w408-h306-k-no" alt="Ẩm thực" loading="lazy"></div>
     <div class="card-body">
@@ -350,7 +383,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Cơm">
+</div><div class="card" data-category="Cơm" data-rating="4" data-reviews="120" data-price="0" data-original="false">
   <a href="../mon/unknown-242/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAF7h3lEoNbaBgLPSHH7U-dBU00OG0pGJ03z7tSKoPG4uYx7x8j1DysEUSfTc_4jWPksiF3dmDNs_UigySDZJsmWsTwf0XTRcNoIfip8mrkpZgPrFOeKE0eKcvLs09VGYgBN7Uta1i_a8ORv=w408-h306-k-no" alt="Cơm niêu" loading="lazy"></div>
     <div class="card-body">
@@ -362,7 +395,7 @@
       <div class="card-price">100-200</div>
     </div>
   </a>
-</div><div class="card" data-category="Cơm">
+</div><div class="card" data-category="Cơm" data-rating="4" data-reviews="3074" data-price="0" data-original="false">
   <a href="../mon/unknown-243/">
     <div class="card-img"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFfu5KupHGzw2hPX1zAFAp51b0u8NG9gsXyW7VWzR_BcA1joVBjTsEPzwJ-IyZSmAtqfn0x4WUHVSA0oj-a40m2JnJHq51IimYJ2QR6ntNNfnJkWdX4t89RjYFas6LnUtMuL7Xt=w408-h407-k-no" alt="Cơm gà" loading="lazy"></div>
     <div class="card-body">
@@ -381,6 +414,73 @@
 
   <section class="section"><div class="section-header"><h2>Tỉnh Lân Cận</h2></div><div class="city-grid"><a href="/tinh/hải-dương/" class="city-card"><h3>Hải Dương</h3></a><a href="/tinh/hà-nội/" class="city-card"><h3>Hà Nội</h3></a><a href="/tinh/hải-phòng/" class="city-card"><h3>Hải Phòng</h3></a><a href="/tinh/ninh-bình/" class="city-card"><h3>Ninh Bình</h3></a><a href="/tinh/hà-giang/" class="city-card"><h3>Hà Giang</h3></a><a href="/tinh/thừa-thiên-huế/" class="city-card"><h3>Thừa Thiên Huế</h3></a></div></section>
 </div>
+
+<script>
+(function() {
+  // Store original card order
+  const grid = document.querySelector('.card-grid');
+  const cards = Array.from(grid.querySelectorAll('.card'));
+  let originalOrder = cards.map((c, i) => ({el: c, idx: i}));
+
+  function getRating(el) { return parseFloat(el.dataset.rating) || 0; }
+  function getReviews(el) { return parseInt(el.dataset.reviews) || 0; }
+  function getPrice(el) { return parseInt(el.dataset.price); }
+  function isOriginal(el) { return el.dataset.original === 'true'; }
+
+  window.applyFilters = function() {
+    const priceVal = document.getElementById('filterPrice').value;
+    const ratingVal = document.getElementById('filterRating').value;
+    const sortVal = document.getElementById('filterSort').value;
+    const origOnly = document.getElementById('toggleOriginal').classList.contains('active-filter');
+
+    let visible = cards.filter(c => {
+      // Price filter
+      if (priceVal !== 'all') {
+        const cp = getPrice(c);
+        if (cp === -1) return true; // unknown prices pass through
+        if (cp !== parseInt(priceVal)) return false;
+      }
+      // Rating filter
+      if (ratingVal !== 'all' && getRating(c) < parseFloat(ratingVal)) return false;
+      // Original only
+      if (origOnly && !isOriginal(c)) return false;
+      return true;
+    });
+
+    // Sort
+    if (sortVal === 'rating-desc') visible.sort((a,b) => getRating(b) - getRating(a));
+    else if (sortVal === 'reviews-desc') visible.sort((a,b) => getReviews(b) - getReviews(a));
+    else if (sortVal === 'price-asc') visible.sort((a,b) => (getPrice(a)===-1?999:(getPrice(a))) - (getPrice(b)===-1?999:(getPrice(b))));
+    else if (sortVal === 'price-desc') visible.sort((a,b) => (getPrice(b)===-1?-1:(getPrice(b))) - (getPrice(a)===-1?-1:(getPrice(a))));
+    else {
+      // Default: restore original order
+      visible.sort((a,b) => {
+        const oa = originalOrder.find(o => o.el === a);
+        const ob = originalOrder.find(o => o.el === b);
+        return (oa ? oa.idx : 0) - (ob ? ob.idx : 0);
+      });
+    }
+
+    // Re-render
+    grid.innerHTML = '';
+    visible.forEach(c => grid.appendChild(c));
+
+    // Update count
+    document.getElementById('resultCount').textContent = visible.length + ' quán';
+  };
+
+  window.toggleOriginal = function() {
+    const btn = document.getElementById('toggleOriginal');
+    btn.classList.toggle('active-filter');
+    applyFilters();
+  };
+
+  // Init: ensure original order is stored before any DOM manipulation
+  document.addEventListener('DOMContentLoaded', function() {
+    originalOrder = Array.from(document.querySelectorAll('.card-grid .card')).map((c,i) => ({el: c, idx: i}));
+  });
+})();
+</script>
 
 
 <footer class="site-footer">

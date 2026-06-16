@@ -34,7 +34,14 @@
       <h2>⭐ Quán Gốc — Địa Điểm Khởi Nguồn</h2>
       <a href="/mon/">Xem tất cả →</a>
     </div>
-    <div class="card-grid">{{ORIGINAL_CARDS}}</div>
+    <div class="sort-row">
+      <select onchange="sortCardGrid(this)" data-target="originalGrid">
+        <option value="">Sắp xếp</option>
+        <option value="rating-desc">Rating cao nhất</option>
+        <option value="reviews-desc">Nhiều review nhất</option>
+      </select>
+    </div>
+    <div class="card-grid" id="originalGrid">{{ORIGINAL_CARDS}}</div>
   </section>
 
   <!-- Ad -->
@@ -45,7 +52,14 @@
     <div class="section-header">
       <h2>🔥 Được Yêu Thích Nhất</h2>
     </div>
-    <div class="card-grid">{{TOP_RATED_CARDS}}</div>
+    <div class="sort-row">
+      <select onchange="sortCardGrid(this)" data-target="topGrid">
+        <option value="">Sắp xếp</option>
+        <option value="reviews-desc">Nhiều review nhất</option>
+        <option value="price-asc">Giá thấp nhất</option>
+      </select>
+    </div>
+    <div class="card-grid" id="topGrid">{{TOP_RATED_CARDS}}</div>
   </section>
 
   <!-- Browse by Province -->
@@ -76,7 +90,6 @@ function liveSearch() {
   document.querySelectorAll('.card').forEach(c => {
     c.style.display = c.textContent.toLowerCase().includes(q) ? '' : 'none';
   });
-  // If search is empty, show all
   if (!q) document.querySelectorAll('.card').forEach(c => c.style.display = '');
 }
 function filterCat(cat) {
@@ -89,5 +102,22 @@ function filterCat(cat) {
       c.style.display = c.dataset.category === cat ? '' : 'none';
     });
   }
+}
+function sortCardGrid(select) {
+  const gridId = select.dataset.target;
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  const cards = Array.from(grid.querySelectorAll('.card'));
+  const val = select.value;
+  
+  const getRating = el => parseFloat(el.dataset.rating) || 0;
+  const getReviews = el => parseInt(el.dataset.reviews) || 0;
+  const getPrice = el => parseInt(el.dataset.price);
+  
+  if (val === 'rating-desc') cards.sort((a,b) => getRating(b) - getRating(a));
+  else if (val === 'reviews-desc') cards.sort((a,b) => getReviews(b) - getReviews(a));
+  else if (val === 'price-asc') cards.sort((a,b) => (getPrice(a)===-1?999:getPrice(a)) - (getPrice(b)===-1?999:getPrice(b)));
+  
+  cards.forEach(c => grid.appendChild(c));
 }
 </script>

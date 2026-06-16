@@ -9,12 +9,45 @@
 </section>
 
 <div class="container">
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <div class="filter-group">
+      <label>💰 Giá</label>
+      <select id="filterPrice" onchange="applyFilters()">
+        <option value="all">Tất cả giá</option>
+        <option value="0">Dưới 50k</option>
+        <option value="1">50k - 150k</option>
+        <option value="2">Trên 150k</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>⭐ Rating</label>
+      <select id="filterRating" onchange="applyFilters()">
+        <option value="all">Tất cả</option>
+        <option value="4.5">4.5+</option>
+        <option value="4">4.0+</option>
+        <option value="3">3.0+</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>📊 Sắp xếp</label>
+      <select id="filterSort" onchange="applyFilters()">
+        <option value="default">Mặc định</option>
+        <option value="rating-desc">Rating cao nhất</option>
+        <option value="reviews-desc">Nhiều review nhất</option>
+        <option value="price-asc">Giá thấp → cao</option>
+        <option value="price-desc">Giá cao → thấp</option>
+      </select>
+    </div>
+    <button class="filter-chip" id="toggleOriginal" onclick="toggleOriginal()">
+      ⭐ Quán gốc
+    </button>
+    <span class="filter-result" id="resultCount">{{COUNT}} quán</span>
+  </div>
+
   <div class="ad">Quảng cáo</div>
 
   <section class="section">
-    <div class="section-header">
-      <h2>Tất Cả Quán Tại {{PROVINCE}}</h2>
-    </div>
     <div class="card-grid">{{VENDOR_CARDS}}</div>
   </section>
 
@@ -22,3 +55,70 @@
 
   {{NEARBY}}
 </div>
+
+<script>
+(function() {
+  // Store original card order
+  const grid = document.querySelector('.card-grid');
+  const cards = Array.from(grid.querySelectorAll('.card'));
+  let originalOrder = cards.map((c, i) => ({el: c, idx: i}));
+
+  function getRating(el) { return parseFloat(el.dataset.rating) || 0; }
+  function getReviews(el) { return parseInt(el.dataset.reviews) || 0; }
+  function getPrice(el) { return parseInt(el.dataset.price); }
+  function isOriginal(el) { return el.dataset.original === 'true'; }
+
+  window.applyFilters = function() {
+    const priceVal = document.getElementById('filterPrice').value;
+    const ratingVal = document.getElementById('filterRating').value;
+    const sortVal = document.getElementById('filterSort').value;
+    const origOnly = document.getElementById('toggleOriginal').classList.contains('active-filter');
+
+    let visible = cards.filter(c => {
+      // Price filter
+      if (priceVal !== 'all') {
+        const cp = getPrice(c);
+        if (cp === -1) return true; // unknown prices pass through
+        if (cp !== parseInt(priceVal)) return false;
+      }
+      // Rating filter
+      if (ratingVal !== 'all' && getRating(c) < parseFloat(ratingVal)) return false;
+      // Original only
+      if (origOnly && !isOriginal(c)) return false;
+      return true;
+    });
+
+    // Sort
+    if (sortVal === 'rating-desc') visible.sort((a,b) => getRating(b) - getRating(a));
+    else if (sortVal === 'reviews-desc') visible.sort((a,b) => getReviews(b) - getReviews(a));
+    else if (sortVal === 'price-asc') visible.sort((a,b) => (getPrice(a)===-1?999:(getPrice(a))) - (getPrice(b)===-1?999:(getPrice(b))));
+    else if (sortVal === 'price-desc') visible.sort((a,b) => (getPrice(b)===-1?-1:(getPrice(b))) - (getPrice(a)===-1?-1:(getPrice(a))));
+    else {
+      // Default: restore original order
+      visible.sort((a,b) => {
+        const oa = originalOrder.find(o => o.el === a);
+        const ob = originalOrder.find(o => o.el === b);
+        return (oa ? oa.idx : 0) - (ob ? ob.idx : 0);
+      });
+    }
+
+    // Re-render
+    grid.innerHTML = '';
+    visible.forEach(c => grid.appendChild(c));
+
+    // Update count
+    document.getElementById('resultCount').textContent = visible.length + ' quán';
+  };
+
+  window.toggleOriginal = function() {
+    const btn = document.getElementById('toggleOriginal');
+    btn.classList.toggle('active-filter');
+    applyFilters();
+  };
+
+  // Init: ensure original order is stored before any DOM manipulation
+  document.addEventListener('DOMContentLoaded', function() {
+    originalOrder = Array.from(document.querySelectorAll('.card-grid .card')).map((c,i) => ({el: c, idx: i}));
+  });
+})();
+</script>

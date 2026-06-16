@@ -101,8 +101,57 @@ nav a:hover, nav a.active { background: var(--primary-light); color: var(--prima
 }
 .section-header a { font-size: 0.85rem; color: var(--primary); font-weight: 500; }
 
+/* ── Filter Bar ── */
+.filter-bar {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    background: #fff; padding: 14px 16px; border-radius: var(--radius);
+    border: 1px solid var(--border); margin-bottom: 16px;
+}
+.filter-group { display: flex; align-items: center; gap: 6px; }
+.filter-group label {
+    font-size: 0.8rem; font-weight: 600; color: var(--text-light);
+    white-space: nowrap;
+}
+.filter-group select {
+    padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px;
+    font-size: 0.82rem; background: #fff; cursor: pointer;
+    color: var(--text); min-width: 110px;
+}
+.filter-group select:focus { outline: none; border-color: var(--primary); }
+.filter-chip {
+    padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px;
+    font-size: 0.8rem; font-weight: 500; cursor: pointer; background: #fff;
+    transition: all 0.15s; white-space: nowrap;
+}
+.filter-chip:hover { border-color: var(--yellow); background: #fffbf0; }
+.filter-chip.active-filter {
+    background: var(--yellow); color: #fff; border-color: var(--yellow);
+}
+.filter-result {
+    margin-left: auto; font-size: 0.82rem; color: var(--text-lighter);
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .filter-bar { padding: 10px 12px; gap: 8px; }
+    .filter-group label { font-size: 0.72rem; }
+    .filter-group select { padding: 5px 8px; font-size: 0.75rem; min-width: 90px; }
+    .filter-chip { padding: 5px 10px; font-size: 0.72rem; }
+    .filter-result { font-size: 0.72rem; }
+}
+
 /* ── Restaurant Cards (PasGo style) ── */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+
+/* ── Sort Row (mini filter for card sections) ── */
+.sort-row {
+    display: flex; justify-content: flex-end; margin-bottom: 10px;
+}
+.sort-row select {
+    padding: 5px 10px; border: 1px solid var(--border); border-radius: 6px;
+    font-size: 0.78rem; background: #fff; cursor: pointer; color: var(--text-light);
+}
+.sort-row select:focus { outline: none; border-color: var(--primary); }
 .card {
     background: var(--card); border-radius: var(--radius);
     overflow: hidden; box-shadow: var(--shadow);

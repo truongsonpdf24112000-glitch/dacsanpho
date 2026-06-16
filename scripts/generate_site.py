@@ -88,6 +88,22 @@ def card_html(r, depth=0):
     is_orig = r.get("is_original") in [True, "True", "true", "1"]
     cat = safe_str(r.get("dish_category", ""), "Khác")
     addr = safe_str(r.get("address", ""), f"{province}")
+    reviews = int(r.get("reviews_count", 0) or 0) if pd.notna(r.get("reviews_count")) else 0
+
+    # Parse price level for filtering
+    price_level = "-1"  # unknown
+    price_str = str(r.get("price_range", "")).strip()
+    if price_str and price_str not in ("nan", "None", "", "Liên hệ"):
+        import re as _re
+        nums = _re.findall(r'\d[\d,.]*', price_str.replace(".", ""))
+        if nums:
+            try:
+                max_p = max(int(n) for n in nums if n.isdigit())
+                if max_p < 50000: price_level = "0"     # budget
+                elif max_p < 150000: price_level = "1"   # mid
+                else: price_level = "2"                   # premium
+            except:
+                pass
 
     badge = '<span class="card-badge original">⭐ Quán gốc</span>' if is_orig else ""
     cat_icon = CAT_ICONS.get(cat, "🍽️")
@@ -99,7 +115,7 @@ def card_html(r, depth=0):
     else:
         img_html = cat_icon
 
-    return f"""<div class="card" data-category="{cat}">
+    return f"""<div class="card" data-category="{cat}" data-rating="{rating:.0f}" data-reviews="{reviews}" data-price="{price_level}" data-original="{'true' if is_orig else 'false'}">
   <a href="{sp}mon/{slug}-{rid}/">
     <div class="card-img">{badge}{img_html}</div>
     <div class="card-body">
