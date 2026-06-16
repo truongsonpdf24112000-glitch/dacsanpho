@@ -12,11 +12,11 @@
 <body>
 <header class="site-header">
   <div class="container">
-    <a href="/" class="logo">Đặc Sản Phố<span>Món ngon đường phố Việt Nam</span></a>
+    <a href="/" class="logo">Đặc Sản Phố<span>Món ngon đường phố</span></a>
     <nav>
-      <a href="/">Trang chủ</a>
-      <a href="/tinh/">Tỉnh thành</a>
-      <a href="/mon/">Món ăn</a>
+      <a href="/" class="{{NAV_HOME}}">Trang chủ</a>
+      <a href="/tinh/" class="{{NAV_PROVINCE}}">Tỉnh thành</a>
+      <a href="/mon/" class="{{NAV_DISH}}">Món ăn</a>
     </nav>
   </div>
 </header>
@@ -25,10 +25,27 @@
 
 <footer class="site-footer">
   <div class="container">
-    <div class="grid">
-      <div><h4>Đặc Sản Phố</h4><p>Danh bạ món ăn đường phố Việt Nam — tìm quán ngon, đúng vị, đúng địa điểm gốc.</p></div>
-      <div><h4>Tỉnh nổi bật</h4>{{FOOTER_LINKS}}</div>
-      <div><h4>Liên kết</h4><p><a href="/about/">Giới thiệu</a></p><p><a href="/sitemap.xml">Sitemap</a></p></div>
+    <div>
+      <h4>🍜 Đặc Sản Phố</h4>
+      <p style="color:#888">Danh bạ món ăn đường phố Việt Nam. Tìm quán ngon, đúng vị, đúng địa điểm gốc trên khắp 63 tỉnh thành.</p>
+    </div>
+    <div>
+      <h4>Tỉnh thành nổi bật</h4>
+      {{FOOTER_PROVINCES}}
+    </div>
+    <div>
+      <h4>Danh mục món</h4>
+      <a href="/mon/?cat=Bánh">Bánh</a>
+      <a href="/mon/?cat=Phở/Bún/Miến">Phở / Bún / Miến</a>
+      <a href="/mon/?cat=Chè/Tráng miệng">Chè / Tráng miệng</a>
+      <a href="/mon/?cat=Ốc/Hải sản">Ốc / Hải sản</a>
+      <a href="/mon/?cat=Nem/Chả/Gỏi">Nem / Chả / Gỏi</a>
+      <a href="/mon/?cat=Đồ nướng">Đồ nướng</a>
+      <a href="/mon/?cat=Cơm">Cơm</a>
+    </div>
+    <div>
+      <h4>Liên kết</h4>
+      <a href="/sitemap.xml">Sitemap</a>
     </div>
     <div class="bottom">© {{YEAR}} Đặc Sản Phố. Tổng hợp từ cộng đồng yêu ẩm thực Việt.</div>
   </div>

@@ -21,7 +21,8 @@ STD_COLS = [
     "dish_name", "vendor_name", "address", "ward", "district",
     "province", "price_range", "hours", "is_original",
     "established", "rating", "description", "tags",
-    "dish_category", "image_urls", "source"
+    "dish_category", "image_urls", "source",
+    "place_id", "reviews_count", "lat", "lng", "website",
 ]
 
 # VN province name normalization
@@ -47,6 +48,12 @@ COL_ALIASES = {
     "description": ["description", "mô tả", "desc", "note", "ghi chú"],
     "province": ["province", "tỉnh", "city", "thành phố", "state"],
     "district": ["district", "quận", "huyện", "quan", "huyen"],
+    "image_urls": ["image_urls", "image_url", "image", "images", "thumbnail", "photo_url"],
+    "place_id": ["place_id", "placeId", "placeid", "maps_id"],
+    "reviews_count": ["reviews_count", "reviewsCount", "review_count"],
+    "lat": ["lat", "latitude"],
+    "lng": ["lng", "lon", "longitude", "long"],
+    "website": ["website", "site", "web", "url", "link"],
 }
 
 

@@ -1,108 +1,252 @@
-/* === Đặc Sản Đường Phố Việt Nam — Stylesheet === */
+/* === Đặc Sản Phố — Style theo chuẩn PasGo === */
 :root {
-    --red: #c62828; --red-light: #ef5350;
-    --yellow: #f9a825; --yellow-light: #fff9c4;
-    --green: #2e7d32; --green-light: #a5d6a7;
-    --bg: #fffdf7; --card: #fff;
-    --text: #212121; --text-light: #757575;
-    --border: #e0e0e0; --radius: 10px;
-    --max-w: 1024px;
+    --primary: #ee3124;
+    --primary-dark: #c41a1a;
+    --primary-light: #fff5f5;
+    --yellow: #f5a623;
+    --green: #27ae60;
+    --bg: #f4f4f4;
+    --card: #fff;
+    --text: #222;
+    --text-light: #666;
+    --text-lighter: #999;
+    --border: #e8e8e8;
+    --radius: 8px;
+    --max-w: 1140px;
+    --shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--bg); color: var(--text); line-height: 1.7;
+    background: var(--bg); color: var(--text); line-height: 1.5;
+    font-size: 14px;
 }
-a { color: var(--red); text-decoration: none; }
-a:hover { color: var(--red-light); }
-.container { max-width: var(--max-w); margin: 0 auto; padding: 0 16px; }
+a { color: var(--text); text-decoration: none; }
+a:hover { color: var(--primary); }
+img { max-width: 100%; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 12px; }
 
-/* Header */
+/* ── Header ── */
 .site-header {
-    background: white; border-bottom: 2px solid var(--red-light);
-    padding: 12px 0; position: sticky; top: 0; z-index: 100;
+    background: #fff; border-bottom: 1px solid var(--border);
+    height: 56px; display: flex; align-items: center;
+    position: sticky; top: 0; z-index: 100;
 }
-.site-header .container { display: flex; align-items: center; justify-content: space-between; }
-.logo { font-size: 1.3rem; font-weight: 700; color: var(--red); }
-.logo span { font-size: 0.65rem; display: block; color: var(--text-light); font-weight: 400; }
-nav { display: flex; gap: 16px; font-size: 0.9rem; }
+.site-header .container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.logo { font-size: 1.25rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+.logo::before { content: "🍜"; font-size: 1.3rem; }
+.logo span { font-size: 0.65rem; color: var(--text-light); font-weight: 400; display: block; line-height: 1; }
+nav { display: flex; gap: 8px; align-items: center; }
+nav a { padding: 6px 12px; border-radius: 6px; font-size: 0.88rem; color: var(--text); font-weight: 500; transition: background 0.15s; }
+nav a:hover, nav a.active { background: var(--primary-light); color: var(--primary); text-decoration: none; }
+.city-select { 
+    padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px;
+    font-size: 0.85rem; background: #fff; cursor: pointer; color: var(--text);
+}
 
-/* Hero */
+/* ── Hero ── */
 .hero {
-    background: linear-gradient(135deg, var(--red) 0%, #b71c1c 100%);
-    color: white; padding: 48px 0; text-align: center;
+    background: linear-gradient(135deg, #c62828 0%, #e53935 100%);
+    padding: 48px 0 36px; text-align: center; color: #fff;
 }
-.hero h1 { font-size: 1.8rem; margin-bottom: 8px; }
-.hero p { font-size: 1rem; opacity: 0.9; }
-.hero input {
-    padding: 12px 18px; border: none; border-radius: var(--radius);
-    font-size: 1rem; width: 100%; max-width: 400px; margin-top: 16px;
+.hero h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 6px; }
+.hero p { font-size: 0.95rem; opacity: 0.85; margin-bottom: 20px; }
+.hero .search-box {
+    display: flex; max-width: 540px; margin: 0 auto;
+    background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+.hero .search-box select {
+    border: none; padding: 12px 14px; font-size: 0.9rem;
+    background: #fafafa; border-right: 1px solid var(--border);
+    color: var(--text); cursor: pointer; min-width: 130px;
+}
+.hero .search-box input {
+    flex: 1; border: none; padding: 12px 16px; font-size: 0.95rem;
+}
+.hero .search-box input:focus, .hero .search-box select:focus { outline: none; }
+.hero .search-box button {
+    background: var(--primary); color: #fff; border: none;
+    padding: 12px 20px; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+    min-width: 80px;
+}
+.hero .search-box button:hover { background: var(--primary-dark); }
 
-/* Cards */
-.grid { display: grid; gap: 14px; }
-.grid-2 { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-.grid-3 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+/* ── Category Chips ── */
+.cat-section { background: #fff; padding: 12px 0; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+.cat-scroll { 
+    display: flex; gap: 8px; overflow-x: auto; padding: 4px 0;
+    scrollbar-width: none; -ms-overflow-style: none;
+}
+.cat-scroll::-webkit-scrollbar { display: none; }
+.cat-chip {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 10px 16px; border-radius: 12px; cursor: pointer;
+    font-size: 0.78rem; font-weight: 500; color: var(--text);
+    white-space: nowrap; transition: all 0.15s; min-width: 70px;
+    border: 1px solid transparent; background: var(--bg);
+}
+.cat-chip:hover, .cat-chip.active { background: var(--primary-light); color: var(--primary); border-color: var(--primary); }
+.cat-chip .icon { font-size: 1.5rem; margin-bottom: 4px; }
 
+/* ── Section Headers ── */
+.section { padding: 20px 0; }
+.section-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
+}
+.section-header h2 { 
+    font-size: 1.15rem; font-weight: 700; color: var(--text);
+    padding-left: 12px; border-left: 3px solid var(--primary);
+}
+.section-header a { font-size: 0.85rem; color: var(--primary); font-weight: 500; }
+
+/* ── Restaurant Cards (PasGo style) ── */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
 .card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 16px;
-    transition: transform 0.12s;
+    background: var(--card); border-radius: var(--radius);
+    overflow: hidden; box-shadow: var(--shadow);
+    transition: transform 0.15s, box-shadow 0.15s;
+    position: relative;
 }
-.card:hover { transform: translateY(-2px); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-.card h3 { font-size: 1rem; margin-bottom: 4px; }
-.card .meta { font-size: 0.85rem; color: var(--text-light); }
-.card .price { color: var(--red); font-weight: 600; margin-top: 4px; }
-.card .badge {
-    display: inline-block; font-size: 0.7rem; padding: 2px 8px;
-    border-radius: 12px; margin-right: 4px;
+.card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+.card-img {
+    height: 170px; background: #e9ecef; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    color: #ccc; font-size: 2.5rem;
 }
-.badge-original { background: var(--yellow-light); color: #f57f17; }
-.badge-hot { background: #ffcdd2; color: #b71c1c; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; }
+.card-badge {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--primary); color: #fff; font-size: 0.7rem;
+    padding: 3px 8px; border-radius: 4px; font-weight: 600; z-index: 2;
+}
+.card-badge.original { background: var(--yellow); color: #5c3d00; }
+.card-body { padding: 12px 14px; }
+.card-body h3 { 
+    font-size: 0.95rem; font-weight: 600; margin-bottom: 6px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.card-location { font-size: 0.8rem; color: var(--text-light); display: flex; align-items: center; gap: 3px; }
+.card-location::before { content: "📍"; }
+.card-rating { 
+    font-size: 0.78rem; color: var(--yellow); font-weight: 600;
+    display: flex; align-items: center; gap: 2px;
+}
+.card-rating::before { content: "⭐"; }
+.card-price { 
+    font-size: 0.9rem; font-weight: 700; color: var(--primary);
+    margin-top: 6px;
+}
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.card-tag { 
+    font-size: 0.7rem; padding: 2px 8px; border-radius: 3px;
+    background: #f0f0f0; color: #777;
+}
 
-/* Tags */
-.tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
-.tag { font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; background: #f5f5f5; color: #666; }
-.tag-banh { background: #fff3e0; color: #e65100; }
-.tag-pho { background: #e8f5e9; color: #1b5e20; }
-.tag-che { background: #fce4ec; color: #880e4f; }
-.tag-oc { background: #e3f2fd; color: #0d47a1; }
-.tag-nuong { background: #fff8e1; color: #ff6f00; }
+/* ── Quán Gốc Highlight ── */
+.original-section { background: #fffbf0; padding: 24px 0; margin: 8px 0; }
+.original-section .section-header h2 { color: #b8860b; border-color: var(--yellow); }
 
-/* Section */
-.section { padding: 32px 0; }
-.section h2 { font-size: 1.4rem; margin-bottom: 16px; color: var(--red); }
+/* ── City Grid ── */
+.city-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+.city-card {
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px 12px; text-align: center; transition: all 0.15s;
+}
+.city-card:hover { border-color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.city-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
+.city-card .count { font-size: 0.78rem; color: var(--text-lighter); }
 
-/* Breadcrumb */
-.breadcrumb { padding: 12px 0; font-size: 0.85rem; color: var(--text-light); }
-
-/* Detail page */
-.detail-header { padding: 24px 0; border-bottom: 1px solid var(--border); }
-.detail-header h1 { font-size: 1.6rem; }
-.detail-header .loc { font-size: 0.95rem; color: var(--text-light); margin-top: 4px; }
-.detail-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; padding: 24px 0; }
+/* ── Detail Page ── */
+.breadcrumb { padding: 12px 0; font-size: 0.82rem; color: var(--text-lighter); }
+.breadcrumb a { color: var(--primary); }
+.detail-header { padding: 20px 0; background: #fff; border-bottom: 1px solid var(--border); }
+.detail-header h1 { font-size: 1.5rem; }
+.detail-header .sub { font-size: 0.9rem; color: var(--text-light); margin-top: 4px; }
+.detail-grid { display: grid; grid-template-columns: 1fr 320px; gap: 24px; padding: 24px 0; }
 .detail-sidebar {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 16px; height: fit-content;
-    position: sticky; top: 70px;
+    background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px; height: fit-content;
+    position: sticky; top: 72px;
 }
-.detail-sidebar .row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
-.detail-sidebar .row:last-child { border: none; }
+.info-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #f5f5f5; font-size: 0.88rem; }
+.info-row:last-child { border-bottom: none; }
+.info-row .label { color: var(--text-light); }
+.info-row .value { font-weight: 500; text-align: right; max-width: 180px; }
 
-/* Footer */
+/* ── Ad slots ── */
+.ad { 
+    background: #fafafa; border: 1px dashed #ddd; border-radius: 6px;
+    padding: 16px; text-align: center; color: #bbb; font-size: 0.78rem;
+    margin: 16px 0;
+}
+
+/* ── Footer (PasGo style — multi column) ── */
 .site-footer {
-    background: #1a1a1a; color: #aaa; padding: 32px 0; margin-top: 48px; font-size: 0.85rem;
+    background: #1a1a1a; color: #aaa; padding: 32px 0 0; margin-top: 40px; font-size: 0.82rem;
 }
-.site-footer h4 { color: white; margin-bottom: 8px; }
-.site-footer .grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-.site-footer .bottom { text-align: center; padding-top: 16px; border-top: 1px solid #333; margin-top: 16px; }
-.site-footer a { color: #ccc; }
+.site-footer .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; }
+.site-footer h4 { color: #fff; font-size: 0.9rem; margin-bottom: 10px; }
+.site-footer a { color: #888; display: block; padding: 2px 0; }
+.site-footer a:hover { color: #fff; text-decoration: none; }
+.site-footer .bottom {
+    grid-column: 1 / -1; text-align: center;
+    padding: 16px 0; border-top: 1px solid #333; margin-top: 8px;
+    color: #666; font-size: 0.78rem;
+}
 
-/* Ad slot */
-.ad { background: #f9f9f9; border: 1px dashed #ddd; border-radius: 8px; padding: 16px; text-align: center; color: #bbb; font-size: 0.8rem; margin: 20px 0; }
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .site-header .container { padding: 0 8px; }
+    .logo { font-size: 1rem; }
+    .hero { padding: 28px 0 24px; }
+    .hero h1 { font-size: 1.2rem; }
+    .hero p { font-size: 0.85rem; padding: 0 12px; }
+    .hero .search-box { 
+        flex-direction: column; border-radius: 0; margin: 0 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .hero .search-box select { 
+        min-width: 100%; font-size: 0.85rem; border-bottom: 1px solid var(--border);
+        border-right: none; padding: 10px 14px;
+    }
+    .hero .search-box input { padding: 10px 14px; font-size: 0.9rem; }
+    .hero .search-box button { padding: 10px; font-size: 0.85rem; }
+    
+    .cat-chip { padding: 8px 12px; font-size: 0.72rem; min-width: 55px; }
+    .cat-chip .icon { font-size: 1.2rem; }
+    
+    .card-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .card-img { height: 130px; }
+    .card-body { padding: 10px; }
+    .card-body h3 { font-size: 0.85rem; }
+    .card-price { font-size: 0.82rem; }
+    .card-location { font-size: 0.72rem; }
+    
+    .city-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .city-card { padding: 12px 8px; }
+    .city-card h3 { font-size: 0.8rem; }
+    
+    .detail-header h1 { font-size: 1.2rem; }
+    .detail-header .sub { font-size: 0.82rem; }
+    .detail-grid { grid-template-columns: 1fr; gap: 16px; }
+    .detail-sidebar { position: static; }
+    
+    .section-header h2 { font-size: 1rem; }
+    .section { padding: 12px 0; }
+    
+    nav { gap: 2px; }
+    nav a { padding: 4px 8px; font-size: 0.75rem; }
+}
 
-/* Responsive */
-@media (max-width: 600px) {
-    .hero h1 { font-size: 1.3rem; }
-    .detail-grid { grid-template-columns: 1fr; }
+@media (max-width: 400px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .city-grid { grid-template-columns: repeat(2, 1fr); }
+    .card-img { height: 160px; }
+    .hero .search-box input { padding: 12px 10px; }
+    .cat-scroll { gap: 6px; }
+    .cat-chip { padding: 6px 10px; min-width: 50px; font-size: 0.7rem; }
+    .cat-chip .icon { font-size: 1.1rem; }
 }
