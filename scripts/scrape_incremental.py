@@ -19,7 +19,7 @@ import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = PROJECT_ROOT / "data" / "raw"
-API_KEY = os.environ.get("APIFY_API_KEY", "")
+API_KEY = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("APIFY_API_KEY", "")
 
 if not API_KEY:
     print("❌ Chưa set APIFY_API_KEY!")
