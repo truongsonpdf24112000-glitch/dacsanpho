@@ -1,0 +1,31 @@
+<!-- DISH DETAIL PAGE -->
+<div class="container"><nav class="breadcrumb"><a href="/">Trang chủ</a> › <a href="/mon/">Món ăn</a> › {{DISH_NAME}}</nav></div>
+
+<div class="detail-header">
+  <div class="container">
+    <h1>{{DISH_NAME}} — {{PROVINCE}}</h1>
+    <p class="loc">
+      {{VENDOR_NAME}} · {{ADDRESS}} · {{PRICE}}
+      {{#IS_ORIGINAL}}<span class="badge badge-original">Quán gốc</span>{{/IS_ORIGINAL}}
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-grid">
+    <div>
+      <p>{{DESCRIPTION}}</p>
+      <div class="ad">Quảng cáo</div>
+      <h3>Các quán {{DISH_NAME}} khác</h3>
+      <div class="grid grid-3">{{OTHER_VENDORS}}</div>
+    </div>
+    <aside class="detail-sidebar">
+      <div class="row"><span>📍 Địa chỉ</span><span>{{ADDRESS}}</span></div>
+      <div class="row"><span>🏙️ Tỉnh</span><span><a href="/tinh/{{PROVINCE_SLUG}}/">{{PROVINCE}}</a></span></div>
+      <div class="row"><span>💰 Giá</span><span>{{PRICE}}</span></div>
+      <div class="row"><span>🕐 Giờ</span><span>{{HOURS}}</span></div>
+      <div class="row"><span>📂 Loại</span><span><a href="/mon/?cat={{CATEGORY_SLUG}}">{{CATEGORY}}</a></span></div>
+      {{#ESTABLISHED}}<div class="row"><span>📅 Từ năm</span><span>{{ESTABLISHED}}</span></div>{{/ESTABLISHED}}
+    </aside>
+  </div>
+</div>

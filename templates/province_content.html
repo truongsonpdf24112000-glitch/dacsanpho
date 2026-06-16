@@ -1,0 +1,22 @@
+<!-- PROVINCE PAGE -->
+<div class="container"><nav class="breadcrumb"><a href="/">Trang chủ</a> › {{PROVINCE}}</nav></div>
+
+<section class="hero" style="padding:32px 0;">
+  <div class="container">
+    <h1>Món Ăn Đường Phố {{PROVINCE}}</h1>
+    <p>{{COUNT}} quán ăn đường phố tại {{PROVINCE}} — đặc sản địa phương chính gốc</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="ad">Quảng cáo</div>
+
+  <!-- Dish list in this province -->
+  <section class="section">
+    <h2>Tất cả quán tại {{PROVINCE}}</h2>
+    <div class="grid grid-3">{{VENDOR_CARDS}}</div>
+  </section>
+
+  <!-- Nearby provinces -->
+  {{NEARBY}}
+</div>
