@@ -1,15 +1,15 @@
-<!-- HOMEPAGE — PasGo Style -->
+<!-- HOMEPAGE — Hero + Search + Sections -->
 <section class="hero">
   <div class="container">
     <h1>Khám Phá Món Ngon Đường Phố Việt Nam</h1>
-    <p>Tìm quán ăn vặt, đặc sản địa phương — đúng vị, đúng địa điểm gốc</p>
+    <p>Tìm quán ăn vặt, đặc sản địa phương — đúng vị, đúng địa điểm gốc, giá chuẩn</p>
     <div class="search-box">
       <select id="citySelect" onchange="goToCity()">
         <option value="">🏙️ Chọn tỉnh thành</option>
         {{PROVINCE_OPTIONS}}
       </select>
-      <input type="text" id="searchInput" placeholder="Tìm món ăn, quán ăn..." onkeyup="liveSearch()">
-      <button onclick="liveSearch()">🔍 Tìm</button>
+      <input type="text" id="searchInput" placeholder="Tìm món ăn, quán ăn..." oninput="liveSearch()" autocomplete="off">
+      <button onclick="liveSearch()" aria-label="Tìm kiếm">🔍 Tìm</button>
     </div>
   </div>
 </section>
@@ -17,7 +17,7 @@
 <!-- Category Chips -->
 <div class="cat-section">
   <div class="container">
-    <div class="cat-scroll">
+    <div class="cat-scroll" id="catScroll">
       <span class="cat-chip active" onclick="filterCat('all')"><span class="icon">🍽️</span>Tất cả</span>
       {{CATEGORY_CHIPS}}
     </div>
@@ -26,7 +26,7 @@
 
 <div class="container">
   <!-- Ad -->
-  <div class="ad">Quảng cáo</div>
+  <div class="ad">📢 Quảng cáo</div>
 
   <!-- Featured / Quán gốc -->
   <section class="section">
@@ -35,17 +35,17 @@
       <a href="/mon/">Xem tất cả →</a>
     </div>
     <div class="sort-row">
-      <select onchange="sortCardGrid(this)" data-target="originalGrid">
-        <option value="">Sắp xếp</option>
-        <option value="rating-desc">Rating cao nhất</option>
-        <option value="reviews-desc">Nhiều review nhất</option>
+      <select onchange="sortCardGrid(this)" data-target="originalGrid" aria-label="Sắp xếp quán gốc">
+        <option value="">↕️ Sắp xếp</option>
+        <option value="rating-desc">⭐ Rating cao nhất</option>
+        <option value="reviews-desc">💬 Nhiều đánh giá nhất</option>
       </select>
     </div>
     <div class="card-grid" id="originalGrid">{{ORIGINAL_CARDS}}</div>
   </section>
 
   <!-- Ad -->
-  <div class="ad">Quảng cáo</div>
+  <div class="ad">📢 Quảng cáo</div>
 
   <!-- Top Rated -->
   <section class="section">
@@ -53,10 +53,10 @@
       <h2>🔥 Được Yêu Thích Nhất</h2>
     </div>
     <div class="sort-row">
-      <select onchange="sortCardGrid(this)" data-target="topGrid">
-        <option value="">Sắp xếp</option>
-        <option value="reviews-desc">Nhiều review nhất</option>
-        <option value="price-asc">Giá thấp nhất</option>
+      <select onchange="sortCardGrid(this)" data-target="topGrid" aria-label="Sắp xếp yêu thích">
+        <option value="">↕️ Sắp xếp</option>
+        <option value="reviews-desc">💬 Nhiều đánh giá nhất</option>
+        <option value="price-asc">💰 Giá thấp nhất</option>
       </select>
     </div>
     <div class="card-grid" id="topGrid">{{TOP_RATED_CARDS}}</div>
@@ -78,35 +78,85 @@
     </div>
     <div class="city-grid">{{CATEGORY_GRID}}</div>
   </section>
+
+  <!-- Back to top -->
+  <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" 
+          style="position:fixed;bottom:24px;right:24px;z-index:999;
+                 width:44px;height:44px;border-radius:50%;border:none;
+                 background:var(--primary);color:#fff;font-size:1.2rem;
+                 cursor:pointer;box-shadow:var(--shadow-lg);
+                 opacity:0;transform:translateY(20px);
+                 transition:all var(--transition);pointer-events:none;"
+          aria-label="Lên đầu trang">↑</button>
 </div>
 
 <script>
+// ── Smooth scroll to category section ──
+function filterCat(cat) {
+  document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  const cards = document.querySelectorAll('.card-grid .card');
+  if (cat === 'all') {
+    cards.forEach(c => c.style.display = '');
+  } else {
+    cards.forEach(c => {
+      c.style.display = c.dataset.category === cat ? '' : 'none';
+    });
+  }
+  
+  // Scroll to result
+  const firstGrid = document.querySelector('.card-grid');
+  if (firstGrid) firstGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── City selector ──
 function goToCity() {
   const sel = document.getElementById('citySelect');
   if (sel.value) window.location = sel.value;
 }
+
+// ── Live search with debounce ──
+let searchTimeout;
 function liveSearch() {
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  document.querySelectorAll('.card').forEach(c => {
-    c.style.display = c.textContent.toLowerCase().includes(q) ? '' : 'none';
-  });
-  if (!q) document.querySelectorAll('.card').forEach(c => c.style.display = '');
-}
-function filterCat(cat) {
-  document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
-  event.target.classList.add('active');
-  if (cat === 'all') {
-    document.querySelectorAll('.card').forEach(c => c.style.display = '');
-  } else {
-    document.querySelectorAll('.card').forEach(c => {
-      c.style.display = c.dataset.category === cat ? '' : 'none';
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    const allCards = document.querySelectorAll('.card-grid .card');
+    
+    if (!q) {
+      allCards.forEach(c => c.style.display = '');
+      document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+      document.querySelector('.cat-chip')?.classList.add('active');
+      return;
+    }
+    
+    // Reset category filter
+    document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+    
+    let found = 0;
+    allCards.forEach(c => {
+      const text = c.textContent.toLowerCase();
+      if (text.includes(q)) {
+        c.style.display = '';
+        found++;
+      } else {
+        c.style.display = 'none';
+      }
     });
-  }
+    
+    // Scroll to first match
+    const first = document.querySelector('.card-grid .card[style*="display:"]') 
+               || document.querySelector('.card-grid .card:not([style*="display: none"])');
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 250);
 }
+
+// ── Sort cards ──
 function sortCardGrid(select) {
-  const gridId = select.dataset.target;
-  const grid = document.getElementById(gridId);
+  const grid = document.getElementById(select.dataset.target);
   if (!grid) return;
+  
   const cards = Array.from(grid.querySelectorAll('.card'));
   const val = select.value;
   
@@ -120,4 +170,25 @@ function sortCardGrid(select) {
   
   cards.forEach(c => grid.appendChild(c));
 }
+
+// ── Back to top visibility ──
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) {
+    btn.style.opacity = '1';
+    btn.style.transform = 'translateY(0)';
+    btn.style.pointerEvents = 'auto';
+  } else {
+    btn.style.opacity = '0';
+    btn.style.transform = 'translateY(20px)';
+    btn.style.pointerEvents = 'none';
+  }
+});
+
+// ── Add animation classes to cards ──
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.card-grid .card').forEach((card, i) => {
+    card.classList.add('animate-in');
+  });
+});
 </script>

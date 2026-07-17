@@ -1,4 +1,4 @@
-<!-- DETAIL PAGE — Đầy đủ ảnh, map, đánh giá, menu -->
+<!-- DETAIL PAGE — Full ảnh, map, đánh giá, menu -->
 <div class="container"><nav class="breadcrumb"><a href="/">Trang chủ</a> › <a href="/tinh/{{PROVINCE_SLUG}}/">{{PROVINCE}}</a> › {{DISPLAY_NAME}}</nav></div>
 
 <div class="detail-header">
@@ -6,9 +6,9 @@
     <h1>{{DISPLAY_NAME}}</h1>
     <p class="sub">
       {{BADGE}}
-      📍 <a href="{{MAPS_URL}}" target="_blank" rel="nofollow" style="color:var(--primary);">{{ADDRESS}}</a>
+      📍 <a href="{{MAPS_URL}}" target="_blank" rel="nofollow noopener" style="color:var(--primary);font-weight:600;">{{ADDRESS}}</a>
       · ⭐ {{RATING}} · {{REVIEWS}} đánh giá
-      · <a href="{{MAPS_URL}}" target="_blank" rel="nofollow" style="color:var(--primary);font-weight:500;">📌 Xem trên Google Maps →</a>
+      · <a href="{{MAPS_URL}}" target="_blank" rel="nofollow noopener" style="color:var(--primary);font-weight:600;">📌 Xem trên Google Maps →</a>
     </p>
   </div>
 </div>
@@ -19,51 +19,46 @@
       <!-- Ảnh -->
       {{IMAGE_HTML}}
 
-      <!-- Menu link -->
-      <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
-        <a href="{{MAPS_URL}}" target="_blank" rel="nofollow" 
-           style="display:inline-flex;align-items:center;gap:6px;background:#0b8043;color:#fff;padding:10px 20px;border-radius:8px;font-weight:600;text-decoration:none;">
+      <!-- Action buttons -->
+      <div class="btn-group">
+        <a href="{{MAPS_URL}}" target="_blank" rel="nofollow noopener" class="btn btn-green">
           📸 Xem ảnh & thực đơn
         </a>
-        <a href="{{MAPS_URL}}" target="_blank" rel="nofollow"
-           style="display:inline-flex;align-items:center;gap:6px;background:#1a73e8;color:#fff;padding:10px 20px;border-radius:8px;font-weight:600;text-decoration:none;">
+        <a href="{{MAPS_URL}}" target="_blank" rel="nofollow noopener" class="btn btn-blue">
           🗺️ Chỉ đường
         </a>
         {{WEBSITE_BUTTON}}
       </div>
 
-      <div class="ad">Quảng cáo</div>
+      <div class="ad">📢 Quảng cáo</div>
 
       <!-- Mô tả -->
-      <h2 style="font-size:1.1rem;margin:16px 0 8px;color:var(--text);">ℹ️ Giới thiệu</h2>
-      <p>{{DESCRIPTION}}</p>
+      <h2 style="font-family:var(--font-heading);font-size:1.15rem;margin:20px 0 10px;color:var(--text);">ℹ️ Giới thiệu</h2>
+      <p style="line-height:1.7;color:var(--text-secondary);">{{DESCRIPTION}}</p>
 
-      <!-- Menu (nếu có từ scrape) -->
+      <!-- Menu -->
       {{MENU_SECTION}}
 
       <!-- Dịch vụ / Tags -->
       {{TAGS_HTML}}
 
-      <div class="ad">Quảng cáo</div>
+      <div class="ad">📢 Quảng cáo</div>
 
       <!-- Google Maps nhúng -->
-      <h2 style="font-size:1.1rem;margin:16px 0 8px;">🗺️ Vị trí trên bản đồ</h2>
-      <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border);">
-        <iframe width="100%" height="300" style="border:0;" loading="lazy" allowfullscreen
+      <h2 style="font-family:var(--font-heading);font-size:1.15rem;margin:20px 0 10px;">🗺️ Vị trí trên bản đồ</h2>
+      <div class="map-frame">
+        <iframe width="100%" height="320" style="border:0;display:block;" loading="lazy" allowfullscreen
           referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps/embed/v1/place?key=AIzaSy...17R8&q=place_id:{{PLACE_ID}}">
         </iframe>
       </div>
 
-      <!-- Đánh giá từ Google Maps -->
-      <h2 style="font-size:1.1rem;margin:16px 0 8px;">⭐ Đánh giá từ khách</h2>
-      <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center;">
-        <div style="font-size:2rem;font-weight:700;color:var(--yellow);">⭐ {{RATING}}/5</div>
-        <div style="font-size:0.95rem;color:var(--text-light);margin-top:4px;">{{REVIEWS}} đánh giá trên Google Maps</div>
-        <a href="{{MAPS_URL}}" target="_blank" rel="nofollow" 
-           style="display:inline-block;margin-top:12px;color:var(--primary);font-weight:500;">
-          📝 Xem tất cả đánh giá trên Google Maps →
-        </a>
+      <!-- Đánh giá -->
+      <h2 style="font-family:var(--font-heading);font-size:1.15rem;margin:20px 0 10px;">⭐ Đánh giá từ khách</h2>
+      <div class="rating-card">
+        <div class="big-rating">⭐ {{RATING}}/5</div>
+        <div class="rating-count">{{REVIEWS}} đánh giá trên Google Maps</div>
+        <a href="{{MAPS_URL}}" target="_blank" rel="nofollow noopener">📝 Xem tất cả đánh giá trên Google Maps →</a>
       </div>
 
       <!-- Quán khác cùng tỉnh -->
@@ -71,13 +66,13 @@
     </div>
 
     <aside class="detail-sidebar">
-      <h3 style="font-size:1rem;margin-bottom:12px;">ℹ️ Thông tin quán</h3>
-      <div class="info-row"><span class="label">📍 Địa chỉ</span><span class="value"><a href="{{MAPS_URL}}" target="_blank" rel="nofollow">{{ADDRESS}}</a></span></div>
+      <h3 style="font-family:var(--font-heading);font-size:1.05rem;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--primary);">ℹ️ Thông tin quán</h3>
+      <div class="info-row"><span class="label">📍 Địa chỉ</span><span class="value"><a href="{{MAPS_URL}}" target="_blank" rel="nofollow noopener">{{ADDRESS}}</a></span></div>
       <div class="info-row"><span class="label">🏙️ Tỉnh</span><span class="value"><a href="/tinh/{{PROVINCE_SLUG}}/">{{PROVINCE}}</a></span></div>
-      <div class="info-row"><span class="label">💰 Giá</span><span class="value price">{{PRICE}}</span></div>
+      <div class="info-row"><span class="label">💰 Giá</span><span class="value" style="color:var(--primary);font-weight:700;">{{PRICE}}</span></div>
       <div class="info-row"><span class="label">🕐 Giờ mở</span><span class="value">{{HOURS}}</span></div>
       <div class="info-row"><span class="label">📂 Loại</span><span class="value">{{CATEGORY}}</span></div>
-      <div class="info-row"><span class="label">⭐ Đánh giá</span><span class="value rating-val">{{RATING}}/5 ({{REVIEWS}} đánh giá)</span></div>
+      <div class="info-row"><span class="label">⭐ Đánh giá</span><span class="value" style="color:var(--secondary);font-weight:700;">{{RATING}}/5 ({{REVIEWS}} đánh giá)</span></div>
       {{ESTABLISHED_ROW}}
       {{WEBSITE_ROW}}
     </aside>

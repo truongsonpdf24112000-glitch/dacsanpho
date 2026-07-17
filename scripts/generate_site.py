@@ -124,7 +124,7 @@ def card_html(r, depth=0):
     # Reviews display
     reviews_str = f"{reviews:,} đánh giá" if reviews > 0 else ""
 
-    return f"""<div class="card" data-category="{cat}" data-rating="{rating:.0f}" data-reviews="{reviews}" data-price="{price_level}" data-original="{'true' if is_orig else 'false'}">
+    return f"""<div class="card animate-in" data-category="{cat}" data-rating="{rating:.0f}" data-reviews="{reviews}" data-price="{price_level}" data-original="{'true' if is_orig else 'false'}">
   <a href="{sp}mon/{slug}-{rid}/">
     <div class="card-img">{badge}{dish_badge}{img_html}</div>
     <div class="card-body">
@@ -313,7 +313,7 @@ def gen_details(df):
         
         # Image HTML
         if img_url and img_url.startswith("http"):
-            img_html = f'<div style="border-radius:8px;overflow:hidden;margin-bottom:16px;"><img src="{img_url}" alt="{display_name}" style="width:100%;max-height:400px;object-fit:cover;"></div>'
+            img_html = f'<div class="detail-image"><img src="{img_url}" alt="{display_name}" loading="lazy"></div>'
         else:
             img_html = ""
         content = content.replace("{{IMAGE_HTML}}", img_html)
@@ -321,8 +321,8 @@ def gen_details(df):
         # Tags
         if tags_str:
             tag_list = [t.strip() for t in tags_str.split(";") if t.strip()]
-            tags_html = '<div style="margin:8px 0;display:flex;flex-wrap:wrap;gap:6px;">' + "".join(
-                f'<span style="background:#e8f5e9;color:#2e7d32;padding:4px 10px;border-radius:4px;font-size:0.82rem;">✅ {t}</span>'
+            tags_html = '<div class="tag-list">' + "".join(
+                f'<span>{t}</span>'
                 for t in tag_list[:10]
             ) + '</div>'
         else:
@@ -331,7 +331,7 @@ def gen_details(df):
         
         # Website button
         if website:
-            website_button = f'<a href="{website}" target="_blank" rel="nofollow" style="display:inline-flex;align-items:center;gap:6px;background:#ea4335;color:#fff;padding:10px 20px;border-radius:8px;font-weight:600;text-decoration:none;">🌐 Website quán</a>'
+            website_button = f'<a href="{website}" target="_blank" rel="nofollow noopener" class="btn" style="background:#ea4335;color:#fff;">🌐 Website quán</a>'
         else:
             website_button = ""
         content = content.replace("{{WEBSITE_BUTTON}}", website_button)
@@ -345,7 +345,7 @@ def gen_details(df):
                 for item in menu_items.split("|")[:10]:
                     item = item.strip()
                     if item:
-                        menu_html += f'<div style="padding:8px 0;border-bottom:1px solid #f0f0f0;display:flex;justify-content:space-between;"><span>{item}</span></div>'
+                        menu_html += f'<div class="menu-item"><span>{item}</span></div>'
             elif menu_text:
                 menu_html += f'<p style="background:#fafafa;padding:12px;border-radius:6px;">{menu_text}</p>'
             menu_html = f'<div style="margin:16px 0;">{menu_html}</div>'

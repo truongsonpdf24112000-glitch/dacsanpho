@@ -4,7 +4,7 @@
 <section class="hero province-hero">
   <div class="container">
     <h1>🍜 Món Ăn Đường Phố {{PROVINCE}}</h1>
-    <p>Đặc sản địa phương chính gốc tại {{PROVINCE}}</p>
+    <p>Đặc sản địa phương chính gốc tại {{PROVINCE}} — tìm quán ngon đúng điệu</p>
     {{PROVINCE_STATS}}
   </div>
 </section>
@@ -12,7 +12,9 @@
 <!-- Dish Category Chips for this province -->
 <div class="dish-chips-section">
   <div class="container">
-    {{DISH_CHIPS}}
+    <div class="dish-chips">
+      {{DISH_CHIPS}}
+    </div>
   </div>
 </div>
 
@@ -21,7 +23,7 @@
   <div class="filter-bar">
     <div class="filter-group">
       <label>💰 Giá</label>
-      <select id="filterPrice" onchange="applyFilters()">
+      <select id="filterPrice" onchange="applyFilters()" aria-label="Lọc theo giá">
         <option value="all">Tất cả giá</option>
         <option value="0">Dưới 50k</option>
         <option value="1">50k - 150k</option>
@@ -30,7 +32,7 @@
     </div>
     <div class="filter-group">
       <label>⭐ Rating</label>
-      <select id="filterRating" onchange="applyFilters()">
+      <select id="filterRating" onchange="applyFilters()" aria-label="Lọc theo đánh giá">
         <option value="all">Tất cả</option>
         <option value="4.5">4.5+</option>
         <option value="4">4.0+</option>
@@ -39,35 +41,44 @@
     </div>
     <div class="filter-group">
       <label>📊 Sắp xếp</label>
-      <select id="filterSort" onchange="applyFilters()">
+      <select id="filterSort" onchange="applyFilters()" aria-label="Sắp xếp">
         <option value="default">Mặc định</option>
-        <option value="rating-desc">Rating cao nhất</option>
-        <option value="reviews-desc">Nhiều review nhất</option>
-        <option value="price-asc">Giá thấp → cao</option>
-        <option value="price-desc">Giá cao → thấp</option>
+        <option value="rating-desc">⭐ Rating cao nhất</option>
+        <option value="reviews-desc">💬 Nhiều đánh giá nhất</option>
+        <option value="price-asc">💰 Giá thấp → cao</option>
+        <option value="price-desc">💰 Giá cao → thấp</option>
       </select>
     </div>
-    <button class="filter-chip" id="toggleOriginal" onclick="toggleOriginal()">
+    <button class="filter-chip" id="toggleOriginal" onclick="toggleOriginal()" aria-label="Lọc quán gốc">
       ⭐ Quán gốc
+    </button>
+    <button class="filter-chip" id="resetFilters" onclick="resetAllFilters()" style="background:#f5f5f5;" aria-label="Xóa bộ lọc">
+      🔄 Xóa lọc
     </button>
     <span class="filter-result" id="resultCount">{{COUNT}} quán</span>
   </div>
 
-  <div class="ad">Quảng cáo</div>
+  <div class="ad">📢 Quảng cáo</div>
 
   <section class="section">
-    <div class="card-grid">{{VENDOR_CARDS}}</div>
+    <div class="card-grid" id="vendorGrid">{{VENDOR_CARDS}}</div>
   </section>
 
-  <div class="ad">Quảng cáo</div>
+  <div id="noResults" style="display:none;text-align:center;padding:40px;color:var(--text-muted);">
+    <div style="font-size:3rem;margin-bottom:12px;">😕</div>
+    <p style="font-size:1.1rem;">Không tìm thấy quán nào phù hợp</p>
+    <button onclick="resetAllFilters()" style="margin-top:12px;padding:8px 20px;border:1.5px solid var(--primary);border-radius:var(--radius-full);background:var(--surface);color:var(--primary);cursor:pointer;font-weight:600;">Xóa bộ lọc</button>
+  </div>
+
+  <div class="ad">📢 Quảng cáo</div>
 
   {{NEARBY}}
 </div>
 
 <script>
 (function() {
-  const grid = document.querySelector('.card-grid');
-  const cards = Array.from(grid.querySelectorAll('.card'));
+  const grid = document.getElementById('vendorGrid');
+  let cards = Array.from(grid.querySelectorAll('.card'));
   let originalOrder = cards.map((c, i) => ({el: c, idx: i}));
   let activeCat = 'all';
 
@@ -78,9 +89,8 @@
 
   window.filterCatProv = function(cat) {
     activeCat = cat;
-    // Update chip styles
     document.querySelectorAll('.dish-chip').forEach(c => c.classList.remove('active'));
-    event.target.classList.add('active');
+    if (event && event.target) event.target.classList.add('active');
     applyFilters();
   };
 
@@ -91,17 +101,13 @@
     const origOnly = document.getElementById('toggleOriginal').classList.contains('active-filter');
 
     let visible = cards.filter(c => {
-      // Category filter (from dish chips)
       if (activeCat !== 'all' && c.dataset.category !== activeCat) return false;
-      // Price filter
       if (priceVal !== 'all') {
         const cp = getPrice(c);
         if (cp === -1) return true;
         if (cp !== parseInt(priceVal)) return false;
       }
-      // Rating filter
       if (ratingVal !== 'all' && getRating(c) < parseFloat(ratingVal)) return false;
-      // Original only
       if (origOnly && !isOriginal(c)) return false;
       return true;
     });
@@ -109,8 +115,8 @@
     // Sort
     if (sortVal === 'rating-desc') visible.sort((a,b) => getRating(b) - getRating(a));
     else if (sortVal === 'reviews-desc') visible.sort((a,b) => getReviews(b) - getReviews(a));
-    else if (sortVal === 'price-asc') visible.sort((a,b) => (getPrice(a)===-1?999:(getPrice(a))) - (getPrice(b)===-1?999:(getPrice(b))));
-    else if (sortVal === 'price-desc') visible.sort((a,b) => (getPrice(b)===-1?-1:(getPrice(b))) - (getPrice(a)===-1?-1:(getPrice(a))));
+    else if (sortVal === 'price-asc') visible.sort((a,b) => (getPrice(a)===-1?999:getPrice(a)) - (getPrice(b)===-1?999:getPrice(b)));
+    else if (sortVal === 'price-desc') visible.sort((a,b) => (getPrice(b)===-1?-1:getPrice(b)) - (getPrice(a)===-1?-1:getPrice(a)));
     else {
       visible.sort((a,b) => {
         const oa = originalOrder.find(o => o.el === a);
@@ -119,8 +125,17 @@
       });
     }
 
+    // Update DOM
     grid.innerHTML = '';
-    visible.forEach(c => grid.appendChild(c));
+    if (visible.length === 0) {
+      document.getElementById('noResults').style.display = 'block';
+      grid.style.display = 'none';
+    } else {
+      document.getElementById('noResults').style.display = 'none';
+      grid.style.display = '';
+      visible.forEach(c => grid.appendChild(c));
+    }
+
     document.getElementById('resultCount').textContent = visible.length + ' quán';
   };
 
@@ -130,8 +145,25 @@
     applyFilters();
   };
 
+  window.resetAllFilters = function() {
+    activeCat = 'all';
+    document.getElementById('filterPrice').value = 'all';
+    document.getElementById('filterRating').value = 'all';
+    document.getElementById('filterSort').value = 'default';
+    document.getElementById('toggleOriginal').classList.remove('active-filter');
+    
+    document.querySelectorAll('.dish-chip').forEach(c => c.classList.remove('active'));
+    const firstChip = document.querySelector('.dish-chip');
+    if (firstChip) firstChip.classList.add('active');
+    
+    applyFilters();
+  };
+
+  // Animation
   document.addEventListener('DOMContentLoaded', function() {
-    originalOrder = Array.from(document.querySelectorAll('.card-grid .card')).map((c,i) => ({el: c, idx: i}));
+    cards = Array.from(grid.querySelectorAll('.card'));
+    originalOrder = cards.map((c,i) => ({el: c, idx: i}));
+    cards.forEach((card, i) => card.classList.add('animate-in'));
   });
 })();
 </script>
