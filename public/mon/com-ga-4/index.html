@@ -4,16 +4,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#E53935">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Đặc Sản Phố">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
 <title>Cơm gà tại Ninh Thuận — Đặc Sản Phố</title>
 <meta name="description" content="Cơm gà — 15 Nguyễn Thái Học, Ninh Thuận. Cơm gà Ninh Thuận. Gà ta luộc, cơm vàng ươm.">
+
+<!-- Open Graph -->
 <meta property="og:title" content="Cơm gà tại Ninh Thuận — Đặc Sản Phố">
 <meta property="og:description" content="Cơm gà — 15 Nguyễn Thái Học, Ninh Thuận. Cơm gà Ninh Thuận. Gà ta luộc, cơm vàng ươm.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://dacsanpho.com/mon/com-ga-4/">
+<meta property="og:image" content="https://dacsanpho.com/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Đặc Sản Phố — Món ngon đường phố Việt Nam">
+<meta property="og:site_name" content="Đặc Sản Phố">
+<meta property="og:locale" content="vi_VN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cơm gà tại Ninh Thuận — Đặc Sản Phố">
+<meta name="twitter:description" content="Cơm gà — 15 Nguyễn Thái Học, Ninh Thuận. Cơm gà Ninh Thuận. Gà ta luộc, cơm vàng ươm.">
+<meta name="twitter:image" content="https://dacsanpho.com/icons/og-image.png">
+
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+<!-- CSS & Canonical -->
 <link rel="stylesheet" href="../../css/style.css">
 <link rel="canonical" href="https://dacsanpho.com/mon/com-ga-4/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FoodEstablishment", "name": "C\u01a1m g\u00e0", "address": {"addressLocality": "Ninh Thu\u1eadn", "streetAddress": "15 Nguy\u1ec5n Th\u00e1i H\u1ecdc"}}</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FoodEstablishment", "name": "Cơm gà", "description": "Cơm gà Ninh Thuận. Gà ta luộc, cơm vàng ươm.", "servesCuisine": "Cơm", "priceRange": "30.000 - 45.000đ", "address": {"@type": "PostalAddress", "addressLocality": "Ninh Thuận", "streetAddress": "15 Nguyễn Thái Học"}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.3, "reviewCount": 2800, "bestRating": 5}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "\u0110\u1eb7c S\u1ea3n Ph\u1ed1", "item": "https://dacsanpho.com/"}, {"@type": "ListItem", "position": 2, "name": "Ninh Thu\u1eadn", "item": "https://dacsanpho.com/tinh/ninh-thuan/"}, {"@type": "ListItem", "position": 3, "name": "C\u01a1m g\u00e0", "item": "https://dacsanpho.com/mon/com-ga-4/"}]}</script>
 
 </head>
 <body>
@@ -143,6 +174,15 @@
     <div class="bottom">© 2026 Đặc Sản Phố — Tổng hợp từ cộng đồng yêu ẩm thực Việt 🇻🇳</div>
   </div>
 </footer>
+
 <script src="/js/search.js" defer></script>
+<script>
+// ── Register Service Worker ──
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

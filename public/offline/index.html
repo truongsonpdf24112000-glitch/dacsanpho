@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đặc Sản Phố — Offline</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #FAFAFA; color: #1A1A1A;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; padding: 24px;
+  }
+  .card {
+    text-align: center; max-width: 400px; background: #fff;
+    border-radius: 16px; padding: 48px 32px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .icon { font-size: 4rem; margin-bottom: 16px; }
+  h1 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: #E53935; }
+  p { color: #757575; line-height: 1.6; margin-bottom: 24px; }
+  .btn {
+    display: inline-block; padding: 12px 28px; background: #E53935;
+    color: #fff; border-radius: 9999px; text-decoration: none;
+    font-weight: 600; font-size: 0.95rem; transition: background 0.2s;
+  }
+  .btn:hover { background: #C62828; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">🍜</div>
+  <h1>Bạn đang offline</h1>
+  <p>Không có kết nối mạng. Vui lòng kiểm tra lại kết nối và thử tải lại trang.</p>
+  <a href="/" class="btn">🔄 Thử lại</a>
+</div>
+</body>
+</html>

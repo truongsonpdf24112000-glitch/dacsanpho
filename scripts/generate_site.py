@@ -17,6 +17,7 @@ TEMPLATES = PROJECT_ROOT / "templates"
 PUBLIC = PROJECT_ROOT / "public"
 SITE = "Đặc Sản Phố"
 URL = "https://dacsanpho.com"
+OG_IMAGE = URL + "/icons/og-image.png"
 YEAR = str(datetime.now().year)
 
 CAT_ICONS = {
@@ -65,6 +66,7 @@ def render(title, desc, content, canonical, schema="", depth=0, nav_active="", p
     base = base.replace("{{DESCRIPTION}}", desc)
     base = base.replace("{{STYLE_PATH}}", sp + "css/")
     base = base.replace("{{CANONICAL}}", canonical)
+    base = base.replace("{{OG_IMAGE}}", OG_IMAGE)
     base = base.replace("{{SCHEMA}}", schema)
     base = base.replace("{{PROVINCE_META}}", prov_meta)
     base = base.replace("{{FOOTER_PROVINCES}}", FOOTER_PROVS)
@@ -141,6 +143,23 @@ def card_html(r, depth=0):
 </div>"""
 
 
+def breadcrumb_schema(items):
+    """Generate BreadcrumbList JSON-LD schema."""
+    item_list = []
+    for i, (name, url) in enumerate(items):
+        item_list.append({
+            "@type": "ListItem",
+            "position": i + 1,
+            "name": name,
+            "item": url,
+        })
+    return json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": item_list,
+    })
+
+
 def gen_homepage(df):
     print("Generating homepage...")
     total = len(df)
@@ -190,9 +209,25 @@ def gen_homepage(df):
     content = content.replace("{{PROVINCE_GRID}}", prov_grid)
     content = content.replace("{{CATEGORY_GRID}}", cat_grid)
 
+    # Schema: WebSite + ItemList (top provinces)
+    item_elements = []
+    for i, (_, r) in enumerate(pc.head(10).iterrows()):
+        item_elements.append({
+            "@type": "ListItem", "position": i + 1,
+            "name": r["province"],
+            "url": f"{URL}/tinh/{r['province_slug']}/",
+        })
+    schema = json.dumps([
+        {"@context": "https://schema.org", "@type": "WebSite",
+         "name": SITE, "url": URL, "description": f"Danh bạ {total}+ quán ăn đường phố Việt Nam"},
+        {"@context": "https://schema.org", "@type": "ItemList",
+         "name": "Tỉnh thành nổi bật", "itemListElement": item_elements},
+    ])
+
     html = render(f"{SITE} — Danh Bạ Món Ăn Đường Phố Việt Nam",
                   f"Khám phá {total}+ quán ăn đường phố trên {provinces} tỉnh thành.",
-                  content, URL + "/", nav_active="home")
+                  content, URL + "/", nav_active="home",
+                  schema=f'<script type="application/ld+json">{schema}</script>')
     write(PUBLIC / "index.html", html)
 
 
@@ -239,10 +274,34 @@ def gen_provinces(df):
         content = content.replace("{{VENDOR_CARDS}}", cards)
         content = content.replace("{{NEARBY}}", nearby)
 
+        # Schema: BreadcrumbList + ItemList (vendors)
+        bc_schema = breadcrumb_schema([
+            ("Đặc Sản Phố", URL + "/"),
+            (f"Tỉnh thành", f"{URL}/tinh/"),
+            (str(prov), f"{URL}/tinh/{slug}/"),
+        ])
+        vendor_items = []
+        for i, (_, vr) in enumerate(grp.head(20).iterrows()):
+            v_slug = safe_str(vr.get("dish_slug", ""), safe_str(vr.get("vendor_slug", ""), f"quan-{int(vr['id'])}"))
+            vendor_items.append({
+                "@type": "ListItem", "position": i + 1,
+                "name": safe_str(vr.get("vendor_name", ""), safe_str(vr.get("dish_name", ""), f"Quán #{int(vr['id'])}")),
+                "url": f"{URL}/mon/{v_slug}-{int(vr['id'])}/",
+            })
+        schema = json.dumps([
+            {"@context": "https://schema.org", "@type": "ItemList",
+             "name": f"Quán ăn tại {prov}", "numberOfItems": cnt,
+             "itemListElement": vendor_items},
+        ]) if len(vendor_items) > 0 else ""
+        full_schema = bc_schema
+        if schema:
+            full_schema = bc_schema + "\n" + schema
+
         html = render(f"Món Ăn Đường Phố {prov} — {cnt} quán — {SITE}",
                       f"Khám phá {cnt} quán ăn đường phố tại {prov}.",
                       content, f"{URL}/tinh/{slug}/", depth=1, nav_active="province",
-                      prov_meta=f'<meta name="province-slug" content="{slug}">')
+                      prov_meta=f'<meta name="province-slug" content="{slug}">',
+                      schema=f'<script type="application/ld+json">[{full_schema}]</script>')
         write(PUBLIC / "tinh" / slug / "index.html", html)
     print(f"  {df['province_slug'].nunique()} province pages")
 
@@ -366,13 +425,33 @@ def gen_details(df):
             "@context": "https://schema.org",
             "@type": "FoodEstablishment",
             "name": display_name,
-            "address": {"addressLocality": prov, "streetAddress": addr},
+            "description": desc[:200],
+            "servesCuisine": cat,
+            "priceRange": price,
+            "address": {"@type": "PostalAddress", "addressLocality": prov, "streetAddress": addr},
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": round(rating, 1),
+                "reviewCount": reviews,
+                "bestRating": 5,
+            } if rating > 0 else None,
         })
+        # Remove None values
+        schema_dict = json.loads(schema)
+        schema_dict = {k: v for k, v in schema_dict.items() if v is not None}
+        schema = json.dumps(schema_dict, ensure_ascii=False)
+
+        # Breadcrumb schema
+        bc = breadcrumb_schema([
+            ("Đặc Sản Phố", URL + "/"),
+            (prov, f"{URL}/tinh/{prov_slug}/"),
+            (display_name, f"{URL}/mon/{slug}-{rid}/"),
+        ])
 
         html = render(f"{display_name} tại {prov} — {SITE}",
                       f"{display_name} — {addr}, {prov}. {desc[:120]}",
                       content, f"{URL}/mon/{slug}-{rid}/",
-                      f'<script type="application/ld+json">{schema}</script>', depth=2)
+                      f'<script type="application/ld+json">{schema}</script>\n<script type="application/ld+json">{bc}</script>', depth=2)
         write(PUBLIC / "mon" / f"{slug}-{rid}" / "index.html", html)
 
     print(f"  {len(df)} detail pages")

@@ -4,16 +4,46 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#E53935">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Đặc Sản Phố">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
 <title>Đặc Sản Phố — Danh Bạ Món Ăn Đường Phố Việt Nam</title>
 <meta name="description" content="Khám phá 5+ quán ăn đường phố trên 4 tỉnh thành.">
+
+<!-- Open Graph -->
 <meta property="og:title" content="Đặc Sản Phố — Danh Bạ Món Ăn Đường Phố Việt Nam">
 <meta property="og:description" content="Khám phá 5+ quán ăn đường phố trên 4 tỉnh thành.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://dacsanpho.com/">
+<meta property="og:image" content="https://dacsanpho.com/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Đặc Sản Phố — Món ngon đường phố Việt Nam">
+<meta property="og:site_name" content="Đặc Sản Phố">
+<meta property="og:locale" content="vi_VN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Đặc Sản Phố — Danh Bạ Món Ăn Đường Phố Việt Nam">
+<meta name="twitter:description" content="Khám phá 5+ quán ăn đường phố trên 4 tỉnh thành.">
+<meta name="twitter:image" content="https://dacsanpho.com/icons/og-image.png">
+
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+<!-- CSS & Canonical -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="canonical" href="https://dacsanpho.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "name": "\u0110\u1eb7c S\u1ea3n Ph\u1ed1", "url": "https://dacsanpho.com", "description": "Danh b\u1ea1 5+ qu\u00e1n \u0103n \u0111\u01b0\u1eddng ph\u1ed1 Vi\u1ec7t Nam"}, {"@context": "https://schema.org", "@type": "ItemList", "name": "T\u1ec9nh th\u00e0nh n\u1ed5i b\u1eadt", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "H\u00e0 N\u1ed9i", "url": "https://dacsanpho.com/tinh/ha-noi/"}, {"@type": "ListItem", "position": 2, "name": "Ninh Thu\u1eadn", "url": "https://dacsanpho.com/tinh/ninh-thuan/"}, {"@type": "ListItem", "position": 3, "name": "Th\u1eeba Thi\u00ean Hu\u1ebf", "url": "https://dacsanpho.com/tinh/thua-thien-hue/"}, {"@type": "ListItem", "position": 4, "name": "\u0110\u00e0 N\u1eb5ng", "url": "https://dacsanpho.com/tinh/da-nang/"}]}]</script>
 
 </head>
 <body>
@@ -378,6 +408,15 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="bottom">© 2026 Đặc Sản Phố — Tổng hợp từ cộng đồng yêu ẩm thực Việt 🇻🇳</div>
   </div>
 </footer>
+
 <script src="/js/search.js" defer></script>
+<script>
+// ── Register Service Worker ──
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>
