@@ -1,0 +1,19 @@
+# Binary: prevent Git from merging/diffing as text
+*.docx  binary
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.webp  binary
+*.csv   binary
+
+# Code: text LF (consistent across Linux/Docker/Mac/Windows)
+*.py    text eol=lf
+*.js    text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.sh    text eol=lf
+*.md    text eol=lf
+*.json  text eol=lf
+*.xml   text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf

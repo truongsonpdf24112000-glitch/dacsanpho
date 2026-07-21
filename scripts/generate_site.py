@@ -52,7 +52,7 @@ def write(path, html):
     path.write_text(html, encoding="utf-8")
 
 
-def render(title, desc, content, canonical, schema="", depth=0, nav_active=""):
+def render(title, desc, content, canonical, schema="", depth=0, nav_active="", prov_meta=""):
     base = load_tpl("base.html")
     sp = "../" * depth if depth > 0 else ""
 
@@ -66,6 +66,7 @@ def render(title, desc, content, canonical, schema="", depth=0, nav_active=""):
     base = base.replace("{{STYLE_PATH}}", sp + "css/")
     base = base.replace("{{CANONICAL}}", canonical)
     base = base.replace("{{SCHEMA}}", schema)
+    base = base.replace("{{PROVINCE_META}}", prov_meta)
     base = base.replace("{{FOOTER_PROVINCES}}", FOOTER_PROVS)
     base = base.replace("{{NAV_HOME}}", NAV["home"])
     base = base.replace("{{NAV_PROVINCE}}", NAV["province"])
@@ -240,7 +241,8 @@ def gen_provinces(df):
 
         html = render(f"Món Ăn Đường Phố {prov} — {cnt} quán — {SITE}",
                       f"Khám phá {cnt} quán ăn đường phố tại {prov}.",
-                      content, f"{URL}/tinh/{slug}/", depth=1, nav_active="province")
+                      content, f"{URL}/tinh/{slug}/", depth=1, nav_active="province",
+                      prov_meta=f'<meta name="province-slug" content="{slug}">')
         write(PUBLIC / "tinh" / slug / "index.html", html)
     print(f"  {df['province_slug'].nunique()} province pages")
 
@@ -433,12 +435,79 @@ def gen_supporting(df):
     print("  sitemap, robots.txt, provinces index, dishes index done")
 
 
+def gen_data_json(df):
+    """Generate public/data/dishes.json — search index for client-side JS."""
+    print("Generating data JSON...")
+    data_dir = PUBLIC / "data"
+    data_dir.mkdir(parents=True, exist_ok=True)
+
+    records = []
+    for _, r in df.iterrows():
+        rid = int(r["id"])
+        slug = safe_str(r.get("dish_slug", ""), safe_str(r.get("vendor_slug", ""), f"quan-{rid}"))
+        dish = safe_str(r["dish_name"], "")
+        vname = safe_str(r.get("vendor_name", ""))
+        province = safe_str(r.get("province", ""))
+        prov_slug = safe_str(r.get("province_slug", ""))
+        district = safe_str(r.get("district", ""))
+        address = safe_str(r.get("address", ""))
+        cat = safe_str(r.get("dish_category", ""), "Khác")
+        price = safe_str(r.get("price_range", ""), "Liên hệ")
+        rating = float(r.get("rating", 0) or 0)
+        reviews = int(r.get("reviews_count", 0) or 0) if pd.notna(r.get("reviews_count")) else 0
+        is_orig = r.get("is_original") in [True, "True", "true", "1"]
+        tags = safe_str(r.get("tags", ""))
+        desc = safe_str(r.get("description", ""))
+        img = safe_str(r.get("image_urls", ""))
+
+        # Parse price level
+        price_level = -1
+        if price and price not in ("nan", "None", "Liên hệ"):
+            nums = re.findall(r"\d[\d,.]*", price.replace(".", ""))
+            if nums:
+                try:
+                    max_p = max(int(n) for n in nums if n.isdigit())
+                    if max_p < 50000: price_level = 0
+                    elif max_p < 150000: price_level = 1
+                    else: price_level = 2
+                except:
+                    pass
+
+        rec = {
+            "id": rid,
+            "name": dish,
+            "vendor": vname,
+            "display": vname if vname else dish if dish else f"Quán #{rid}",
+            "province": province,
+            "province_slug": prov_slug,
+            "district": district,
+            "address": address,
+            "category": cat,
+            "price_range": price,
+            "price_level": price_level,
+            "rating": round(rating, 1),
+            "reviews": reviews,
+            "is_original": is_orig,
+            "tags": tags,
+            "description": desc,
+            "image": img if img and img.startswith("http") else "",
+            "slug": slug,
+            "url": f"/mon/{slug}-{rid}/",
+        }
+        records.append(rec)
+
+    output = data_dir / "dishes.json"
+    output.write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  {len(records)} records → {output}")
+
+
 def main():
     print("=" * 50)
     print(f"{SITE} — Static Site Generator")
     df = load()
     print(f"Loaded {len(df)} vendors, {df['province'].nunique()} provinces")
     gen_supporting(df)
+    gen_data_json(df)
     gen_homepage(df)
     gen_provinces(df)
     gen_details(df)
