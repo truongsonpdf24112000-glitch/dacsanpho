@@ -105,7 +105,7 @@ def card_html(r, depth=0):
                 if max_p < 50000: price_level = "0"
                 elif max_p < 150000: price_level = "1"
                 else: price_level = "2"
-            except:
+            except Exception:
                 pass
 
     badge = '<span class="card-badge original">⭐ Quán gốc</span>' if is_orig else ""
@@ -344,7 +344,7 @@ def gen_details(df):
             try:
                 ey = int(float(est))
                 est_row = f'<div class="info-row"><span class="label">📅 Từ năm</span><span class="value">{ey}</span></div>'
-            except:
+            except Exception:
                 pass
 
         # Other vendors — same province, different ID
@@ -549,7 +549,7 @@ def gen_data_json(df):
                     if max_p < 50000: price_level = 0
                     elif max_p < 150000: price_level = 1
                     else: price_level = 2
-                except:
+                except Exception:
                     pass
 
         rec = {
