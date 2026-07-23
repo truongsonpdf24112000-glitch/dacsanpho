@@ -2,8 +2,9 @@
  * Đặc Sản Phố — Service Worker
  * Caching strategy: Stale-While-Revalidate for pages, Cache-First for assets
  */
-const CACHE_NAME = "dacsanpho-v1";
-const ASSETS_CACHE = "dacsanpho-assets-v1";
+const CACHE_NAME = "dacsanpho-v2";
+const ASSETS_CACHE = "dacsanpho-assets-v2";
+const OFFLINE_URL = "/offline/";
 
 // ── Install: Pre-cache critical assets ──
 self.addEventListener("install", (event) => {
@@ -17,6 +18,7 @@ self.addEventListener("install", (event) => {
       "/manifest.json",
       "/icons/icon-192.png",
       "/icons/icon-512.png",
+      "/icons/og-image.png",
     ]);
   };
   event.waitUntil(preCache());
@@ -92,3 +94,10 @@ async function cacheFirst(request) {
     return new Response("", { status: 408 });
   }
 }
+
+// ── Notify clients about updates ──
+self.addEventListener("message", (event) => {
+  if (event.data === "skipWaiting") {
+    self.skipWaiting();
+  }
+});

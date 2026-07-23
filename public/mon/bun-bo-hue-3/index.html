@@ -36,6 +36,18 @@
 <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-192.png">
 <link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"></noscript>
+<meta name="author" content="Đặc Sản Phố">
+<meta name="keywords" content="Bún bò Huế, Phở/Bún/Miến, Thừa Thiên Huế, quán ăn, đường phố, đặc sản, món ngon, bún bò, Huế, cay">
+<meta name="google-site-verification" content="">
+<meta name="msapplication-TileColor" content="#E53935">
+<meta name="msapplication-TileImage" content="/icons/icon-192.png">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<link rel="prefetch" href="/tinh/">
+<link rel="prefetch" href="/mon/">
 
 <!-- CSS & Canonical -->
 <link rel="stylesheet" href="../../css/style.css">
@@ -43,7 +55,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FoodEstablishment", "name": "Bún bò Huế", "description": "Bún bò Huế cay nồng, nước lèo đậm đà, chân giò, thịt bò.", "servesCuisine": "Phở/Bún/Miến", "priceRange": "35.000 - 55.000đ", "address": {"@type": "PostalAddress", "addressLocality": "Thừa Thiên Huế", "streetAddress": "19 Lý Thường Kiệt"}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.5, "reviewCount": 4500, "bestRating": 5}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://dacsanpho.com/mon/bun-bo-hue-3/", "name": "Bún bò Huế", "description": "Bún bò Huế cay nồng, nước lèo đậm đà, chân giò, thịt bò.", "image": "https://dacsanpho.com/icons/og-image.png", "url": "https://dacsanpho.com/mon/bun-bo-hue-3/", "telephone": "", "servesCuisine": "Phở/Bún/Miến", "priceRange": "35.000 - 55.000đ", "address": {"@type": "PostalAddress", "addressLocality": "Thừa Thiên Huế", "streetAddress": "19 Lý Thường Kiệt"}, "geo": {"@type": "GeoCoordinates", "latitude": "", "longitude": ""}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.5, "reviewCount": 4500, "bestRating": 5}, "offers": {"@type": "AggregateOffer", "lowPrice": "0", "highPrice": "0", "priceCurrency": "VND", "availability": "https://schema.org/InStock"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "\u0110\u1eb7c S\u1ea3n Ph\u1ed1", "item": "https://dacsanpho.com/"}, {"@type": "ListItem", "position": 2, "name": "Th\u1eeba Thi\u00ean Hu\u1ebf", "item": "https://dacsanpho.com/tinh/thua-thien-hue/"}, {"@type": "ListItem", "position": 3, "name": "B\u00fan b\u00f2 Hu\u1ebf", "item": "https://dacsanpho.com/mon/bun-bo-hue-3/"}]}</script>
 
 </head>
@@ -176,6 +188,38 @@
 </footer>
 
 <script src="/js/search.js" defer></script>
+<script>
+// ── PWA Install Banner ──
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner) banner.style.display = 'flex';
+});
+function dismissPWAInstall() {
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner) banner.style.display = 'none';
+}
+async function installPWA() {
+  dismissPWAInstall();
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+  }
+}
+// ── Analytics placeholder (GA4) ──
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+// gtag('config', 'G-XXXXXXXXXX');
+</script>
+<div id="pwa-install-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:1001;background:#fff;border-top:1px solid #e0e0e0;padding:12px 16px;box-shadow:0 -4px 12px rgba(0,0,0,0.08);align-items:center;justify-content:center;gap:12px;font-family:var(--font-body);">
+  <span>📲 Thêm <strong>Đặc Sản Phố</strong> vào màn hình chính?</span>
+  <button onclick="installPWA()" style="background:var(--primary);color:#fff;border:none;border-radius:999px;padding:8px 20px;font-weight:600;cursor:pointer;">Cài đặt</button>
+  <button onclick="dismissPWAInstall()" style="background:#f5f5f5;color:#757575;border:none;border-radius:999px;padding:8px 16px;cursor:pointer;">Để sau</button>
+</div>
 <script>
 // ── Register Service Worker ──
 if ('serviceWorker' in navigator) {

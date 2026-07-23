@@ -53,7 +53,7 @@ def write(path, html):
     path.write_text(html, encoding="utf-8")
 
 
-def render(title, desc, content, canonical, schema="", depth=0, nav_active="", prov_meta=""):
+def render(title, desc, content, canonical, schema="", depth=0, nav_active="", prov_meta="", keywords="", og_image=OG_IMAGE):
     base = load_tpl("base.html")
     sp = "../" * depth if depth > 0 else ""
 
@@ -66,7 +66,7 @@ def render(title, desc, content, canonical, schema="", depth=0, nav_active="", p
     base = base.replace("{{DESCRIPTION}}", desc)
     base = base.replace("{{STYLE_PATH}}", sp + "css/")
     base = base.replace("{{CANONICAL}}", canonical)
-    base = base.replace("{{OG_IMAGE}}", OG_IMAGE)
+    base = base.replace("{{OG_IMAGE}}", og_image)
     base = base.replace("{{SCHEMA}}", schema)
     base = base.replace("{{PROVINCE_META}}", prov_meta)
     base = base.replace("{{FOOTER_PROVINCES}}", FOOTER_PROVS)
@@ -74,6 +74,7 @@ def render(title, desc, content, canonical, schema="", depth=0, nav_active="", p
     base = base.replace("{{NAV_PROVINCE}}", NAV["province"])
     base = base.replace("{{NAV_DISH}}", NAV["dish"])
     base = base.replace("{{YEAR}}", YEAR)
+    base = base.replace("{{KEYWORDS}}", keywords)
     return base.replace("{{CONTENT}}", content)
 
 
@@ -224,10 +225,11 @@ def gen_homepage(df):
          "name": "Tỉnh thành nổi bật", "itemListElement": item_elements},
     ])
 
+    keywords = "đặc sản phố, món ngon đường phố, quán ăn Việt Nam, ẩm thực đường phố, đặc sản 63 tỉnh"
     html = render(f"{SITE} — Danh Bạ Món Ăn Đường Phố Việt Nam",
                   f"Khám phá {total}+ quán ăn đường phố trên {provinces} tỉnh thành.",
                   content, URL + "/", nav_active="home",
-                  schema=f'<script type="application/ld+json">{schema}</script>')
+                  schema=f'<script type="application/ld+json">{schema}</script>', keywords=keywords)
     write(PUBLIC / "index.html", html)
 
 
@@ -297,11 +299,12 @@ def gen_provinces(df):
         if schema:
             full_schema = bc_schema + "\n" + schema
 
+        keywords = f"quán ăn {prov}, đặc sản {prov}, món ngon {prov}, ẩm thực {prov}, đường phố {prov}"
         html = render(f"Món Ăn Đường Phố {prov} — {cnt} quán — {SITE}",
                       f"Khám phá {cnt} quán ăn đường phố tại {prov}.",
                       content, f"{URL}/tinh/{slug}/", depth=1, nav_active="province",
                       prov_meta=f'<meta name="province-slug" content="{slug}">',
-                      schema=f'<script type="application/ld+json">[{full_schema}]</script>')
+                      schema=f'<script type="application/ld+json">[{full_schema}]</script>', keywords=keywords)
         write(PUBLIC / "tinh" / slug / "index.html", html)
     print(f"  {df['province_slug'].nunique()} province pages")
 
@@ -374,9 +377,11 @@ def gen_details(df):
         
         # Image HTML
         if img_url and img_url.startswith("http"):
-            img_html = f'<div class="detail-image"><img src="{img_url}" alt="{display_name}" loading="lazy"></div>'
+            img_html = f'<div class="detail-image"><img src="{img_url}" alt="{display_name}" loading="lazy" width="800" height="600"></div>'
+            og_image = img_url
         else:
             img_html = ""
+            og_image = OG_IMAGE
         content = content.replace("{{IMAGE_HTML}}", img_html)
         
         # Tags
@@ -423,18 +428,30 @@ def gen_details(df):
 
         schema = json.dumps({
             "@context": "https://schema.org",
-            "@type": "FoodEstablishment",
+            "@type": "LocalBusiness",
+            "@id": f"{URL}/mon/{slug}-{rid}/",
             "name": display_name,
             "description": desc[:200],
+            "image": og_image if og_image != OG_IMAGE else OG_IMAGE,
+            "url": f"{URL}/mon/{slug}-{rid}/",
+            "telephone": "",
             "servesCuisine": cat,
             "priceRange": price,
             "address": {"@type": "PostalAddress", "addressLocality": prov, "streetAddress": addr},
+            "geo": {"@type": "GeoCoordinates", "latitude": "", "longitude": ""},
             "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": round(rating, 1),
                 "reviewCount": reviews,
                 "bestRating": 5,
             } if rating > 0 else None,
+            "offers": {
+                "@type": "AggregateOffer",
+                "lowPrice": "0",
+                "highPrice": "0",
+                "priceCurrency": "VND",
+                "availability": "https://schema.org/InStock",
+            } if price and price != "Liên hệ" else None,
         })
         # Remove None values
         schema_dict = json.loads(schema)
@@ -448,10 +465,16 @@ def gen_details(df):
             (display_name, f"{URL}/mon/{slug}-{rid}/"),
         ])
 
+        # Build keywords from tags, category, province
+        kw_parts = [display_name, cat, prov, "quán ăn", "đường phố", "đặc sản", "món ngon"]
+        if tags_str:
+            kw_parts.extend([t.strip() for t in tags_str.split(";") if t.strip()][:5])
+        keywords = ", ".join(k for k in dict.fromkeys(kw_parts) if k)
+
         html = render(f"{display_name} tại {prov} — {SITE}",
                       f"{display_name} — {addr}, {prov}. {desc[:120]}",
                       content, f"{URL}/mon/{slug}-{rid}/",
-                      f'<script type="application/ld+json">{schema}</script>\n<script type="application/ld+json">{bc}</script>', depth=2)
+                      f'<script type="application/ld+json">{schema}</script>\n<script type="application/ld+json">{bc}</script>', depth=2, keywords=keywords, og_image=og_image)
         write(PUBLIC / "mon" / f"{slug}-{rid}" / "index.html", html)
 
     print(f"  {len(df)} detail pages")
@@ -487,7 +510,8 @@ def gen_supporting(df):
     )
     html = render("Tất cả tỉnh thành — " + SITE, "Danh sách tỉnh thành.",
                   f'<div class="container"><h1 style="padding:24px 0">Tất cả tỉnh thành</h1><div class="city-grid">{cards}</div></div>',
-                  f"{URL}/tinh/", depth=1, nav_active="province")
+                  f"{URL}/tinh/", depth=1, nav_active="province",
+                  keywords="tất cả tỉnh thành, quán ăn Việt Nam, đặc sản 63 tỉnh")
     write(PUBLIC / "tinh" / "index.html", html)
     
     # Dishes index page
@@ -502,13 +526,15 @@ def gen_supporting(df):
         )
         dish_html = render("Tất cả món ăn — " + SITE, "Danh sách món ăn đường phố.",
                           f'<div class="container"><h1 style="padding:24px 0">Tất cả món ăn</h1><div class="city-grid">{dish_cards}</div></div>',
-                          f"{URL}/mon/", depth=1, nav_active="dish")
+                          f"{URL}/mon/", depth=1, nav_active="dish",
+                          keywords="tất cả món ăn, danh sách món ăn, đặc sản, món ngon đường phố")
     else:
         # Fallback: show all vendors
         vendor_cards = "".join(card_html(r, depth=1) for _, r in df.head(100).iterrows())
         dish_html = render("Tất cả món ăn — " + SITE, "Danh sách quán ăn đường phố.",
                           f'<div class="container"><h1 style="padding:24px 0">Tất cả quán ăn</h1><div class="card-grid">{vendor_cards}</div></div>',
-                          f"{URL}/mon/", depth=1, nav_active="dish")
+                          f"{URL}/mon/", depth=1, nav_active="dish",
+                          keywords="tất cả quán ăn, danh sách quán, đặc sản, món ngon đường phố")
     write(PUBLIC / "mon" / "index.html", dish_html)
     
     print("  sitemap, robots.txt, provinces index, dishes index done")

@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Đặc Sản Phố — Offline</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&family=Inter:wght@400;500&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, sans-serif;
@@ -13,27 +16,30 @@
     min-height: 100vh; padding: 24px;
   }
   .card {
-    text-align: center; max-width: 400px; background: #fff;
-    border-radius: 16px; padding: 48px 32px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    text-align: center; max-width: 420px; background: #fff;
+    border-radius: 20px; padding: 56px 32px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
   }
-  .icon { font-size: 4rem; margin-bottom: 16px; }
-  h1 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: #E53935; }
-  p { color: #757575; line-height: 1.6; margin-bottom: 24px; }
+  .icon { font-size: 4.5rem; margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
+  h1 { font-family: 'Be Vietnam Pro', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; color: #E53935; }
+  p { color: #757575; line-height: 1.7; margin-bottom: 28px; }
   .btn {
-    display: inline-block; padding: 12px 28px; background: #E53935;
+    display: inline-block; padding: 14px 32px; background: #E53935;
     color: #fff; border-radius: 9999px; text-decoration: none;
-    font-weight: 600; font-size: 0.95rem; transition: background 0.2s;
+    font-weight: 600; font-size: 1rem; transition: background 0.2s;
+    border: none; cursor: pointer;
   }
   .btn:hover { background: #C62828; }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
 </style>
 </head>
 <body>
 <div class="card">
   <div class="icon">🍜</div>
   <h1>Bạn đang offline</h1>
-  <p>Không có kết nối mạng. Vui lòng kiểm tra lại kết nối và thử tải lại trang.</p>
-  <a href="/" class="btn">🔄 Thử lại</a>
+  <p>Không có kết nối mạng. Một số món ăn vẫn được lưu sẵn để bạn khám phá.</p>
+  <button class="btn" onclick="window.location.reload()">🔄 Thử lại</button>
+  <p style="margin-top:20px;font-size:0.85rem;color:#BDBDBD;">Đặc Sản Phố — Món ngon đường phố</p>
 </div>
 </body>
 </html>
