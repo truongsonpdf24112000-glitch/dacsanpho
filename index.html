@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#E53935">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Đặc Sản Phố">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<title>Đặc Sản Phố — Danh Bạ Món Ăn Đường Phố Việt Nam</title>
+<meta name="description" content="Khám phá 5+ quán ăn đường phố trên 4 tỉnh thành.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Đặc Sản Phố — Danh Bạ Món Ăn Đường Phố Việt Nam">
+<meta property="og:description" content="Khám phá 5+ quán ăn đường phố trên 4 tỉnh thành.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dacsanpho.com/">
+<meta property="og:image" content="https://dacsanpho.com/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Đặc Sản Phố — Món ngon đường phố Việt Nam">
+<meta property="og:site_name" content="Đặc Sản Phố">
+<meta property="og:locale" content="vi_VN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Đặc Sản Phố — Danh Bạ Món Ăn Đường Phố Việt Nam">
+<meta name="twitter:description" content="Khám phá 5+ quán ăn đường phố trên 4 tỉnh thành.">
+<meta name="twitter:image" content="https://dacsanpho.com/icons/og-image.png">
+
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"></noscript>
+<meta name="author" content="Đặc Sản Phố">
+<meta name="keywords" content="đặc sản phố, món ngon đường phố, quán ăn Việt Nam, ẩm thực đường phố, đặc sản 63 tỉnh">
+<meta name="google-site-verification" content="">
+<meta name="msapplication-TileColor" content="#E53935">
+<meta name="msapplication-TileImage" content="/icons/icon-192.png">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<link rel="prefetch" href="/tinh/">
+<link rel="prefetch" href="/mon/">
+
+<!-- CSS & Canonical -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="canonical" href="https://dacsanpho.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "name": "\u0110\u1eb7c S\u1ea3n Ph\u1ed1", "url": "https://dacsanpho.com", "description": "Danh b\u1ea1 5+ qu\u00e1n \u0103n \u0111\u01b0\u1eddng ph\u1ed1 Vi\u1ec7t Nam"}, {"@context": "https://schema.org", "@type": "ItemList", "name": "T\u1ec9nh th\u00e0nh n\u1ed5i b\u1eadt", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "H\u00e0 N\u1ed9i", "url": "https://dacsanpho.com/tinh/ha-noi/"}, {"@type": "ListItem", "position": 2, "name": "Ninh Thu\u1eadn", "url": "https://dacsanpho.com/tinh/ninh-thuan/"}, {"@type": "ListItem", "position": 3, "name": "Th\u1eeba Thi\u00ean Hu\u1ebf", "url": "https://dacsanpho.com/tinh/thua-thien-hue/"}, {"@type": "ListItem", "position": 4, "name": "\u0110\u00e0 N\u1eb5ng", "url": "https://dacsanpho.com/tinh/da-nang/"}]}]</script>
+
+</head>
+<body>
+<div id="searchSuggestions" class="search-suggestions"></div>
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">Đặc Sản Phố<span>Món ngon đường phố</span></a>
+    <nav>
+      <a href="/" class="active">🏠 Trang chủ</a>
+      <a href="/tinh/" class="">🏙️ Tỉnh thành</a>
+      <a href="/mon/" class="">🍜 Món ăn</a>
+    </nav>
+  </div>
+</header>
+
+<main><!-- HOMEPAGE — Hero + Search + Sections -->
+<section class="hero">
+  <div class="container">
+    <h1>Khám Phá Món Ngon Đường Phố Việt Nam</h1>
+    <p>Tìm quán ăn vặt, đặc sản địa phương — đúng vị, đúng địa điểm gốc, giá chuẩn</p>
+    <div class="search-box">
+      <select id="citySelect" onchange="goToCity()">
+        <option value="">🏙️ Chọn tỉnh thành</option>
+        <option value="/tinh/ha-noi/">Hà Nội (2)</option><option value="/tinh/ninh-thuan/">Ninh Thuận (1)</option><option value="/tinh/thua-thien-hue/">Thừa Thiên Huế (1)</option><option value="/tinh/da-nang/">Đà Nẵng (1)</option>
+      </select>
+      <input type="text" id="searchInput" placeholder="Tìm món ăn, quán ăn..." oninput="liveSearch()" autocomplete="off">
+      <button onclick="liveSearch()" aria-label="Tìm kiếm">🔍 Tìm</button>
+    </div>
+  </div>
+</section>
+
+<!-- Category Chips -->
+<div class="cat-section">
+  <div class="container">
+    <div class="cat-scroll" id="catScroll">
+      <span class="cat-chip active" onclick="filterCat('all')"><span class="icon">🍽️</span>Tất cả</span>
+      <span class="cat-chip" onclick="filterCat('Phở/Bún/Miến')"><span class="icon">🍜</span>Phở/Bún/Miến</span>
+<span class="cat-chip" onclick="filterCat('Bánh')"><span class="icon">🥖</span>Bánh</span>
+<span class="cat-chip" onclick="filterCat('Cơm')"><span class="icon">🍚</span>Cơm</span>
+<span class="cat-chip" onclick="filterCat('Ốc/Hải sản')"><span class="icon">🦐</span>Ốc/Hải sản</span>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Ad -->
+  <div class="ad">📢 Quảng cáo</div>
+
+  <!-- Featured / Quán gốc -->
+  <section class="section">
+    <div class="section-header">
+      <h2>⭐ Quán Gốc — Địa Điểm Khởi Nguồn</h2>
+      <a href="/mon/">Xem tất cả →</a>
+    </div>
+    <div class="sort-row">
+      <select onchange="sortCardGrid(this)" data-target="originalGrid" aria-label="Sắp xếp quán gốc">
+        <option value="">↕️ Sắp xếp</option>
+        <option value="rating-desc">⭐ Rating cao nhất</option>
+        <option value="reviews-desc">💬 Nhiều đánh giá nhất</option>
+      </select>
+    </div>
+    <div class="card-grid" id="originalGrid"><div class="card animate-in" data-category="Phở/Bún/Miến" data-rating="4" data-reviews="3200" data-price="1" data-original="true">
+  <a href="mon/pho-bo-1/">
+    <div class="card-img"><span class="card-badge original">⭐ Quán gốc</span><span class="card-dish-tag">Phở bò</span><div class="card-placeholder">🍜</div></div>
+    <div class="card-body">
+      <h3>Phở Thìn</h3>
+      <div class="card-meta">
+        <span class="card-rating">⭐ 4.4</span>
+        <span class="card-reviews">3,200 đánh giá</span>
+      </div>
+      <div class="card-location-row">📍 13 Lò Đúc, Hai Bà Trưng</div>
+      <div class="card-price">55.000 - 85.000đ</div>
+    </div>
+  </a>
+</div><div class="card animate-in" data-category="Bánh" data-rating="4" data-reviews="1800" data-price="0" data-original="true">
+  <a href="mon/banh-cuon-2/">
+    <div class="card-img"><span class="card-badge original">⭐ Quán gốc</span><span class="card-dish-tag">Bánh cuốn</span><div class="card-placeholder">🥖</div></div>
+    <div class="card-body">
+      <h3>Bánh cuốn Bà Hoành</h3>
+      <div class="card-meta">
+        <span class="card-rating">⭐ 4.3</span>
+        <span class="card-reviews">1,800 đánh giá</span>
+      </div>
+      <div class="card-location-row">📍 66 Tô Hiến Thành</div>
+      <div class="card-price">25.000 - 40.000đ</div>
+    </div>
+  </a>
+</div><div class="card animate-in" data-category="Phở/Bún/Miến" data-rating="4" data-reviews="4500" data-price="1" data-original="true">
+  <a href="mon/bun-bo-hue-3/">
+    <div class="card-img"><span class="card-badge original">⭐ Quán gốc</span><span class="card-dish-tag">Bún bò Huế</span><div class="card-placeholder">🍜</div></div>
+    <div class="card-body">
+      <h3>Bún bò Huế chính gốc</h3>
+      <div class="card-meta">
+        <span class="card-rating">⭐ 4.5</span>
+        <span class="card-reviews">4,500 đánh giá</span>
+      </div>
+      <div class="card-location-row">📍 19 Lý Thường Kiệt</div>
+      <div class="card-price">35.000 - 55.000đ</div>
+    </div>
+  </a>
+</div><div class="card animate-in" data-category="Cơm" data-rating="4" data-reviews="2800" data-price="0" data-original="true">
+  <a href="mon/com-ga-4/">
+    <div class="card-img"><span class="card-badge original">⭐ Quán gốc</span><span class="card-dish-tag">Cơm gà</span><div class="card-placeholder">🍚</div></div>
+    <div class="card-body">
+      <h3>Cơm gà Đức</h3>
+      <div class="card-meta">
+        <span class="card-rating">⭐ 4.3</span>
+        <span class="card-reviews">2,800 đánh giá</span>
+      </div>
+      <div class="card-location-row">📍 15 Nguyễn Thái Học</div>
+      <div class="card-price">30.000 - 45.000đ</div>
+    </div>
+  </a>
+</div></div>
+  </section>
+
+  <!-- Ad -->
+  <div class="ad">📢 Quảng cáo</div>
+
+  <!-- Top Rated -->
+  <section class="section">
+    <div class="section-header">
+      <h2>🔥 Được Yêu Thích Nhất</h2>
+    </div>
+    <div class="sort-row">
+      <select onchange="sortCardGrid(this)" data-target="topGrid" aria-label="Sắp xếp yêu thích">
+        <option value="">↕️ Sắp xếp</option>
+        <option value="reviews-desc">💬 Nhiều đánh giá nhất</option>
+        <option value="price-asc">💰 Giá thấp nhất</option>
+      </select>
+    </div>
+    <div class="card-grid" id="topGrid"><div class="card animate-in" data-category="Phở/Bún/Miến" data-rating="4" data-reviews="4500" data-price="1" data-original="true">
+  <a href="mon/bun-bo-hue-3/">
+    <div class="card-img"><span class="card-badge original">⭐ Quán gốc</span><span class="card-dish-tag">Bún bò Huế</span><div class="card-placeholder">🍜</div></div>
+    <div class="card-body">
+      <h3>Bún bò Huế chính gốc</h3>
+      <div class="card-meta">
+        <span class="card-rating">⭐ 4.5</span>
+        <span class="card-reviews">4,500 đánh giá</span>
+      </div>
+      <div class="card-location-row">📍 19 Lý Thường Kiệt</div>
+      <div class="card-price">35.000 - 55.000đ</div>
+    </div>
+  </a>
+</div><div class="card animate-in" data-category="Phở/Bún/Miến" data-rating="4" data-reviews="3200" data-price="1" data-original="true">
+  <a href="mon/pho-bo-1/">
+    <div class="card-img"><span class="card-badge original">⭐ Quán gốc</span><span class="card-dish-tag">Phở bò</span><div class="card-placeholder">🍜</div></div>
+    <div class="card-body">
+      <h3>Phở Thìn</h3>
+      <div class="card-meta">
+        <span class="card-rating">⭐ 4.4</span>
+        <span class="card-reviews">3,200 đánh giá</span>
+      </div>
+      <div class="card-location-row">📍 13 Lò Đúc, Hai Bà Trưng</div>
+      <div class="card-price">55.000 - 85.000đ</div>
+    </div>
+  </a>
+</div><div class="card animate-in" data-category="Bánh" data-rating="4" data-reviews="1800" data-price="0" data-original="true">
+  <a href="mon/banh-cuon-2/">
+    <div class="card-img"><span class="card-badge original">⭐ Quán gốc</span><span class="card-dish-tag">Bánh cuốn</span><div class="card-placeholder">🥖</div></div>
+    <div class="card-body">
+      <h3>Bánh cuốn Bà Hoành</h3>
+      <div class="card-meta">
+        <span class="card-rating">⭐ 4.3</span>
+        <span class="card-reviews">1,800 đánh giá</span>
+      </div>
+      <div class="card-location-row">📍 66 Tô Hiến Thành</div>
+      <div class="card-price">25.000 - 40.000đ</div>
+    </div>
+  </a>
+</div><div class="card animate-in" data-category="Cơm" data-rating="4" data-reviews="2800" data-price="0" data-original="true">
+  <a href="mon/com-ga-4/">
+    <div class="card-img"><span class="card-badge original">⭐ Quán gốc</span><span class="card-dish-tag">Cơm gà</span><div class="card-placeholder">🍚</div></div>
+    <div class="card-body">
+      <h3>Cơm gà Đức</h3>
+      <div class="card-meta">
+        <span class="card-rating">⭐ 4.3</span>
+        <span class="card-reviews">2,800 đánh giá</span>
+      </div>
+      <div class="card-location-row">📍 15 Nguyễn Thái Học</div>
+      <div class="card-price">30.000 - 45.000đ</div>
+    </div>
+  </a>
+</div><div class="card animate-in" data-category="Ốc/Hải sản" data-rating="4" data-reviews="5200" data-price="2" data-original="false">
+  <a href="mon/oc-luoc-5/">
+    <div class="card-img"><span class="card-dish-tag">Ốc luộc</span><div class="card-placeholder">🦐</div></div>
+    <div class="card-body">
+      <h3>Ốc Bà Cường</h3>
+      <div class="card-meta">
+        <span class="card-rating">⭐ 4.1</span>
+        <span class="card-reviews">5,200 đánh giá</span>
+      </div>
+      <div class="card-location-row">📍 88 Lê Duẩn</div>
+      <div class="card-price">30.000 - 150.000đ</div>
+    </div>
+  </a>
+</div></div>
+  </section>
+
+  <!-- Browse by Province -->
+  <section class="section">
+    <div class="section-header">
+      <h2>🏙️ Xem Theo Tỉnh Thành</h2>
+      <a href="/tinh/">Tất cả 63 tỉnh →</a>
+    </div>
+    <div class="city-grid"><a href="/tinh/ha-noi/" class="city-card"><h3>Hà Nội</h3><div class="count">2 quán</div></a><a href="/tinh/ninh-thuan/" class="city-card"><h3>Ninh Thuận</h3><div class="count">1 quán</div></a><a href="/tinh/thua-thien-hue/" class="city-card"><h3>Thừa Thiên Huế</h3><div class="count">1 quán</div></a><a href="/tinh/da-nang/" class="city-card"><h3>Đà Nẵng</h3><div class="count">1 quán</div></a></div>
+  </section>
+
+  <!-- Browse by Category -->
+  <section class="section">
+    <div class="section-header">
+      <h2>📂 Danh Mục Món Ăn</h2>
+    </div>
+    <div class="city-grid"><a href="/mon/?cat=Phở/Bún/Miến" class="city-card"><h3>🍜 Phở/Bún/Miến</h3><div class="count">2 quán</div></a><a href="/mon/?cat=Bánh" class="city-card"><h3>🥖 Bánh</h3><div class="count">1 quán</div></a><a href="/mon/?cat=Cơm" class="city-card"><h3>🍚 Cơm</h3><div class="count">1 quán</div></a><a href="/mon/?cat=Ốc/Hải sản" class="city-card"><h3>🦐 Ốc/Hải sản</h3><div class="count">1 quán</div></a></div>
+  </section>
+
+  <!-- Back to top -->
+  <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" 
+          style="position:fixed;bottom:24px;right:24px;z-index:999;
+                 width:44px;height:44px;border-radius:50%;border:none;
+                 background:var(--primary);color:#fff;font-size:1.2rem;
+                 cursor:pointer;box-shadow:var(--shadow-lg);
+                 opacity:0;transform:translateY(20px);
+                 transition:all var(--transition);pointer-events:none;"
+          aria-label="Lên đầu trang">↑</button>
+</div>
+
+<script>
+// ── Smooth scroll to category section ──
+function filterCat(cat) {
+  document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  const cards = document.querySelectorAll('.card-grid .card');
+  if (cat === 'all') {
+    cards.forEach(c => c.style.display = '');
+  } else {
+    cards.forEach(c => {
+      c.style.display = c.dataset.category === cat ? '' : 'none';
+    });
+  }
+  
+  // Scroll to result
+  const firstGrid = document.querySelector('.card-grid');
+  if (firstGrid) firstGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── City selector ──
+function goToCity() {
+  const sel = document.getElementById('citySelect');
+  if (sel.value) window.location = sel.value;
+}
+
+// ── Live search with debounce ──
+let searchTimeout;
+function liveSearch() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    const allCards = document.querySelectorAll('.card-grid .card');
+    
+    if (!q) {
+      allCards.forEach(c => c.style.display = '');
+      document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+      document.querySelector('.cat-chip')?.classList.add('active');
+      return;
+    }
+    
+    // Reset category filter
+    document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+    
+    let found = 0;
+    allCards.forEach(c => {
+      const text = c.textContent.toLowerCase();
+      if (text.includes(q)) {
+        c.style.display = '';
+        found++;
+      } else {
+        c.style.display = 'none';
+      }
+    });
+    
+    // Scroll to first match
+    const first = document.querySelector('.card-grid .card[style*="display:"]') 
+               || document.querySelector('.card-grid .card:not([style*="display: none"])');
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 250);
+}
+
+// ── Sort cards ──
+function sortCardGrid(select) {
+  const grid = document.getElementById(select.dataset.target);
+  if (!grid) return;
+  
+  const cards = Array.from(grid.querySelectorAll('.card'));
+  const val = select.value;
+  
+  const getRating = el => parseFloat(el.dataset.rating) || 0;
+  const getReviews = el => parseInt(el.dataset.reviews) || 0;
+  const getPrice = el => parseInt(el.dataset.price);
+  
+  if (val === 'rating-desc') cards.sort((a,b) => getRating(b) - getRating(a));
+  else if (val === 'reviews-desc') cards.sort((a,b) => getReviews(b) - getReviews(a));
+  else if (val === 'price-asc') cards.sort((a,b) => (getPrice(a)===-1?999:getPrice(a)) - (getPrice(b)===-1?999:getPrice(b)));
+  
+  cards.forEach(c => grid.appendChild(c));
+}
+
+// ── Back to top visibility ──
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) {
+    btn.style.opacity = '1';
+    btn.style.transform = 'translateY(0)';
+    btn.style.pointerEvents = 'auto';
+  } else {
+    btn.style.opacity = '0';
+    btn.style.transform = 'translateY(20px)';
+    btn.style.pointerEvents = 'none';
+  }
+});
+
+// ── Add animation classes to cards ──
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.card-grid .card').forEach((card, i) => {
+    card.classList.add('animate-in');
+  });
+});
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>🍜 Đặc Sản Phố</h4>
+      <p style="color:var(--footer-text);line-height:1.6;">Danh bạ món ăn đường phố Việt Nam. Tìm quán ngon, đúng vị, đúng địa điểm gốc trên khắp 63 tỉnh thành.</p>
+    </div>
+    <div>
+      <h4>Tỉnh thành nổi bật</h4>
+      <a href="/tinh/ha-noi/">Hà Nội</a>
+<a href="/tinh/ninh-thuan/">Ninh Thuận</a>
+<a href="/tinh/thua-thien-hue/">Thừa Thiên Huế</a>
+<a href="/tinh/da-nang/">Đà Nẵng</a>
+    </div>
+    <div>
+      <h4>Danh mục món</h4>
+      <a href="/mon/?cat=Bánh">🥖 Bánh</a>
+      <a href="/mon/?cat=Phở/Bún/Miến">🍜 Phở / Bún / Miến</a>
+      <a href="/mon/?cat=Chè/Tráng miệng">🍨 Chè / Tráng miệng</a>
+      <a href="/mon/?cat=Ốc/Hải sản">🦐 Ốc / Hải sản</a>
+      <a href="/mon/?cat=Nem/Chả/Gỏi">🥢 Nem / Chả / Gỏi</a>
+      <a href="/mon/?cat=Đồ nướng">🔥 Đồ nướng</a>
+      <a href="/mon/?cat=Cơm">🍚 Cơm</a>
+    </div>
+    <div>
+      <h4>Liên kết</h4>
+      <a href="/sitemap.xml">📄 Sitemap</a>
+      <a href="/tinh/">🏙️ Tất cả tỉnh thành</a>
+      <a href="/mon/">🍜 Tất cả món ăn</a>
+    </div>
+    <div class="bottom">© 2026 Đặc Sản Phố — Tổng hợp từ cộng đồng yêu ẩm thực Việt 🇻🇳</div>
+  </div>
+</footer>
+
+<script src="/js/search.js" defer></script>
+<script>
+// ── PWA Install Banner ──
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner) banner.style.display = 'flex';
+});
+function dismissPWAInstall() {
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner) banner.style.display = 'none';
+}
+async function installPWA() {
+  dismissPWAInstall();
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+  }
+}
+// ── Analytics placeholder (GA4) ──
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+// gtag('config', 'G-XXXXXXXXXX');
+</script>
+<div id="pwa-install-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:1001;background:#fff;border-top:1px solid #e0e0e0;padding:12px 16px;box-shadow:0 -4px 12px rgba(0,0,0,0.08);align-items:center;justify-content:center;gap:12px;font-family:var(--font-body);">
+  <span>📲 Thêm <strong>Đặc Sản Phố</strong> vào màn hình chính?</span>
+  <button onclick="installPWA()" style="background:var(--primary);color:#fff;border:none;border-radius:999px;padding:8px 20px;font-weight:600;cursor:pointer;">Cài đặt</button>
+  <button onclick="dismissPWAInstall()" style="background:#f5f5f5;color:#757575;border:none;border-radius:999px;padding:8px 16px;cursor:pointer;">Để sau</button>
+</div>
+<script>
+// ── Register Service Worker ──
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
